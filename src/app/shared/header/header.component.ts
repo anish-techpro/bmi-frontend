@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { UiService } from '../../services/ui/ui.service';
-import { HttpClient } from '@angular/common/http';
 import { UserService } from '../../services/user/user.service';
 import { HelperService } from '../../services/helper/helper.service';
 

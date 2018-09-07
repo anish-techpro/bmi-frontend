@@ -42,7 +42,7 @@
                         <i class="ion-ios-email-outline"></i>
                       </div>
                       <input type="email" class="an-form-control" placeholder="Email" name="email" [(ngModel)]="email">
-                      <div class="error" style="text-align: right;">{{ error?.email }}</div>
+                      <div class="error" style="text-align: right;">{{ error!.email }}</div>
                     </div>
                     <button type="submit" class="an-btn an-btn-default fluid">Send</button>
                   </form>
