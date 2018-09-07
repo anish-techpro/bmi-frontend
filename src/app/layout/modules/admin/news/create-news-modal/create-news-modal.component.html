@@ -1,0 +1,47 @@
+<div id="create-news-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">
+          <i class="icon-close"></i>
+        </button>
+        <h4 class="modal-title">Create News</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+
+          <div class="col-sm-6">
+            <label>News Title</label>
+            <input type="text" class="an-form-control" placeholder="Title" />
+          </div>
+          <div class="col-sm-6">
+            <label>Available Till</label>
+            <div class='an-date-time-picker'>
+
+              <div class="an-input-group">
+                <div class="an-input-group-addon">
+                  <i class="ion-android-calendar"></i>
+                </div>
+                <!-- <input type="text" class="an-form-control an-date-time" placeholder="Select Date" id='datetimepicker2'> -->
+                <app-datetimepicker [(date)]="date"></app-datetimepicker>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-12">
+            <label>News Description</label>
+            <textarea class="an-form-control" placeholder="Write Description"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default same-an-btn" data-dismiss="modal">Close</button>
+        <button type="button" class="an-btn an-btn-default">
+          <i class="glyphicon glyphicon-plus"></i>&nbsp; Create News</button>
+      </div>
+    </div>
+
+  </div>
+</div>

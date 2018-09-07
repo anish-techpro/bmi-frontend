@@ -19,9 +19,21 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.css"
+        "styles.css",
+        "assets/css/styles.css",
+        "assets/css/vendor-styles.css",
+        "assets/css/responsive.css",
+        "assets/css/fullcalendar.css",
+        "assets/css/bootstrap-select.css",
+        "../node_modules/selectize/dist/css/selectize.css",
+        "../node_modules/selectize/dist/css/selectize.default.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "assets/js/jquery-3.1.1.min.js",
+        "assets/js/bootstrap.min.js",
+        "assets/js/bootstrap-select.js",
+        "../node_modules/ng-selectize/selectize/selectize.standalone.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
@@ -55,6 +67,10 @@
   },
   "defaults": {
     "styleExt": "css",
-    "component": {}
+    "component": {},
+    "serve": {
+      "host": "192.168.1.103",
+      "port": 4200
+    }
   }
 }

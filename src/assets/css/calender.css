@@ -1,0 +1,104 @@
+.month {
+    padding:10px 15px;
+    width: 100%;
+    background: #b2304d;
+    text-align: center;
+}
+
+.month ul {
+    margin: 0;
+    padding: 0;
+	list-style-type:none;
+}
+
+.month ul li {
+    color: white;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+	text-align:left;
+	font-family: 'Exo 2', sans-serif;
+}
+.month ul li span{
+	font-size:14px;	
+	}
+.month .prev {
+    float: left;
+    padding-top: 10px;
+}
+
+.month .next {
+    float: right;
+    padding-top: 10px;
+}
+
+.weekdays {
+    margin: 0;
+    padding: 10px 5px;
+    background-color: #ddd;
+}
+
+.weekdays li {
+    display: inline-block;
+    width: 13.2857%;
+    color: #666;
+    text-align: center;
+}
+
+.days {
+    padding: 10px 5px;
+    background: #eee;
+    margin: 0;
+}
+
+.days li {
+    list-style-type: none;
+    display: inline-block;
+    width: 13.2857%;
+    text-align: center;
+    margin-bottom: 5px;
+    font-size:12px;
+    color: #777;
+	z-index:2;
+	position:relative;
+	overflow:hidden;
+	padding:5px;
+}
+
+.days li .active:after{
+	position:absolute;
+	height:30px;
+	width:30px;
+	content:"";
+    background: #b2304d;
+	z-index:-1;
+	left:0;
+	right:0;
+	top:0;
+	bottom:0;
+	margin:auto
+}
+.days li .active{ color:#fff; }
+/* Calender */
+.year-head{ background:#b2304d; display:inline-block; padding:7px 15px; margin-top:0; color:#fff; margin-bottom:5px; }
+.calender-list{ list-style-type:none; padding:0; }
+.calender-list li{ margin-bottom:5px; background:#ededed;}
+.calender-list .month-list{ background:#ededed; border-right:5px solid #fff; padding:7px 7px; display:inline-block; min-height:54px; display: table-cell; vertical-align: middle; text-align: center; min-width:120px; max-width:120px }
+.desc-list{ background:#ededed; padding:7px 10px; min-height:54px; display: table-cell; 
+  vertical-align: middle;  }
+/* Add media queries for smaller screens */
+@media screen and (min-width:768px) and (max-width:1024px){
+	.days li,.weekdays li{ width:13%; }
+	}
+@media screen and (max-width:720px) {
+    .weekdays li, .days li {width: 13.1%;}
+}
+
+@media screen and (max-width: 420px) {
+    .weekdays li, .days li {width: 12.5%;}
+    .days li .active {padding: 2px;}
+}
+
+@media screen and (max-width: 290px) {
+    .weekdays li, .days li {width: 12.2%;}
+}

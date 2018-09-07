@@ -1,0 +1,152 @@
+<div class="an-breadcrumb wow fadeInUp">
+  <ol class="breadcrumb">
+    <li>
+      <a href="#">Dashboard</a>
+    </li>
+    <li>
+      <a href="#">Courses</a>
+    </li>
+    <li>
+      <a href="#">Create Course</a>
+    </li>
+    <li class="active">Course Details</li>
+  </ol>
+</div>
+<!-- end AN-BREADCRUMB -->
+
+<div class="an-body-topbar wow fadeIn">
+  <div class="an-page-title" style="width:100%;">
+    <h2>Event Calender
+      <!--<span class="pull-right"><a href="create_course.html" class="an-btn btn-default" style="padding:8px 20px;">Cancel</a> <a href="#" class="an-btn an-btn-default">Save</a></span>-->
+    </h2>
+    <!--<h4 style="font-weight:normal;">Course Name 1</h4>-->
+  </div>
+</div>
+<!-- end AN-BODY-TOPBAR -->
+
+<div class="row">
+  <div class="col-sm-12">
+    <div class="an-single-component with-shadow">
+      <div class="an-component-header">
+        <h6>Create Event</h6>
+
+      </div>
+      <div class="an-component-body">
+        <div class="an-helper-block">
+          <div class="row">
+            <div class="col-sm-4">
+              <label>Title</label>
+              <input type="text" class="an-form-control" [(ngModel)]="event.title" placeholder="Enter Title" />
+            </div>
+            <div class="col-sm-4">
+              <label>Start Date</label>
+              <div class="an-date-time-picker">
+
+                <div class="an-input-group">
+                  <div class="an-input-group-addon">
+                    <i class="ion-android-calendar"></i>
+                  </div>
+                  <!-- <input type="text" class="an-form-control an-date-time" placeholder="Select Date" id="datetimepicker3"> -->
+                  <app-datetimepicker [(date)]="event.startDate"></app-datetimepicker>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <label>End Date</label>
+              <div class="an-date-time-picker">
+
+                <div class="an-input-group">
+                  <div class="an-input-group-addon">
+                    <i class="ion-android-calendar"></i>
+                  </div>
+                  <!-- <input type="text" class="an-form-control an-date-time" placeholder="Select Date" id="datetimepicker4"> -->
+                  <app-datetimepicker [(date)]="event.endDate"></app-datetimepicker>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-8">
+              <label>Event Description</label>
+              <input type="text" class="an-form-control" [(ngModel)]="event.description" placeholder="Enter Description" />
+              <div class="clearfix"></div>
+            </div>
+            <div class="col-sm-4">
+              <label></label>
+              <div class="clearfix"></div>
+              <button class="an-btn an-btn-primary">Create Event</button>
+              <div class="clearfix"></div>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+  <div class="clearfix"></div>
+
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="an-single-component with-shadow">
+      <div class="an-component-header">
+        <h6>Calender</h6>
+
+      </div>
+      <div class="an-component-body">
+        <div class="an-helper-block">
+          <div class="row">
+            <div class="col-sm-8">
+              <ng-fullcalendar #ucCalendar [options]="calendarOptions"></ng-fullcalendar>
+              <div class="clearfix"></div>
+            </div>
+
+            <div class="col-sm-4">
+
+
+              <div class="clearfix"></div>
+              <ul class="calender-list">
+                <li>
+                  <h4>Lecture</h4>
+                  <p>Executive presence</p>
+                  <p>prof. Amy Carroll</p>
+                  <p>10.00 AM - 11.00 AM</p>
+                </li>
+              </ul>
+              <ul class="calender-list exam">
+                <li>
+                  <h4>Exam</h4>
+                  <p>Executive presence</p>
+                  <p>prof. Amy Carroll</p>
+                  <p>10.00 AM - 11.00 AM</p>
+                </li>
+              </ul>
+              <ul class="calender-list project">
+                <li>
+                  <h4>Project</h4>
+                  <p>Executive presence</p>
+                  <p>prof. Amy Carroll</p>
+                  <p>10.00 AM - 11.00 AM</p>
+                </li>
+              </ul>
+              <div class="clearfix"></div>
+              <ul class="guide">
+                <li>
+                  <span class="exam"></span> Exam</li>
+                <li>
+                  <span class="lecture"></span> Lecture</li>
+                <li>
+                  <span class="project"></span> Projects</li>
+                <li>
+                  <span class="lunch"></span> Lunch</li>
+              </ul>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+  <div class="clearfix"></div>
+
+</div>

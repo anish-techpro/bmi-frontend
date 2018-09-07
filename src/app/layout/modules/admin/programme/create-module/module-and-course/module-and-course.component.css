@@ -1,0 +1,14 @@
+.uploaded-document {
+    padding: 7px 10px;
+    border: 1px solid #9c1533;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+}
+
+.uploaded-document i {
+    cursor: pointer;
+    margin-left: 20px;
+}

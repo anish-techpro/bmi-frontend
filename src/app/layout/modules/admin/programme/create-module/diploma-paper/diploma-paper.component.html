@@ -1,0 +1,350 @@
+<div class="row">
+  <div class="col-sm-12" style="display:block">
+    <div class="an-single-component with-shadow">
+      <div class="an-component-header">
+        <h6 class="full-width">Diploma Details</h6>
+
+      </div>
+
+      <div class="an-component-body">
+        <div class="an-bootstrap-custom-tab">
+          <div class="an-tab-control">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs text-left" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#diskad" aria-controls="diska" role="tab" data-toggle="tab">Diploma</a>
+              </li>
+              <li role="presentation">
+                <a href="#diskbd" aria-controls="diskbb" role="tab" data-toggle="tab">Description</a>
+              </li>
+              <!--<li role="presentation"><a href="#diskcd" aria-controls="diskbc" role="tab" data-toggle="tab">Upload</a>
+                </li>-->
+              <li role="presentation">
+                <a href="#diskdd" aria-controls="diskd" role="tab" data-toggle="tab">Assign Teacher</a>
+              </li>
+              <!--<li role="presentation"><a href="#disked" aria-controls="diskb" role="tab" data-toggle="tab">Exam</a>
+                </li>
+                <li role="presentation"><a href="#diskfd" aria-controls="diskc" role="tab" data-toggle="tab">Real Life Project</a>
+                </li>-->
+            </ul>
+          </div>
+
+          <!-- Tab panes -->
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade in active" id="diskad">
+              <div class="row">
+                <div class="col-sm-3">
+                  <label>Diploma Name</label>
+                  <input type="text" class="an-form-control" placeholder="Enter Diploma Name" />
+                </div>
+                <div class="col-sm-3">
+                  <label>Diploma Type</label>
+                  <select class="an-form-control">
+                    <option>Attendance Compulsory</option>
+                    <option>Attendance Optional</option>
+                    <option>Exam</option>
+                  </select>
+                </div>
+                <div class="col-sm-3">
+                  <label>Start Date</label>
+                  <div class="an-date-time-picker">
+
+                    <div class="an-input-group">
+                      <div class="an-input-group-addon">
+                        <i class="ion-android-calendar"></i>
+                      </div>
+                      <!-- <input type="text" class="an-form-control an-date-time" placeholder="Select Date" id="datetimepicker19"> -->
+                      <app-datetimepicker></app-datetimepicker>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <label>End Date</label>
+                  <div class="an-date-time-picker">
+
+                    <div class="an-input-group">
+                      <div class="an-input-group-addon">
+                        <i class="ion-android-calendar"></i>
+                      </div>
+                      <!-- <input type="text" class="an-form-control an-date-time" placeholder="Select Date" id="datetimepicker20"> -->
+                      <app-datetimepicker></app-datetimepicker>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <!-- end .TAB-PANE -->
+
+            <div role="tabpanel" class="tab-pane fade in" id="diskbd">
+              <div class="row">
+                <div class="col-sm-12">
+                  <!-- <textarea id="txtEditor3"></textarea> -->
+                  <app-ckeditor></app-ckeditor>
+                </div>
+              </div>
+            </div>
+
+            <div role="tabpanel" class="tab-pane fade in" id="diskcd">
+              <div class="col-sm-3">
+                <label></label>
+                <div class="an-file-upload-container" style="margin-bottom:0;">
+                  <div tabindex="500" class="btn btn-primary btn-file">
+                    <i class="glyphicon glyphicon-paperclip"></i>&nbsp;
+                    <span class="hidden-xs">Upload Diploma Paper</span>
+                    <input id="input-id" type="file">
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+            <div role="tabpanel" class="tab-pane fade in" id="diskdd">
+              <!--<div class="col-sm-5">
+                    <label>Select Teacher</label>
+                     <select class="selectpicker an-form-control" multiple>
+                    <option>Teacher 1</option>
+                    <option>Teacher 2</option>
+                    <option>Teacher 3</option>
+                    <option>Teacher 4</option>
+                </select>
+                </div>-->
+              <div class="col-sm-5">
+                <label></label>
+                <a href="#" class="an-btn an-btn-primary" data-toggle="modal" data-target="#myModal2">Assign Teacher</a>
+                <div class="clearfix"></div>
+                <br>
+                <!-- Modal -->
+                <div id="myModal2" class="modal fade" role="dialog">
+                  <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                          <i class="glyphicon glyphicon-remove"></i>
+                        </button>
+                        <h4 class="modal-title">Select Teacher To Assign</h4>
+                      </div>
+                      <div class="modal-body">
+                        <div class="col-sm-6">
+                          <div class="an-input-group right">
+                            <div class="an-input-group-addon">
+                              <i class="ion-search"></i>
+                            </div>
+                            <input type="email" class="an-form-control marg-sm" placeholder="Search Teacher">
+                          </div>
+                        </div>
+                        <div class="col-sm-3 col-sm-offset-3">
+                          <button type="button" class="an-btn an-btn-default pull-right" data-toggle="modal" data-backdrop="static" data-keyboard="false"
+                            data-target="#send2">
+                            <i class="glyphicon glyphicon-plus"></i> Invite new Teacher</button>
+                          <div class="clearfix"></div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <hr>
+                        <div class="col-sm-12">
+                          <ul class="invite">
+                            <li>
+                              <input type="checkbox" id="cb6" />
+                              <label for="cb6">
+                                <img src="../assets/img/profile-image.jpg" />
+                                <span>Teacher 1</span>
+                              </label>
+                            </li>
+                            <li>
+                              <input type="checkbox" id="cb7" />
+                              <label for="cb7">
+                                <img src="../assets/img/profile-image.jpg" />
+                                <span>Teacher 2</span>
+                              </label>
+                            </li>
+                            <li>
+                              <input type="checkbox" id="cb8" />
+                              <label for="cb8">
+                                <img src="../assets/img/profile-image.jpg" />
+                                <span>Teacher 3</span>
+                              </label>
+                            </li>
+                            <li>
+                              <input type="checkbox" id="cb9" />
+                              <label for="cb9">
+                                <img src="../assets/img/profile-image.jpg" />
+                                <span>Teacher 4</span>
+                              </label>
+                            </li>
+                            <li>
+                              <input type="checkbox" id="cb10" />
+                              <label for="cb10">
+                                <img src="../assets/img/profile-image.jpg" />
+                                <span>Teacher 4</span>
+                              </label>
+                            </li>
+                          </ul>
+                          <div class="clearfix"></div>
+                        </div>
+
+
+
+                        <div class="clearfix"></div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default same-an-btn pull-left" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-default same-an-btn" data-dismiss="modal">Select All</button>
+                        <button type="button" class="btn btn-default same-an-btn" data-dismiss="modal">Select None</button>
+                        <button type="button" class="an-btn an-btn-default">
+                          <i class="glyphicon glyphicon-ok"></i> Assign Teacher</button>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+                <div id="send2" class="modal fade" role="dialog">
+                  <div class="modal-dialog send-modal">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                          <i class="glyphicon glyphicon-remove"></i>
+                        </button>
+                        <h4 class="modal-title">Send Invitation</h4>
+                      </div>
+                      <div class="modal-body">
+
+
+                        <div class="col-sm-9">
+                          <input type="email" class="an-form-control" placeholder="Enter Email Id" />
+                          <div class="clearfix"></div>
+                        </div>
+                        <div class="col-sm-3">
+                          <button type="button" class="an-btn an-btn-primary">
+                            <i class="glyphicon glyphicon-send"></i> Send</button>
+                          <div class="clearfix"></div>
+                        </div>
+
+
+                        <div class="clearfix"></div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default same-an-btn" data-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- end .TAB-PANE -->
+
+          </div>
+          <!-- end .TAB-CONTENT -->
+        </div>
+        <div class="clearfix"></div>
+        <hr>
+        <div class="col-sm-12">
+          <span class="pull-right">
+            <!--<button class="btn btn-default same-an-btn"><i class="glyphicon glyphicon glyphicon-remove"></i> Cancel</button>-->
+            <button class="btn btn-default same-an-btn">
+              <i class="glyphicon glyphicon glyphicon-repeat"></i> Reset All</button>
+            <button class="an-btn an-btn-primary">
+              <i class="glyphicon glyphicon-floppy-saved"></i> Save</button>
+          </span>
+          <div class="clearfix"></div>
+          <br>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+  <br>
+  <div class="col-sm-12">
+    <div class="an-single-component with-shadow" id="div3">
+      <div class="an-component-header">
+        <h6>Overview</h6>
+
+      </div>
+      <div class="an-component-body">
+        <div class="an-helper-block">
+          <div class="row">
+            <div class="col-sm-12">
+
+              <ul class="course-list">
+                <li>ACCOUNTING
+                  <small>( Module Description )</small>
+                </li>
+
+                <ul class="sub-course" dragula="DIPLOMA_PAPERS">
+                  <li>
+                    <div class="row">
+                      <div class="col-xs-8">DP Process Overview & EXAMPLES Add documents</div>
+                      <div class="col-xs-4">
+                        <span class="pull-right">
+                          <!--<a href="#" class="an-btn an-btn-primary btn-xs"><i class="glyphicon glyphicon-eye-open"></i> View</a>-->
+                          <a href="#" class="an-btn an-btn-primary btn-xs">
+                            <i class="glyphicon glyphicon-pencil"></i> Edit</a>
+                          <a href="#" class="an-btn an-btn-primary btn-xs">
+                            <i class="glyphicon glyphicon-remove"></i> Delete</a>
+                        </span>
+                      </div>
+                    </div>
+                  </li>
+
+                  <li>
+                    <div class="row">
+                      <div class="col-xs-8">DP Process Overview & EXAMPLES Add documents</div>
+                      <div class="col-xs-4">
+                        <span class="pull-right">
+                          <!--<a href="#" class="an-btn an-btn-primary btn-xs"><i class="glyphicon glyphicon-eye-open"></i> View</a>-->
+                          <a href="#" class="an-btn an-btn-primary btn-xs">
+                            <i class="glyphicon glyphicon-pencil"></i> Edit</a>
+                          <a href="#" class="an-btn an-btn-primary btn-xs">
+                            <i class="glyphicon glyphicon-remove"></i> Delete</a>
+                        </span>
+                      </div>
+                    </div>
+                  </li>
+
+                  <li>
+                    <div class="row">
+                      <div class="col-xs-8">DP Coaching Session Add documents</div>
+                      <div class="col-xs-4">
+                        <span class="pull-right">
+                          <!--<a href="#" class="an-btn an-btn-primary btn-xs"><i class="glyphicon glyphicon-eye-open"></i> View</a>-->
+                          <a href="#" class="an-btn an-btn-primary btn-xs">
+                            <i class="glyphicon glyphicon-pencil"></i> Edit</a>
+                          <a href="#" class="an-btn an-btn-primary btn-xs">
+                            <i class="glyphicon glyphicon-remove"></i> Delete</a>
+                        </span>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="row">
+                      <div class="col-xs-8">DIPLOMA PAPER ORAL PRESENTATION AND DEFENCE </div>
+                      <div class="col-xs-4">
+                        <span class="pull-right">
+                          <!--<a href="#" class="an-btn an-btn-primary btn-xs"><i class="glyphicon glyphicon-eye-open"></i> View</a>-->
+                          <a href="#" class="an-btn an-btn-primary btn-xs">
+                            <i class="glyphicon glyphicon-pencil"></i> Edit</a>
+                          <a href="#" class="an-btn an-btn-primary btn-xs">
+                            <i class="glyphicon glyphicon-remove"></i> Delete</a>
+                        </span>
+                      </div>
+                    </div>
+                  </li>
+
+                </ul>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="clearfix"></div>
+  </div>
+</div>
+<div class="clearfix"></div>

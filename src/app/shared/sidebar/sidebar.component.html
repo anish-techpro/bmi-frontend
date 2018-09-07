@@ -1,0 +1,284 @@
+<div class="an-sidebar-nav" style="height: 100%;" [class.collapse]="!ui.showSidebar">
+  <!-- end .AN-SIDEBAR-SEARCH -->
+
+  <!-- FOR ADMIN & TEACHERS -->
+  <div class="an-sidebar-widgets" *ngIf="['admin', 'teacher'].includes(user.role)">
+    <div class="widget-signle">
+      <h5 class="counter-result">100</h5>
+      <p>Inbox</p>
+    </div>
+    <div class="widget-signle">
+      <h5 class="counter-result">1,234</h5>
+      <p>Papers</p>
+    </div>
+    <div class="widget-signle">
+      <h5 class="counter-result">15</h5>
+      <p>Users</p>
+    </div>
+  </div>
+
+  <!-- FOR STUDENTS -->
+  <div class="an-sidebar-widgets" *ngIf="user.role === 'student'">
+    <div class="widget-signle">
+      <h5 class="counter-result">100</h5>
+      <p>Inbox</p>
+    </div>
+    <div class="widget-signle">
+      <h5 class="counter-result">10</h5>
+      <p>Grade</p>
+    </div>
+    <div class="widget-signle" style="padding:10px 5px;">
+      <h5 class="counter-result">15</h5>
+      <p>Deadline</p>
+    </div>
+  </div>
+  <!-- end .AN-SIDEBAR-WIDGETS -->
+
+  <div class="an-sidebar-nav">
+    <ul class="an-main-nav">
+      <li class="an-nav-item" routerLinkActive="current active" [routerLinkActiveOptions]="{exact: true}">
+        <a class="" [routerLink]="[helper.baseRoute]">
+          <i class="icon-home"></i>
+          <span class="nav-title">Home</span>
+        </a>
+      </li>
+      <li class="an-nav-item" *ngIf="user.role === 'teacher'" routerLinkActive="current active">
+        <a class="" [routerLink]="[helper.baseRoute, 'exams']">
+          <i class="icon-grid"></i>
+          <span class="nav-title">Exams</span>
+        </a>
+      </li>
+      <li class="an-nav-item" routerLinkActive="current active">
+        <a class="" [routerLink]="[helper.baseRoute, 'inbox']">
+          <i class="icon-chat-o"></i>
+          <span class="nav-title">Inbox
+            <span class="an-arrow-nav count">3</span>
+          </span>
+        </a>
+      </li>
+      <li class="an-nav-item" *ngIf="user.role === 'admin'" routerLinkActive="current active">
+        <a class="" [routerLink]="[helper.baseRoute, 'news']">
+          <i class="icon-grid"></i>
+          <span class="nav-title">News
+
+          </span>
+        </a>
+      </li>
+      <li class="an-nav-item" *ngIf="user.role === 'admin'" routerLinkActive="current active">
+        <a class="" [routerLink]="[helper.baseRoute, 'programme']">
+          <i class="icon-grid"></i>
+          <span class="nav-title">Programme
+            <span class="an-arrow-nav"></span>
+          </span>
+        </a>
+      </li>
+      <li class="an-nav-item" *ngIf="user.role === 'admin'" routerLinkActive="current active">
+        <a class="" [routerLink]="[helper.baseRoute, 'peer-evaluation']">
+          <i class="icon-board-grid"></i>
+          <span class="nav-title">Peer Evaluataion
+            <span class="an-arrow-nav"></span>
+          </span>
+        </a>
+      </li>
+      <li class="an-nav-item" *ngIf="user.role === 'student'" #myStudiesNav routerLinkActive="current active show-child-nav">
+        <a class="js-show-child-nav" id="course_sec" (click)="showNavs.myStudies = !showNavs.myStudies">
+          <i class="icon-book"></i>
+          <span class="nav-title">My Studies
+            <span class="an-arrow-nav" [class.active]="showNavs.myStudies">
+              <i class="icon-arrow-down"></i>
+            </span>
+          </span>
+        </a>
+        <ul class="an-child-nav js-open-nav" [class.active]="showNavs.myStudies">
+          <li routerLinkActive="current active">
+            <a [routerLink]="[helper.baseRoute, 'programme']">My Programme</a>
+          </li>
+          <li routerLinkActive="current active">
+            <a [routerLink]="[helper.baseRoute, 'modules']">My Modules</a>
+          </li>
+          <!-- <li><a href="diploma.html">Diploma Papers</a></li> -->
+          <li routerLinkActive="current active">
+            <a [routerLink]="[helper.baseRoute, 'grades']">My Grades</a>
+          </li>
+          <li routerLinkActive="current active">
+            <a [routerLink]="[helper.baseRoute, 'attendance']">My Attendence</a>
+          </li>
+          <li #assignmentNav routerLinkActive="show-child-nav">
+            <a class="js-show-child-nav" (click)="showNavs.assignment = !showNavs.assignment">
+              <span class="nav-title">Assignment
+                <span class="an-arrow-nav count new">3</span>
+                <span class="an-arrow-nav" style="margin-top:3px;">
+                  <i class="icon-arrow-down"></i>
+                </span>
+              </span>
+            </a>
+            <ul class="an-child-nav js-open-nav" style="margin-left:10px;" [class.active]="showNavs.assignment">
+              <li routerLinkActive="current active">
+                <a [routerLink]="[helper.baseRoute, 'assignments', 'home']">Home Assignment</a>
+              </li>
+              <li routerLinkActive="current active">
+                <a [routerLink]="[helper.baseRoute, 'assignments', 'group']">Group Assignment</a>
+              </li>
+            </ul>
+          </li>
+          <li routerLinkActive="current active">
+            <a [routerLink]="[helper.baseRoute, 'discussion-board']">Discussion Board</a>
+          </li>
+          <li routerLinkActive="current active">
+            <a [routerLink]="[helper.baseRoute, 'peer-evaluation']">Peer Evaluation</a>
+          </li>
+          <li routerLinkActive="current active">
+            <a [routerLink]="[helper.baseRoute, 'course-evaluation']">Course Evaluation</a>
+          </li>
+        </ul>
+      </li>
+      <li class="an-nav-item" *ngIf="user.role === 'student'" routerLinkActive="current active">
+        <a class="" [routerLink]="[helper.baseRoute, 'diploma-papers']">
+          <i class="icon-list"></i>
+          <span class="nav-title">Diploma Papers
+
+          </span>
+        </a>
+      </li>
+      <li class="an-nav-item" #contactsNav routerLinkActive="current active show-child-nav" *ngIf="user.role === 'student'">
+        <a class="js-show-child-nav" (click)="showNavs.contacts = !showNavs.contacts">
+          <i class="icon-user"></i>
+          <span class="nav-title">Contacts
+            <span class="an-arrow-nav" [class.active]="showNavs.contacts">
+              <i class="icon-arrow-down"></i>
+            </span>
+          </span>
+        </a>
+        <ul class="an-child-nav js-open-nav" [class.active]="showNavs.contacts">
+
+          <li routerLinkActive="current active">
+            <a [routerLink]="[helper.baseRoute, 'contacts', 'class']">My Class</a>
+          </li>
+
+          <li routerLinkActive="current active">
+            <a [routerLink]="[helper.baseRoute, 'contacts', 'emba']">Emba 20</a>
+          </li>
+
+          <li routerLinkActive="current active">
+            <a [routerLink]="[helper.baseRoute, 'contacts', 'alumni']">Alumni</a>
+          </li>
+
+          <li routerLinkActive="current active">
+            <a [routerLink]="[helper.baseRoute, 'contacts', 'faculty']">Faculty</a>
+          </li>
+
+        </ul>
+      </li>
+      <li class="an-nav-item" *ngIf="user.role === 'student'" routerLinkActive="current active">
+        <a class="" [routerLink]="[helper.baseRoute, 'library']">
+          <i class="icon-pencil"></i>
+          <span class="nav-title">Library
+
+          </span>
+        </a>
+      </li>
+      <li class="an-nav-item" *ngIf="!(user.role === 'teacher')" routerLinkActive="current active">
+        <a class="" [routerLink]="[helper.baseRoute, 'calendar']">
+          <i class="icon-calendar"></i>
+          <span class="nav-title">Calender
+            <span class="an-arrow-nav"></span>
+          </span>
+        </a>
+      </li>
+      <li class="an-nav-item" *ngIf="user.role === 'student'" routerLinkActive="current active">
+        <a class="" [routerLink]="[helper.baseRoute, 'mobility-programme']">
+          <i class="icon-grid"></i>
+          <span class="nav-title">Mobility Programme
+
+          </span>
+        </a>
+      </li>
+
+      <li class="an-nav-item" #coursesNav routerLinkActive="current active show-child-nav" *ngIf="user.role === 'teacher'">
+        <a class=" js-show-child-nav" (click)="showNavs.courses = !showNavs.courses">
+          <i class="icon-grid"></i>
+          <span class="nav-title">Courses
+            <span class="an-arrow-nav" [class.active]="showNavs.courses">
+              <i class="icon-arrow-down"></i>
+            </span>
+          </span>
+        </a>
+        <ul class="an-child-nav js-open-nav" [class.active]="showNavs.courses">
+          <li routerLinkActive="current active">
+            <a [routerLink]="[helper.baseRoute, 'courses', 'all']">All Courses</a>
+          </li>
+          <li #createCourseNav routerLinkActive="show-child-nav">
+            <a (click)="showNavs.createCourse = !showNavs.createCourse" class="js-show-child-nav">
+              <span class="nav-title">Create Course
+                <span class="an-arrow-nav" style="margin-top:3px;">
+                  <i class="icon-arrow-down"></i>
+                </span>
+              </span>
+            </a>
+            <ul class="an-child-nav js-open-nav" style="margin-left:10px;" [class.active]="showNavs.createCourse">
+              <li routerLinkActive="current active">
+                <a [routerLink]="[helper.baseRoute, 'courses', 'create']">Create New Course</a>
+              </li>
+              <li routerLinkActive="current active">
+                <a [routerLink]="[helper.baseRoute, 'courses', 'build-content']">Content Building</a>
+              </li>
+              <!--<li><a href="tasks.html">Tasks</a></li>-->
+            </ul>
+          </li>
+          <li routerLinkActive="current active">
+            <a [routerLink]="[helper.baseRoute, 'courses', 'webinars']">Webinars</a>
+          </li>
+          <li #assessmentNav routerLinkActive="show-child-nav">
+            <a (click)="showNavs.assessment = !showNavs.assessment" class="js-show-child-nav">
+              <span class="nav-title">Assessment
+                <span class="an-arrow-nav" style="margin-top:3px;">
+                  <i class="icon-arrow-down"></i>
+                </span>
+              </span>
+            </a>
+            <ul class="an-child-nav js-open-nav" style="margin-left:10px;" [class.active]="showNavs.assessment">
+              <li routerLinkActive="current active">
+                <a [routerLink]="[helper.baseRoute, 'courses', 'assessment', 'closed-book']">Closed-book
+                  <br>written exams</a>
+              </li>
+              <li routerLinkActive="current active">
+                <a [routerLink]="[helper.baseRoute, 'courses', 'assessment', 'open-book']">Open-book
+                  <br>written exams</a>
+              </li>
+              <li routerLinkActive="current active">
+                <a [routerLink]="[helper.baseRoute, 'courses', 'assessment', 'in-class']">In-class individual
+                  <br>written exams</a>
+              </li>
+              <li routerLinkActive="current active">
+                <a [routerLink]="[helper.baseRoute, 'courses', 'assessment', 'take-home']">Take-home exams</a>
+              </li>
+              <li routerLinkActive="current active">
+                <a [routerLink]="[helper.baseRoute, 'courses', 'assessment', 'peer-evaluation']">Peer Evaluations</a>
+              </li>
+            </ul>
+
+          </li>
+          <li routerLinkActive="current active">
+            <a [routerLink]="[helper.baseRoute, 'courses', 'attendance']">Attendance</a>
+          </li>
+          <li routerLinkActive="current active">
+            <a [routerLink]="[helper.baseRoute, 'courses', 'discussion-board']">Discussions</a>
+          </li>
+          <li routerLinkActive="current active">
+            <a [routerLink]="[helper.baseRoute, 'courses', 'students']">Students</a>
+          </li>
+          <li routerLinkActive="current active">
+            <a [routerLink]="[helper.baseRoute, 'courses', 'folder']">Folder</a>
+          </li>
+          <li routerLinkActive="current active">
+            <a [routerLink]="[helper.baseRoute, 'courses', 'calendar']">Course Calender</a>
+          </li>
+        </ul>
+      </li>
+
+    </ul>
+    <!-- end .AN-MAIN-NAV -->
+  </div>
+  <!-- end .AN-SIDEBAR-NAV -->
+</div>
+<!-- end .AN-SIDEBAR-NAV -->

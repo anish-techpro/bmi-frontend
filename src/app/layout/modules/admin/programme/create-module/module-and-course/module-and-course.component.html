@@ -1,0 +1,603 @@
+<div class="row">
+  <div class="col-sm-12">
+    <ul class="course-list">
+      <li style="background:#eee;" class="hov-parent">
+        <form (ngSubmit)="saveModule()">
+          <div class="col-sm-3">
+            <!--<label>Module Name</label>-->
+            <!--<h4>Module Name &nbsp; &nbsp;<Small>Module Description</Small></h4>-->
+            <input type="text" class="an-form-control cus-input" placeholder="Module Name" (keyup)="onModuleNameKeyup($event)" name="moduleName"
+              [(ngModel)]="module.name" />
+          </div>
+
+          <div class="col-sm-6">
+            <!--<label>Module Description</label>-->
+            <input type="text" class="an-form-control cus-input" placeholder="Module Description" [disabled]="!ui.moduleNameEntered"
+              name="moduleDescription" [(ngModel)]="module.description" />
+
+          </div>
+          <div class="col-sm-3" *ngIf="ui.moduleNameEntered">
+            <span class="pull-right">
+              <button type="submit" class="an-btn an-btn-primary" style="font-size: 12px;">
+                <i class="glyphicon glyphicon-floppy-saved"></i> Save
+              </button>
+              <button type="button" class="an-btn an-btn-primary" style="font-size: 12px;" *ngIf="!course" (click)="createNewCourse()">
+                <i class="glyphicon glyphicon-plus"></i> Add Course
+              </button>
+            </span>
+          </div>
+        </form>
+        <!--<div class="col-sm-3">
+          <button class="an-btn an-btn-primary pull-right"><i class="glyphicon glyphicon-floppy-saved"></i> Save</button>
+        </div>-->
+      </li>
+      <ul style="padding-left:15px;">
+        <ul class="sub-course" style="padding-left:0px;" *ngFor="let course of module.courses; let i = index">
+
+          <li href="javascript:void(0)" (click)="editCourse(i)">
+            <a>{{ course.name }}</a>
+          </li>
+          <ul class="sub-course" *ngIf="course.exam.name">
+            <li href="javascript:void(0)" (click)="editCourse(i)">
+              <a>{{ course.exam.name }}</a>
+            </li>
+          </ul>
+          <li *ngIf="course.project.name" (click)="editCourse(i)">
+            <a>{{ course.project.name }}</a>
+          </li>
+        </ul>
+        <li>
+
+        </li>
+      </ul>
+    </ul>
+    <div class="clearfix"></div>
+    <div class="col-sm-12" style="margin-top:15px;">
+      <div class="an-single-component with-shadow">
+        <!--<div class="an-component-header">
+<h6 class="full-width">Enter Details</h6>
+
+</div>-->
+
+        <div class="an-component-body" *ngIf="course">
+          <div class="an-bootstrap-custom-tab" style="padding-top:0; padding-bottom:0;">
+            <div class="an-tab-control">
+              <!-- Nav tabs -->
+              <ul class="nav nav-tabs text-left" role="tablist">
+                <li role="presentation" class="active">
+                  <a href="#diska1" aria-controls="diska" role="tab" data-toggle="tab">Course</a>
+                </li>
+                <li role="presentation">
+                  <a href="#diskaa" aria-controls="diskaa" role="tab" data-toggle="tab">Description</a>
+                </li>
+                <li role="presentation">
+                  <a href="#diskab" aria-controls="diskab" role="tab" data-toggle="tab">Upload Course</a>
+                </li>
+                <li role="presentation">
+                  <a href="#diskd4" aria-controls="diskd" role="tab" data-toggle="tab">Assign Teacher</a>
+                </li>
+                <li role="presentation">
+                  <a href="#diskb2" aria-controls="diskb" role="tab" data-toggle="tab">Exam</a>
+                </li>
+                <li role="presentation">
+                  <a href="#diskc3" aria-controls="diskc" role="tab" data-toggle="tab">Real Life Project</a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Tab panes -->
+            <form class="tab-content">
+              <div role="tabpanel" class="tab-pane fade in active" id="diska1">
+                <div class="row">
+                  <div class="col-sm-3">
+                    <label>Course Name</label>
+                    <input type="text" class="an-form-control" placeholder="Enter Course Name" name="courseName" [(ngModel)]="course.name" />
+                  </div>
+                  <div class="col-sm-3">
+                    <label>Start Date</label>
+                    <div class="an-date-time-picker">
+
+                      <div class="an-input-group">
+                        <div class="an-input-group-addon">
+                          <i class="ion-android-calendar"></i>
+                        </div>
+                        <!-- <input type="text" class="an-form-control an-date-time" placeholder="Select Date" id="datetimepicker3"> -->
+                        <app-datetimepicker [(date)]="course.start_date"></app-datetimepicker>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <label>End Date</label>
+                    <div class="an-date-time-picker">
+
+                      <div class="an-input-group">
+                        <div class="an-input-group-addon">
+                          <i class="ion-android-calendar"></i>
+                        </div>
+                        <!-- <input type="text" class="an-form-control an-date-time" placeholder="Select Date" id="datetimepicker4"> -->
+                        <app-datetimepicker [(date)]="course.end_date"></app-datetimepicker>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+              <!-- end .TAB-PANE -->
+
+              <div role="tabpanel" class="tab-pane fade in" id="diskaa">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <!-- <textarea id="txtEditor"></textarea> -->
+                    <app-ckeditor [(textInput)]="course.description"></app-ckeditor>
+                  </div>
+                </div>
+              </div>
+
+              <div role="tabpanel" class="tab-pane fade in" id="diskab">
+                <div class="col-sm-3">
+                  <label></label>
+                  <!-- <div class="an-file-upload-container" style="margin-bottom:0;">
+                    <div>
+                      <i class="glyphicon glyphicon-paperclip"></i>&nbsp;
+                      <span class="hidden-xs">Upload Course</span>
+                      <input id="input-id" type="file">
+                    </div>
+                  </div> -->
+                  <input type="file" accept=".pdf, .xls, .xlsx, .doc, .csv" #uploadCourseInput style="display:none;" (change)="addCourseDocument($event)">
+                  <button tabindex="500" class="an-btn an-btn-primary" (click)="uploadCourseInput.click()">
+                    <i class="glyphicon glyphicon-paperclip"></i>&nbsp;
+                    <span class="hidden-xs">Upload Course</span>
+                  </button>
+                </div>
+                <div class="col-sm-9" style="display:flex;" *ngIf="course.file">
+                  <div class="uploaded-document">
+                    {{ course.file.name }}
+                    <i class="glyphicon glyphicon glyphicon-remove" (click)="removeCourseDocument()"></i>
+                  </div>
+                </div>
+              </div>
+
+              <div role="tabpanel" class="tab-pane fade in" id="diskd4">
+                <!--<div class="col-sm-5">
+                    <label>Select Teacher</label>
+                     <select class="selectpicker an-form-control" multiple>
+                    <option>Teacher 1</option>
+                    <option>Teacher 2</option>
+                    <option>Teacher 3</option>
+                    <option>Teacher 4</option>
+                </select>
+                </div>-->
+                <div class="col-sm-5">
+                  <label></label>
+                  <a href="#" class="an-btn an-btn-primary" data-toggle="modal" data-target="#myModal">Assign Teacher</a>
+                  <div class="clearfix"></div>
+                  <br>
+                  <!-- Modal -->
+                  <div id="myModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                      <!-- Modal content-->
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal">
+                            <i class="glyphicon glyphicon-remove"></i>
+                          </button>
+                          <h4 class="modal-title">Select Teacher To Assign</h4>
+                        </div>
+                        <div class="modal-body">
+                          <div class="col-sm-6">
+                            <div class="an-input-group right">
+                              <div class="an-input-group-addon">
+                                <i class="ion-search"></i>
+                              </div>
+                              <input type="text" class="an-form-control marg-sm" placeholder="Search Teacher">
+                            </div>
+                          </div>
+                          <div class="col-sm-3 col-sm-offset-3">
+                            <button type="button" class="an-btn an-btn-default pull-right" data-toggle="modal" data-backdrop="static" data-keyboard="false"
+                              data-target="#send">
+                              <i class="glyphicon glyphicon-plus"></i> Invite New Teacher</button>
+                            <div class="clearfix"></div>
+
+                          </div>
+                          <div class="clearfix"></div>
+                          <hr>
+                          <div class="col-sm-12">
+                            <ul class="invite">
+                              <li>
+                                <input type="checkbox" id="cb1" />
+                                <label for="cb1">
+                                  <img src="../assets/img/profile-image.jpg" />
+                                  <span>Teacher 1</span>
+                                </label>
+                              </li>
+                              <li>
+                                <input type="checkbox" id="cb2" />
+                                <label for="cb2">
+                                  <img src="../assets/img/profile-image.jpg" />
+                                  <span>Teacher 2</span>
+                                </label>
+                              </li>
+                              <li>
+                                <input type="checkbox" id="cb3" />
+                                <label for="cb3">
+                                  <img src="../assets/img/profile-image.jpg" />
+                                  <span>Teacher 3</span>
+                                </label>
+                              </li>
+                              <li>
+                                <input type="checkbox" id="cb4" />
+                                <label for="cb4">
+                                  <img src="../assets/img/profile-image.jpg" />
+                                  <span>Teacher 4</span>
+                                </label>
+                              </li>
+                              <li>
+                                <input type="checkbox" id="cb5" />
+                                <label for="cb5">
+                                  <img src="../assets/img/profile-image.jpg" />
+                                  <span>Teacher 4</span>
+                                </label>
+                              </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                          </div>
+
+
+
+                          <div class="clearfix"></div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default same-an-btn pull-left" data-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-default same-an-btn" data-dismiss="modal">Select All</button>
+                          <button type="button" class="btn btn-default same-an-btn" data-dismiss="modal">Select None</button>
+                          <button type="button" class="an-btn an-btn-default">
+                            <i class="glyphicon glyphicon-ok"></i> Assign Teacher</button>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                  <div id="send" class="modal fade" role="dialog">
+                    <div class="modal-dialog send-modal">
+
+                      <!-- Modal content-->
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal">
+                            <i class="glyphicon glyphicon-remove"></i>
+                          </button>
+                          <h4 class="modal-title">Send Invitation</h4>
+                        </div>
+                        <div class="modal-body">
+
+
+                          <div class="col-sm-9">
+                            <input type="email" class="an-form-control" placeholder="Enter Email Id" />
+                            <div class="clearfix"></div>
+                          </div>
+                          <div class="col-sm-3">
+                            <button type="button" class="an-btn an-btn-primary">
+                              <i class="glyphicon glyphicon-send"></i> Send</button>
+                            <div class="clearfix"></div>
+                          </div>
+
+
+                          <div class="clearfix"></div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default same-an-btn" data-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div role="tabpanel" class="tab-pane fade in" id="diskb2">
+                <div class="tab-content">
+                  <div class="col-sm-4">
+                    <label>Exam Name</label>
+                    <input type="text" class="an-form-control" placeholder="Enter Exam Name" name="examName" [(ngModel)]="course.exam.name" />
+                  </div>
+                  <div class="col-sm-4">
+                    <label>Start Date</label>
+                    <div class="an-date-time-picker">
+                      <div class="an-input-group">
+                        <div class="an-input-group-addon">
+                          <i class="ion-android-calendar"></i>
+                        </div>
+                        <!-- <input type="text" class="an-form-control an-date-time" placeholder="Select Date" id="datetimepicker5"> -->
+                        <app-datetimepicker [(date)]="course.exam.start_date"></app-datetimepicker>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <label>End Date</label>
+                    <div class="an-date-time-picker">
+
+                      <div class="an-input-group">
+                        <div class="an-input-group-addon">
+                          <i class="ion-android-calendar"></i>
+                        </div>
+                        <!-- <input type="text" class="an-form-control an-date-time" placeholder="Select Date" id="datetimepicker6"> -->
+                        <app-datetimepicker [(date)]="course.exam.end_date"></app-datetimepicker>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+              <!-- end .TAB-PANE -->
+
+              <div role="tabpanel" class="tab-pane fade in" id="diskc3">
+                <div class="row">
+                  <div class="col-sm-4">
+                    <label>Real Life Project</label>
+                    <input type="text" class="an-form-control" placeholder="Enter Project Name" name="projectName" [(ngModel)]="course.project.name"
+                    />
+                  </div>
+                  <div class="col-sm-3">
+                    <label>Start Date</label>
+                    <div class="an-date-time-picker">
+
+                      <div class="an-input-group">
+                        <div class="an-input-group-addon">
+                          <i class="ion-android-calendar"></i>
+                        </div>
+                        <!-- <input type="text" class="an-form-control an-date-time" placeholder="Select Date" id="datetimepicker7"> -->
+                        <app-datetimepicker [(date)]="course.project.start_date"></app-datetimepicker>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <label>End Date</label>
+                    <div class="an-date-time-picker">
+
+                      <div class="an-input-group">
+                        <div class="an-input-group-addon">
+                          <i class="ion-android-calendar"></i>
+                        </div>
+                        <!-- <input type="text" class="an-form-control an-date-time" placeholder="Select Date" id="datetimepicker8"> -->
+                        <app-datetimepicker [(date)]="course.project.start_date"></app-datetimepicker>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+              <!-- end .TAB-PANE -->
+
+
+            </form>
+            <!-- end .TAB-CONTENT -->
+          </div>
+          <div class="clearfix"></div>
+          <hr>
+          <div class="col-sm-12">
+            <span class="pull-right">
+              <button class="btn btn-default same-an-btn" (click)="hideCourseForm()">
+                <i class="glyphicon glyphicon glyphicon-remove"></i> Cancel</button>
+              <button class="btn btn-default same-an-btn" (click)="resetCourseForm()">
+                <i class="glyphicon glyphicon glyphicon-repeat"></i> Reset</button>
+              <button class="an-btn an-btn-primary" (click)="addCourseToModule()" *ngIf="!course.added" [disabled]="!course.name" [attr.title]="!course.name ? 'Enter Course Name' : ''">
+                <i class="glyphicon glyphicon-floppy-saved"></i> Add</button>
+              <button class="an-btn an-btn-primary" (click)="updateCourse()" *ngIf="course.added" [disabled]="!course.name" [attr.title]="!course.name ? 'Enter Course Name' : ''">
+                <i class="glyphicon glyphicon-floppy-saved"></i> Update</button>
+            </span>
+            <div class="clearfix"></div>
+            <br>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-12" *ngIf="!course">
+    <button class="an-btn an-btn-primary pull-right" (click)="createNewCourse()">
+      <i class="glyphicon glyphicon-plus"></i> Add Course</button>
+  </div>
+  <div class="clearfix"></div>
+
+
+  <div class="clearfix"></div>
+  <br>
+  <div class="col-sm-12">
+    <div class="an-single-component with-shadow" id="div3">
+      <div class="an-component-header">
+        <h6>Overview</h6>
+
+      </div>
+      <div class="an-component-body">
+        <div class="an-helper-block">
+          <div class="row">
+            <div class="col-sm-12 over-list">
+              <ul class="course-list">
+                <li>STUDIES DOCUMENTATION
+                  <small>( Module Description )</small>
+                  <span class="pull-right">
+                    <!--<a href="#" class="an-btn an-btn-primary btn-xs"><i class="glyphicon glyphicon-eye-open"></i> View</a>-->
+                    <a href="#" class="an-btn an-btn-primary btn-xs">
+                      <i class="glyphicon glyphicon-pencil"></i> Edit</a>
+                    <a href="#" class="an-btn an-btn-primary btn-xs">
+                      <i class="glyphicon glyphicon-remove"></i> Delete</a>
+                  </span>
+                </li>
+                <ul class="sub-course">
+                  <li>
+                    <div class="row">
+                      <div class="col-xs-8">BMI Administration Team </div>
+                      <div class="col-xs-4">
+                        <span class="pull-right">
+                          <!--<a href="#" class="an-btn an-btn-primary btn-xs"><i class="glyphicon glyphicon-eye-open"></i> View</a>-->
+                          <a href="#" class="an-btn an-btn-primary btn-xs">
+                            <i class="glyphicon glyphicon-pencil"></i> Edit</a>
+                          <a href="#" class="an-btn an-btn-primary btn-xs">
+                            <i class="glyphicon glyphicon-remove"></i> Delete</a>
+                        </span>
+                      </div>
+                    </div>
+                  </li>
+                  <ul>
+                    <li>
+                      <div class="row">
+                        <div class="col-xs-8">Exam1</div>
+                        <div class="col-xs-4">
+                          <span class="pull-right">
+                            <!--<a href="#" class="an-btn an-btn-primary btn-xs"><i class="glyphicon glyphicon-eye-open"></i> View</a>-->
+                            <a href="#" class="an-btn an-btn-primary btn-xs">
+                              <i class="glyphicon glyphicon-pencil"></i> Edit</a>
+                            <a href="#" class="an-btn an-btn-primary btn-xs">
+                              <i class="glyphicon glyphicon-remove"></i> Delete</a>
+                          </span>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+
+                  <li>
+                    <div class="row">
+                      <div class="col-xs-8">Student Handbook </div>
+                      <div class="col-xs-4">
+                        <span class="pull-right">
+                          <!--<a href="#" class="an-btn an-btn-primary btn-xs"><i class="glyphicon glyphicon-eye-open"></i> View</a>-->
+                          <a href="#" class="an-btn an-btn-primary btn-xs">
+                            <i class="glyphicon glyphicon-pencil"></i> Edit</a>
+                          <a href="#" class="an-btn an-btn-primary btn-xs">
+                            <i class="glyphicon glyphicon-remove"></i> Delete</a>
+                        </span>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="row">
+                      <div class="col-xs-8">BMI Integrity Policy </div>
+                      <div class="col-xs-4">
+                        <span class="pull-right">
+                          <!--<a href="#" class="an-btn an-btn-primary btn-xs"><i class="glyphicon glyphicon-eye-open"></i> View</a>-->
+                          <a href="#" class="an-btn an-btn-primary btn-xs">
+                            <i class="glyphicon glyphicon-pencil"></i> Edit</a>
+                          <a href="#" class="an-btn an-btn-primary btn-xs">
+                            <i class="glyphicon glyphicon-remove"></i> Delete</a>
+                        </span>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="row">
+                      <div class="col-xs-8">Academic Regulation of Studies </div>
+                      <div class="col-xs-4">
+                        <span class="pull-right">
+                          <!--<a href="#" class="an-btn an-btn-primary btn-xs"><i class="glyphicon glyphicon-eye-open"></i> View</a>-->
+                          <a href="#" class="an-btn an-btn-primary btn-xs">
+                            <i class="glyphicon glyphicon-pencil"></i> Edit</a>
+                          <a href="#" class="an-btn an-btn-primary btn-xs">
+                            <i class="glyphicon glyphicon-remove"></i> Delete</a>
+                        </span>
+                      </div>
+                    </div>
+                  </li>
+                  <ul>
+                    <li>
+                      <div class="row">
+                        <div class="col-xs-8">Exam1</div>
+                        <div class="col-xs-4">
+                          <span class="pull-right">
+                            <!--<a href="#" class="an-btn an-btn-primary btn-xs"><i class="glyphicon glyphicon-eye-open"></i> View</a>-->
+                            <a href="#" class="an-btn an-btn-primary btn-xs">
+                              <i class="glyphicon glyphicon-pencil"></i> Edit</a>
+                            <a href="#" class="an-btn an-btn-primary btn-xs">
+                              <i class="glyphicon glyphicon-remove"></i> Delete</a>
+                          </span>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                  <li>
+                    <div class="row">
+                      <div class="col-xs-8">Project1</div>
+                      <div class="col-xs-4">
+                        <span class="pull-right">
+                          <!--<a href="#" class="an-btn an-btn-primary btn-xs"><i class="glyphicon glyphicon-eye-open"></i> View</a>-->
+                          <a href="#" class="an-btn an-btn-primary btn-xs">
+                            <i class="glyphicon glyphicon-pencil"></i> Edit</a>
+                          <a href="#" class="an-btn an-btn-primary btn-xs">
+                            <i class="glyphicon glyphicon-remove"></i> Delete</a>
+                        </span>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+
+              </ul>
+              <ul class="course-list">
+                <li>INTRODUCTORY SESSION
+                  <small>( Module Description )</small>
+                  <span class="pull-right">
+                    <!--<a href="#" class="an-btn an-btn-primary btn-xs"><i class="glyphicon glyphicon-eye-open"></i> View</a>-->
+                    <a href="#" class="an-btn an-btn-primary btn-xs">
+                      <i class="glyphicon glyphicon-pencil"></i> Edit</a>
+                    <a href="#" class="an-btn an-btn-primary btn-xs">
+                      <i class="glyphicon glyphicon-remove"></i> Delete</a>
+                  </span>
+                </li>
+                <ul class="sub-course">
+                  <li>
+                    <div class="row">
+                      <div class="col-xs-8">Leadership & Executive Presence </div>
+                      <div class="col-xs-4">
+                        <span class="pull-right">
+                          <!--<a href="#" class="an-btn an-btn-primary btn-xs"><i class="glyphicon glyphicon-eye-open"></i> View</a>-->
+                          <a href="#" class="an-btn an-btn-primary btn-xs">
+                            <i class="glyphicon glyphicon-pencil"></i> Edit</a>
+                          <a href="#" class="an-btn an-btn-primary btn-xs">
+                            <i class="glyphicon glyphicon-remove"></i> Delete</a>
+                        </span>
+                      </div>
+                    </div>
+                  </li>
+                  <ul>
+                    <li>
+                      <div class="row">
+                        <div class="col-xs-8">Exam1</div>
+                        <div class="col-xs-4">
+                          <span class="pull-right">
+                            <!--<a href="#" class="an-btn an-btn-primary btn-xs"><i class="glyphicon glyphicon-eye-open"></i> View</a>-->
+                            <a href="#" class="an-btn an-btn-primary btn-xs">
+                              <i class="glyphicon glyphicon-pencil"></i> Edit</a>
+                            <a href="#" class="an-btn an-btn-primary btn-xs">
+                              <i class="glyphicon glyphicon-remove"></i> Delete</a>
+                          </span>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                  <li>
+                    <div class="row">
+                      <div class="col-xs-8">Project1</div>
+                      <div class="col-xs-4">
+                        <span class="pull-right">
+                          <!--<a href="#" class="an-btn an-btn-primary btn-xs"><i class="glyphicon glyphicon-eye-open"></i> View</a>-->
+                          <a href="#" class="an-btn an-btn-primary btn-xs">
+                            <i class="glyphicon glyphicon-pencil"></i> Edit</a>
+                          <a href="#" class="an-btn an-btn-primary btn-xs">
+                            <i class="glyphicon glyphicon-remove"></i> Delete</a>
+                        </span>
+                      </div>
+                    </div>
+                  </li>
+
+                </ul>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="clearfix"></div>
+  </div>
+</div>
+<div class="clearfix"></div>

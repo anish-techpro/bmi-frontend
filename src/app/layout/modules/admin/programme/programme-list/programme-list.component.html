@@ -1,0 +1,70 @@
+<div class="an-breadcrumb wow fadeInUp">
+  <ol class="breadcrumb">
+    <li>
+      <a href="#">Home</a>
+    </li>
+    <li class="active">Exams</li>
+  </ol>
+</div>
+<!-- end AN-BREADCRUMB -->
+
+<div class="an-body-topbar wow fadeIn">
+  <div class="an-page-title full-width">
+    <h2>Programmes
+      <span class="pull-right">
+        <a routerLink="./create" class="an-btn an-btn-default">
+          <i class="glyphicon glyphicon-plus"></i> Create New</a>
+      </span>
+    </h2>
+
+  </div>
+</div>
+<!-- end AN-BODY-TOPBAR -->
+
+<!--<div class="an-doc-block default with-shadow">
+    <p>This is default page layout.</p>
+  </div>-->
+<div class="row">
+  <div class="col-sm-12">
+    <div class="an-single-component with-shadow">
+      <div class="an-component-header full-width">
+        <h6>All Programmes</h6>
+      </div>
+      <div class="an-component-body">
+        <div class="an-helper-block">
+
+          <div class="an-scrollable-x">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Programme Name</th>
+                  <th class="text-center">Module / Courses</th>
+                  <th class="text-center">Creation Date</th>
+                  <th class="text-center">View Details</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let programme of programmes; let i = index;">
+                  <td>{{ i + 1 }}</td>
+                  <td>
+                    <a [routerLink]="['./', i+1]">{{ programme.name }}</a>
+                  </td>
+                  <td class="text-center">{{ programme.modules }}</td>
+                  <td class="text-center">{{ programme.createdAt | date }}</td>
+                  <td class="text-center">
+                    <a [routerLink]="['./', i+1]" style="text-transform:capitalize;" class="an-btn btn-xs an-btn-primary">
+                      <i class="glyphicon glyphicon-eye-open"></i> View</a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!-- end .AN-HELPER-BLOCK -->
+      </div>
+      <!-- end .AN-COMPONENT-BODY -->
+    </div>
+  </div>
+
+</div>

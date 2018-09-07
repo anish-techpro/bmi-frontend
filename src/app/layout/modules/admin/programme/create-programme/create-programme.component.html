@@ -1,0 +1,588 @@
+<div class="an-breadcrumb wow fadeInUp">
+  <ol class="breadcrumb">
+    <li>
+      <a href="#">Home</a>
+    </li>
+    <li class="active">Exams</li>
+  </ol>
+</div>
+<!-- end AN-BREADCRUMB -->
+
+<div class="an-body-topbar wow fadeIn">
+  <div class="an-page-title full-width">
+    <h2>Programme
+      <span class="pull-right">
+        <a routerLink="../" class="an-btn btn-default same-an-btn">Cancel</a>
+        <a class="an-btn an-btn-default" (click)="onSaveBtnClick()">
+          <i class="glyphicon glyphicon-floppy-saved"></i> Save</a>
+      </span>
+    </h2>
+
+  </div>
+</div>
+<!-- end AN-BODY-TOPBAR -->
+
+<!--<div class="an-doc-block default with-shadow">
+    <p>This is default page layout.</p>
+  </div>-->
+<div class="row">
+  <div class="col-md-12">
+    <div class="an-single-component with-shadow">
+      <div class="an-component-body">
+        <div class="an-helper-block">
+          <div class="row">
+            <div class="an-bootstrap-custom-tab" style="padding-top:0;">
+              <div class="an-tab-control">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs text-left" role="tablist">
+                  <li role="presentation" class="active">
+                    <a href="#diska1" aria-controls="diska" role="tab" data-toggle="tab">Create Programme</a>
+                  </li>
+                  <!--<li role="presentation"><a href="#diskb2" aria-controls="diskb" role="tab" data-toggle="tab">Add / Import Modules</a>
+                </li>-->
+
+                </ul>
+              </div>
+
+              <!-- Tab panes -->
+              <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade in active" id="diska1">
+                  <div class="row">
+                    <div class="col-md-12">
+
+                      <div style="position:relative; height:200px; max-height:200px; background-size:cover; background-position: center;" [ngStyle]="{ background: 'url(' + programme.coverImage + ')' }">
+                        <!-- <a href="#" class="an-btn an-btn-default upload">Upload Cover</a> -->
+                        <div class="an-file-upload-container upload" style="margin-bottom:0;">
+                          <div tabindex="500" class="btn btn-primary btn-file">
+                            <i class="glyphicon glyphicon-picture"></i>&nbsp;
+                            <span class="hidden-xs">Upload Cover</span>
+                            <input id="input-id" type="file" accept="image/*" (change)="changeCoverImage($event)">
+                          </div>
+                        </div>
+                      </div>
+                      <br>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <label>Programme Name</label>
+                      <input type="text" class="an-form-control" placeholder="Programme Name" [(ngModel)]="programme.name" />
+                    </div>
+                    <div class="col-sm-4">
+                      <label>Start Date</label>
+                      <div class="an-date-time-picker">
+
+                        <div class="an-input-group">
+                          <div class="an-input-group-addon">
+                            <i class="ion-android-calendar"></i>
+                          </div>
+                          <!-- <input type="text" class="an-form-control an-date-time" placeholder="Select Date" id="datetimepicker1"> -->
+                          <app-datetimepicker [(date)]="programme.startDate"></app-datetimepicker>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <label>End Date</label>
+                      <div class="an-date-time-picker">
+
+                        <div class="an-input-group">
+                          <div class="an-input-group-addon">
+                            <i class="ion-android-calendar"></i>
+                          </div>
+                          <!-- <input type="text" class="an-form-control an-date-time" placeholder="Select Date" id="datetimepicker2"> -->
+                          <app-datetimepicker [(date)]="programme.endDate"></app-datetimepicker>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-sm-12">
+                      <label>Programme Description</label>
+                      <app-ckeditor [(textInput)]="programme.description"></app-ckeditor>
+                    </div>
+                    <div class="clearfix"></div>
+                    <br>
+                    <div class="col-sm-6">
+                      <div class="an-file-upload-container" style="margin-bottom:0;">
+                        <div tabindex="500" class="btn btn-primary btn-file">
+                          <i class="glyphicon glyphicon-picture"></i>&nbsp;
+                          <span class="hidden-xs">Upload Photos</span>
+                          <input id="input-id" type="file" accept="image/*" multiple (change)="addPhotos($event)">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="input-group">
+
+                        <input type="text" class="form-control cus-grp-input" #videoUrl placeholder="Give Your Youtube / Vmio link here">
+                        <label class="input-group-btn" (click)="addVideoUrl(videoUrl);">
+                          <span class="btn an-btn-primary same-an-btn">
+                            Submit
+                          </span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="clearfix"></div>
+                  <br>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="an-single-component with-shadow">
+                        <div class="an-component-header">
+                          <h6>Uploaded Photos</h6>
+
+                        </div>
+                        <div class="an-component-body">
+                          <div class="an-helper-block">
+                            <div class="row">
+                              <div class="col-sm-4" *ngFor="let photo of programme.photos; let i = index">
+                                <div class="folder">
+                                  <a class="an-btn btn-xs an-btn-primary folder-btn" (click)="removePhoto(i)">
+                                    <i class="glyphicon glyphicon-remove"></i>
+                                  </a>
+                                  <img [src]="photo" class=" img-responsive thumbnail" />
+                                </div>
+                              </div>
+                            </div>
+                            <div *ngIf="programme.photos.length === 0">
+                              No photos yet.
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="an-single-component with-shadow">
+                        <div class="an-component-header">
+                          <h6>Uploaded Videos</h6>
+
+                        </div>
+                        <div class="an-component-body">
+                          <div class="an-helper-block">
+                            <div class="row">
+                              <div class="col-sm-4" *ngFor="let url of programme.sanitizedUrls; let i = index; trackBy: trackFn">
+                                <div class="folder">
+                                  <a class="an-btn btn-xs an-btn-primary folder-btn" (click)="removeVideoUrl(i)">
+                                    <i class="glyphicon glyphicon-remove"></i>
+                                  </a>
+                                  <div class="videoWrapper">
+                                    <iframe width="560" height="300" [src]="url" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div *ngIf="programme.sanitizedUrls.length === 0">
+                              No videos yet.
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- end .TAB-PANE -->
+
+                <div role="tabpanel" class="tab-pane fade in" id="diskb2">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <h4>Select Format
+                        <span class="pull-right">
+                          <a href="#" class="an-btn an-btn-primary btn-sm">
+                            <i class="glyphicon glyphicon-floppy-saved"></i> Save</a>
+                          <a href="#" class="an-btn an-btn-primary btn-sm">Import</a>
+                        </span>
+                      </h4>
+                    </div>
+
+                    <div class="col-sm-4">
+                      <span class="an-custom-radiobox primary blocked">
+                        <input type="radio" name="name2" id="radio-1" checked="" onclick="show1();">
+                        <label for="radio-1"> Module And Course</label>
+                      </span>
+                    </div>
+                    <div class="col-sm-4">
+                      <span class="an-custom-radiobox primary blocked">
+                        <input type="radio" name="name2" id="radio-2" onclick="show2();">
+                        <label for="radio-2"> Only Course</label>
+                      </span>
+                    </div>
+                    <div class="clearfix"></div>
+                    <hr>
+                    <div class="col-sm-12" id="div1">
+
+                      <div id="step1">
+                        <div class="col-sm-4">
+                          <label>Module Name</label>
+                          <input type="text" class="an-form-control" placeholder="Enter Module Name" />
+                        </div>
+                        <div class="col-sm-6">
+                          <label>Module Description</label>
+                          <input type="text" class="an-form-control" placeholder="Enter Description" />
+                        </div>
+                      </div>
+
+                      <div id="step2">
+                        <div class="row">
+                          <div class="col-sm-3">
+                            <label>Course Name</label>
+                            <input type="text" class="an-form-control" placeholder="Enter Course Name" />
+                          </div>
+                          <div class="col-sm-3">
+                            <label>Start Date</label>
+                            <div class="an-date-time-picker">
+
+                              <div class="an-input-group">
+                                <div class="an-input-group-addon">
+                                  <i class="ion-android-calendar"></i>
+                                </div>
+                                <input type="text" class="an-form-control an-date-time" placeholder="Select Date" id="datetimepicker3">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-sm-3">
+                            <label>End Date</label>
+                            <div class="an-date-time-picker">
+
+                              <div class="an-input-group">
+                                <div class="an-input-group-addon">
+                                  <i class="ion-android-calendar"></i>
+                                </div>
+                                <input type="text" class="an-form-control an-date-time" placeholder="Select Date" id="datetimepicker4">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-sm-3">
+                            <label></label>
+                            <div class="an-file-upload-container" style="margin-bottom:0;">
+                              <div tabindex="500" class="btn btn-primary btn-file">
+                                <i class="glyphicon glyphicon-paperclip"></i>&nbsp;
+                                <span class="hidden-xs">Upload Course</span>
+                                <input id="input-id" type="file">
+                              </div>
+
+                            </div>
+
+                          </div>
+                        </div>
+                      </div>
+                      <div id="step3">
+                        <div class="col-sm-4">
+                          <label>Exam Name</label>
+                          <input type="text" class="an-form-control" placeholder="Enter Exam Name" />
+                        </div>
+                        <div class="col-sm-4">
+                          <label>Start Date</label>
+                          <div class="an-date-time-picker">
+
+                            <div class="an-input-group">
+                              <div class="an-input-group-addon">
+                                <i class="ion-android-calendar"></i>
+                              </div>
+                              <input type="text" class="an-form-control an-date-time" placeholder="Select Date" id="datetimepicker5">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-sm-4">
+                          <label>End Date</label>
+                          <div class="an-date-time-picker">
+
+                            <div class="an-input-group">
+                              <div class="an-input-group-addon">
+                                <i class="ion-android-calendar"></i>
+                              </div>
+                              <input type="text" class="an-form-control an-date-time" placeholder="Select Date" id="datetimepicker6">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div id="step4">
+                        <div class="row">
+                          <div class="col-sm-4">
+                            <label>Real Life Project</label>
+                            <input type="text" class="an-form-control" placeholder="Enter Project Name" />
+                          </div>
+                          <div class="col-sm-3">
+                            <label>Start Date</label>
+                            <div class="an-date-time-picker">
+
+                              <div class="an-input-group">
+                                <div class="an-input-group-addon">
+                                  <i class="ion-android-calendar"></i>
+                                </div>
+                                <input type="text" class="an-form-control an-date-time" placeholder="Select Date" id="datetimepicker7">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-sm-3">
+                            <label>End Date</label>
+                            <div class="an-date-time-picker">
+
+                              <div class="an-input-group">
+                                <div class="an-input-group-addon">
+                                  <i class="ion-android-calendar"></i>
+                                </div>
+                                <input type="text" class="an-form-control an-date-time" placeholder="Select Date" id="datetimepicker8">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="clearfix"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-12" id="div2">
+                      <div class="module-sec">
+
+
+                        <div>
+                          <div class="col-sm-11">
+                            <div class="course-sec">
+                              <div class="row">
+                                <div class="col-sm-3">
+                                  <label>Course Name</label>
+                                  <input type="text" class="an-form-control" placeholder="Enter Course Name" />
+                                </div>
+                                <div class="col-sm-3">
+                                  <label>Start Date</label>
+                                  <div class="an-date-time-picker">
+
+                                    <div class="an-input-group">
+                                      <div class="an-input-group-addon">
+                                        <i class="ion-android-calendar"></i>
+                                      </div>
+                                      <input type="text" class="an-form-control an-date-time" placeholder="Select Date" id="datetimepicker10">
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-sm-3">
+                                  <label>End Date</label>
+                                  <div class="an-date-time-picker">
+
+                                    <div class="an-input-group">
+                                      <div class="an-input-group-addon">
+                                        <i class="ion-android-calendar"></i>
+                                      </div>
+                                      <input type="text" class="an-form-control an-date-time" placeholder="Select Date" id="datetimepicker11">
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-sm-3">
+                                  <label></label>
+                                  <div class="an-file-upload-container" style="margin-bottom:0;">
+                                    <div tabindex="500" class="btn btn-primary btn-file">
+                                      <i class="glyphicon glyphicon-paperclip"></i>&nbsp;
+                                      <span class="hidden-xs">Upload Course</span>
+                                      <input id="input-id" type="file">
+                                    </div>
+
+                                  </div>
+
+                                </div>
+                              </div>
+
+                              <div class="exam-sec">
+                                <div class="col-sm-4">
+                                  <label>Exam Name</label>
+                                  <input type="text" class="an-form-control" placeholder="Enter Exam Name" />
+                                </div>
+                                <div class="col-sm-3">
+                                  <label>Start Date</label>
+                                  <div class="an-date-time-picker">
+
+                                    <div class="an-input-group">
+                                      <div class="an-input-group-addon">
+                                        <i class="ion-android-calendar"></i>
+                                      </div>
+                                      <input type="text" class="an-form-control an-date-time" placeholder="Select Date" id="datetimepicker12">
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-sm-3">
+                                  <label>End Date</label>
+                                  <div class="an-date-time-picker">
+
+                                    <div class="an-input-group">
+                                      <div class="an-input-group-addon">
+                                        <i class="ion-android-calendar"></i>
+                                      </div>
+                                      <input type="text" class="an-form-control an-date-time" placeholder="Select Date" id="datetimepicker13">
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="col-sm-6">
+                                  <label>Select Teacher</label>
+                                  <select class="selectpicker an-form-control" multiple>
+                                    <option>Teacher 1</option>
+                                    <option>Teacher 2</option>
+                                    <option>Teacher 3</option>
+                                    <option>Teacher 4</option>
+                                  </select>
+                                </div>
+
+                              </div>
+                              <div class="clearfix"></div>
+                            </div>
+                          </div>
+                          <div class="col-sm-1">
+
+                            <a href="#" class="an-btn an-btn-primary">
+                              <i class="glyphicon glyphicon-plus"></i>
+                            </a>
+                          </div>
+                          <div class="col-sm-12">
+                            <div class="project-sec">
+                              <div class="row">
+                                <div class="col-sm-4">
+                                  <label>Real Life Project</label>
+                                  <input type="text" class="an-form-control" placeholder="Enter Project Name" />
+                                </div>
+                                <div class="col-sm-3">
+                                  <label>Start Date</label>
+                                  <div class="an-date-time-picker">
+
+                                    <div class="an-input-group">
+                                      <div class="an-input-group-addon">
+                                        <i class="ion-android-calendar"></i>
+                                      </div>
+                                      <input type="text" class="an-form-control an-date-time" placeholder="Select Date" id="datetimepicker14">
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-sm-3">
+                                  <label>End Date</label>
+                                  <div class="an-date-time-picker">
+
+                                    <div class="an-input-group">
+                                      <div class="an-input-group-addon">
+                                        <i class="ion-android-calendar"></i>
+                                      </div>
+                                      <input type="text" class="an-form-control an-date-time" placeholder="Select Date" id="datetimepicker15">
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="clearfix"></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="clearfix"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="an-single-component with-shadow" id="div3">
+                    <div class="an-component-header">
+                      <h6>Overview</h6>
+
+                    </div>
+                    <div class="an-component-body">
+                      <div class="an-helper-block">
+                        <div class="row">
+                          <div class="col-sm-12">
+                            <ul class="course-list">
+                              <li>Module Name
+                                <small>( Module Description )</small>
+                              </li>
+                              <ul class="sub-course">
+                                <li>
+                                  <div class="row">
+                                    <div class="col-xs-4">Course1</div>
+                                    <div class="col-xs-4">Exam Name</div>
+                                    <div class="col-xs-4">
+                                      <span class="pull-right">
+                                        <a href="#" class="an-btn an-btn-primary btn-xs">
+                                          <i class="glyphicon glyphicon-eye-open"></i>View</a>
+                                        <a href="#" class="an-btn an-btn-primary btn-xs">
+                                          <i class="glyphicon glyphicon-pencil"></i> Edit</a>
+                                        <a href="#" class="an-btn an-btn-primary btn-xs">
+                                          <i class="glyphicon glyphicon-remove"></i> Delete</a>
+                                      </span>
+                                    </div>
+                                  </div>
+                                </li>
+                                <li>
+                                  <div class="row">
+                                    <div class="col-xs-4">Course2</div>
+                                    <div class="col-xs-4">Exam Name</div>
+                                    <div class="col-xs-4">
+                                      <span class="pull-right">
+                                        <a href="#" class="an-btn an-btn-primary btn-xs">
+                                          <i class="glyphicon glyphicon-eye-open"></i>View</a>
+                                        <a href="#" class="an-btn an-btn-primary btn-xs">
+                                          <i class="glyphicon glyphicon-pencil"></i> Edit</a>
+                                        <a href="#" class="an-btn an-btn-primary btn-xs">
+                                          <i class="glyphicon glyphicon-remove"></i> Delete</a>
+                                      </span>
+                                    </div>
+                                  </div>
+                                </li>
+                              </ul>
+
+                            </ul>
+                            <ul class="course-list">
+                              <li>Module Name
+                                <small>( Module Description )</small>
+                              </li>
+                              <ul class="sub-course">
+                                <li>
+                                  <div class="row">
+                                    <div class="col-xs-4">Course1</div>
+                                    <div class="col-xs-4">Exam Name</div>
+                                    <div class="col-xs-4">
+                                      <span class="pull-right">
+                                        <a href="#" class="an-btn an-btn-primary btn-xs">
+                                          <i class="glyphicon glyphicon-eye-open"></i>View</a>
+                                        <a href="#" class="an-btn an-btn-primary btn-xs">
+                                          <i class="glyphicon glyphicon-pencil"></i> Edit</a>
+                                        <a href="#" class="an-btn an-btn-primary btn-xs">
+                                          <i class="glyphicon glyphicon-remove"></i> Delete</a>
+                                      </span>
+                                    </div>
+                                  </div>
+                                </li>
+                                <li>
+                                  <div class="row">
+                                    <div class="col-xs-4">Course2</div>
+                                    <div class="col-xs-4">Exam Name</div>
+                                    <div class="col-xs-4">
+                                      <span class="pull-right">
+                                        <a href="#" class="an-btn an-btn-primary btn-xs">
+                                          <i class="glyphicon glyphicon-eye-open"></i>View</a>
+                                        <a href="#" class="an-btn an-btn-primary btn-xs">
+                                          <i class="glyphicon glyphicon-pencil"></i> Edit</a>
+                                        <a href="#" class="an-btn an-btn-primary btn-xs">
+                                          <i class="glyphicon glyphicon-remove"></i> Delete</a>
+                                      </span>
+                                    </div>
+                                  </div>
+                                </li>
+                              </ul>
+
+                            </ul>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- end .TAB-PANE -->
+
+                <!-- end .TAB-PANE -->
+              </div>
+              <!-- end .TAB-CONTENT -->
+            </div>
+          </div>
+
+          <div class="clearfix"></div>
+        </div>
+      </div>
+      <!-- end .AN-COMPONENT-BODY -->
+    </div>
+    <!-- end .AN-SINGLE-COMPONENT -->
+
+  </div>
+
+
+
+</div>
+
+<!-- end row -->

@@ -1,0 +1,355 @@
+<div class="an-breadcrumb wow fadeInUp">
+  <ol class="breadcrumb">
+    <li>
+      <a href="#">Dashboard</a>
+    </li>
+    <li>
+      <a href="#">Courses</a>
+    </li>
+    <li>
+      <a href="#">Create Course</a>
+    </li>
+    <li class="active">Course Details</li>
+  </ol>
+</div>
+<!-- end AN-BREADCRUMB -->
+
+<div class="an-body-topbar wow fadeIn">
+  <div class="an-page-title" style="width:100%;">
+    <h2>Discussion
+      <span class="pull-right">
+        <a href="discuss-board.html" class="an-btn an-btn-default">
+          <i class="icon-board"></i>&nbsp; Discussion Board</a>
+      </span>
+    </h2>
+    <h4>Course Name 1</h4>
+  </div>
+</div>
+<!-- end AN-BODY-TOPBAR -->
+
+
+<div class="row">
+  <div class="an-single-component with-shadow">
+    <div class="an-component-header">
+      <h6 class="full-width">
+        <span>
+          <input type="text" class="an-form-control head-text" placeholder="Enter Topic Name"> </span>
+      </h6>
+    </div>
+    <div class="an-component-body">
+      <div class="an-helper-block">
+        <div class="row">
+          <!--<div class="col-sm-2">
+                        <a href="topic.html" class="an-btn an-btn-default">Add Topic</a>
+                      </div>-->
+          <div class="col-sm-12">
+            <label>Description</label>
+            <!-- <textarea id="txtEditor3"></textarea> -->
+            <app-ckeditor></app-ckeditor>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-sm-6">
+            <label>Post To</label>
+            <select class="an-form-control">
+              <option>All Sections</option>
+            </select>
+          </div>
+          <div class="col-sm-6">
+            <label>Attachment</label>
+            <div class="an-file-upload-container" style="margin-bottom:0;">
+              <div tabindex="500" class="btn btn-primary btn-file">
+                <i class="glyphicon glyphicon-paperclip"></i>&nbsp;
+                <span class="hidden-xs">Upload Pdf, Doc ...</span>
+                <input id="input-id" type="file">
+              </div>
+              &nbsp;
+              <div tabindex="500" class="btn btn-primary btn-file">
+                <i class="glyphicon glyphicon-facetime-video"></i>&nbsp;
+                <span class="hidden-xs">Upload Video</span>
+                <!--<input id="input-id" type="file">-->
+              </div>
+            </div>
+          </div>
+          <!--<div class="col-sm-6">
+                         <label>Time Limit </label><br>
+                         <span class="an-custom-checkbox primary">
+                            <input type="checkbox" id="check-2" checked="">
+                            <label for="check-2"></label>
+                          </span>
+                          <span style="display:inline-block;">
+                          <input class="an-form-control" type="text" placeholder="Give Time In Minutes">
+                          </span>
+                      </div>-->
+
+          <div class="clearfix"></div>
+        </div>
+        <hr>
+        <h4>Select Your Options</h4>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <div>
+              <span class="an-custom-checkbox primary">
+                <input type="checkbox" id="check-3">
+                <label for="check-3">Allow threaded replies</label>
+              </span>
+
+              <div class="clearfix"></div>
+            </div>
+            <div>
+              <span class="an-custom-checkbox primary">
+                <input type="checkbox" id="check-4">
+                <label for="check-4">Users must post before seeing replies</label>
+              </span>
+              <div class="clearfix"></div>
+            </div>
+            <div>
+              <span class="an-custom-checkbox primary">
+                <input type="checkbox" id="check-5" onClick="check_click1()">
+                <label for="check-5">Enable podcast feed</label>
+              </span>
+              <div class="clearfix"></div>
+            </div>
+            <div id="div_id1">
+              <span class="an-custom-checkbox primary">
+                <input type="checkbox" id="check-10" checked>
+                <label for="check-10">Include student replies in podcast feed</label>
+              </span>
+              <div class="clearfix"></div>
+            </div>
+            <div>
+              <span class="an-custom-checkbox primary">
+                <input type="checkbox" id="check-6" onClick="check_click2()">
+                <label for="check-6">Graded</label>
+              </span>
+              <div class="clearfix"></div>
+            </div>
+            <div>
+              <span class="an-custom-checkbox primary">
+                <input type="checkbox" id="check-7" onclick="check_click()">
+                <label for="check-7">Allow liking</label>
+              </span>
+              <div id="div_id" style="margin-left:10px;">
+                <span class="an-custom-checkbox primary">
+                  <input type="checkbox" id="check-8" checked>
+                  <label for="check-8">Only graders can like</label>
+                </span>
+                <div class="clearfix"></div>
+                <span class="an-custom-checkbox primary">
+                  <input type="checkbox" id="check-9" checked>
+                  <label for="check-9">Sort by likes</label>
+                </span>
+                <div class="clearfix"></div>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+
+        </div>
+        <hr>
+        <h4>Peer Evaluations</h4>
+        <div>
+          <span class="an-custom-checkbox primary">
+            <input type="checkbox" id="check-11" onclick="check_click4()">
+            <label for="check-11">This is a Peer Evaluations</label>
+          </span>
+          <div class="row" id="div_id4">
+            <div class="col-sm-4">
+              <label>Group Set</label>
+              <select class="an-form-control">
+                <option>Group1</option>
+                <option>Group2</option>
+              </select>
+            </div>
+            <div class="col-sm-3">
+              <label style="visibility:hidden">Button</label>
+              <br>
+              <a class="btn an-btn-primary an-btn-file ">
+                <span class="hidden-xs">New Group Category</span> &nbsp;
+                <i class="glyphicon glyphicon-plus"></i>
+              </a>
+
+
+            </div>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        <hr>
+
+        <div class="row" id="div_id2">
+          <div class="col-sm-12">
+            <h4>Assign</h4>
+          </div>
+          <div class="col-sm-4">
+            <label>Points Possible</label>
+            <input type="text" class="an-form-control" placeholder="Points">
+          </div>
+          <div class="col-sm-4">
+            <label>Display Grade as</label>
+            <select class="an-form-control">
+              <option>Percentage</option>
+              <option>Points</option>
+            </select>
+          </div>
+
+          <div class="col-sm-4">
+            <label>Assignment Group</label>
+            <select class="an-form-control">
+              <option>Assignments</option>
+              <option>New Group</option>
+            </select>
+          </div>
+          <div class="col-sm-4">
+            <h4>Peer Reviews</h4>
+            <span class="an-custom-checkbox primary">
+              <input type="checkbox" id="check-12" onClick="check_click3()">
+              <label for="check-12">Require Peer Reviews</label>
+            </span>
+            <div class="clearfix"></div>
+            <div id="div_id3">
+              <label>How to Assign Peer Reviews</label>
+              <br>
+              <span class="an-custom-radiobox primary">
+                <input type="radio" name="name" id="radio-2">
+                <label for="radio-2">Manually Assign Peer Reviews</label>
+              </span>
+              <div class="clearfix"></div>
+              <span class="an-custom-radiobox primary">
+                <input type="radio" name="name" id="radio-3">
+                <label for="radio-3">Automatically Assign Peer Reviews</label>
+              </span>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+
+          <div class="clearfix"></div>
+          <br>
+          <div class="col-sm-4">
+            <label>Assign To</label>
+            <select class="selectpicker an-form-control" multiple>
+              <optgroup label="Course Section">
+                <option>Everyone</option>
+                <option>How to do efficient communication</option>
+              </optgroup>
+              <optgroup label="Group">
+                <option>Group 1</option>
+                <option>Group 2</option>
+              </optgroup>
+
+            </select>
+          </div>
+          <div class="col-sm-4">
+            <label>Due</label>
+            <div class='an-date-time-picker'>
+
+              <div class="an-input-group">
+                <div class="an-input-group-addon">
+                  <i class="ion-android-calendar"></i>
+                </div>
+                <!-- <input type="text" class="an-form-control an-date-time" placeholder="Select Date" id='datetimepicker1'> -->
+                <app-datetimepicker></app-datetimepicker>
+              </div>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+          <div class="col-sm-4">
+            <label>Available From</label>
+            <div class='an-date-time-picker'>
+
+              <div class="an-input-group">
+                <div class="an-input-group-addon">
+                  <i class="ion-android-calendar"></i>
+                </div>
+                <!-- <input type="text" class="an-form-control an-date-time" placeholder="Select Date" id='datetimepicker2'> -->
+                <app-datetimepicker></app-datetimepicker>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-4">
+            <label>Available Till</label>
+            <div class='an-date-time-picker'>
+
+              <div class="an-input-group">
+                <div class="an-input-group-addon">
+                  <i class="ion-android-calendar"></i>
+                </div>
+                <!-- <input type="text" class="an-form-control an-date-time" placeholder="Select Date" id='datetimepicker3'> -->
+                <app-datetimepicker></app-datetimepicker>
+              </div>
+            </div>
+          </div>
+          <hr>
+        </div>
+
+        <div class="row" id="div_id9">
+          <!--<div class="col-sm-6">
+                      <label>Assign To</label>
+                         <select class="selectpicker an-form-control" multiple>
+                        <optgroup label="Module1">
+                          <option>Social Science</option>
+                          <option>Arts &amp; Design</option>
+                        </optgroup>
+                        <optgroup label="Module2">
+                          <option>Business &amp; Law</option>
+                          <option>Technology</option>
+                        </optgroup>
+                      
+                      </select>
+                      </div>
+                      <div class="col-sm-6">
+                    <label>Due</label>
+                    <div class='an-date-time-picker' >
+                
+                <div class="an-input-group">
+                  <div class="an-input-group-addon"><i class="ion-android-calendar"></i></div>
+                  <input type="text" class="an-form-control an-date-time"  placeholder="Select Date" id='datetimepicker1'>
+                </div>
+              </div>
+                </div>-->
+          <div class="col-sm-4">
+            <label>Available From</label>
+            <div class='an-date-time-picker'>
+
+              <div class="an-input-group">
+                <div class="an-input-group-addon">
+                  <i class="ion-android-calendar"></i>
+                </div>
+                <!-- <input type="text" class="an-form-control an-date-time" placeholder="Select Date" id='datetimepicker4'> -->
+                <app-datetimepicker></app-datetimepicker>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <label>Until</label>
+            <div class='an-date-time-picker'>
+
+              <div class="an-input-group">
+                <div class="an-input-group-addon">
+                  <i class="ion-android-calendar"></i>
+                </div>
+                <!-- <input type="text" class="an-form-control an-date-time" placeholder="Select Date" id='datetimepicker5'> -->
+                <app-datetimepicker></app-datetimepicker>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <hr>
+        <div class="row">
+
+          <div class="col-sm-12">
+            <span class="pull-right">
+              <a class="btn btn-default same-an-btn">Cancel</a> &nbsp;
+              <a class="an-btn an-btn-primary">Save &amp; Publish</a>
+            </span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,245 @@
+<div class="an-body-topbar wow fadeIn">
+  <div class="an-page-title">
+    <h2>Dashboard</h2>
+    <p>Welcome back, John
+      <a href="#">
+        <i class="icon-marker"></i>California</a>
+    </p>
+  </div>
+  <a href="#" class="an-btn an-btn-primary" onclick="openNav()">
+    <i class="glyphicon glyphicon-transfer"></i>&nbsp;&nbsp; Switch Interface</a>
+  <!-- end AN-DATERANGE-PICKER -->
+</div>
+<!-- end AN-BODY-TOPBAR -->
+
+<div class="an-panel-main-info">
+  <div class="row">
+    <div class="col-md-3 col-sm-6">
+      <a href="students.html">
+        <div class="an-panel-main-info-single color-cyan with-shadow wow fadeIn" data-wow-delay=".1s">
+          <h2>100
+            <span class="info-identifier">Students Enrolled</span>
+          </h2>
+          <i class="icon-user"></i>
+        </div>
+      </a>
+    </div>
+    <div class="col-md-3 col-sm-6">
+      <div class="an-panel-main-info-single blue with-shadow wow fadeIn" data-wow-delay=".2s">
+        <h2>34
+          <span class="info-identifier">Lectures Pending</span>
+        </h2>
+        <i class="icon-book"></i>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+      <a href="exams.html">
+        <div class="an-panel-main-info-single color-cyan with-shadow wow fadeIn" data-wow-delay=".3s" style="background:#93a4ab; border:#93a4ab;">
+          <h2>21
+            <span class="info-identifier">Exams &amp; Assignment</span>
+          </h2>
+          <i class="icon-book"></i>
+        </div>
+      </a>
+    </div>
+    <!--<div class="col-md-3 col-sm-6">
+      <div class="an-panel-main-info-single blue with-shadow wow fadeIn" data-wow-delay=".4s">
+        <h2>+45% <span class="info-identifier">Bookings</span></h2>
+        <i class="icon-book-o"></i>
+      </div>
+    </div>-->
+
+  </div>
+  <!-- end .ROW -->
+</div>
+<!-- end .AN-PANEL-MAIN-INFO -->
+<div class="row">
+  <div class="col-sm-12">
+    <div class="an-single-component with-shadow">
+      <div class="an-component-header">
+        <h6>Calender</h6>
+      </div>
+      <div class="an-component-body">
+        <div class="an-helper-block">
+          <div class="row">
+            <div class="col-sm-8">
+              <!-- TODO: ng-fullcalendar -->
+              <div *ngIf="calendarOptions">
+                <ng-fullcalendar #ucCalendar [options]="calendarOptions"></ng-fullcalendar>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+
+            <div class="col-sm-4">
+              <div class="clearfix"></div>
+              <ul class="calender-list">
+                <li>
+                  <h4>Lecture</h4>
+                  <p>Executive presence</p>
+                  <p>prof. Amy Carroll</p>
+                  <p>10.00 AM - 11.00 AM</p>
+                </li>
+              </ul>
+              <ul class="calender-list exam">
+                <li>
+                  <h4>Exam</h4>
+                  <p>Executive presence</p>
+                  <p>prof. Amy Carroll</p>
+                  <p>10.00 AM - 11.00 AM</p>
+                </li>
+              </ul>
+              <ul class="calender-list project">
+                <li>
+                  <h4>Project</h4>
+                  <p>Executive presence</p>
+                  <p>prof. Amy Carroll</p>
+                  <p>10.00 AM - 11.00 AM</p>
+                </li>
+              </ul>
+              <div class="clearfix"></div>
+              <ul class="guide">
+                <li>
+                  <span class="exam"></span> Exam</li>
+                <li>
+                  <span class="lecture"></span> Lecture</li>
+                <li>
+                  <span class="project"></span> Projects</li>
+                <li>
+                  <span class="lunch"></span> Lunch</li>
+              </ul>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+
+  <div class="clearfix"></div>
+
+</div>
+<!-- end Third row -->
+<div class="row">
+  <div class="col-sm-6">
+    <div class="an-single-component with-shadow">
+      <div class="an-component-header">
+        <h6>Messages</h6>
+
+      </div>
+      <div class="an-component-body">
+        <div class="an-user-lists messages">
+          <div class="list-title">
+            <h6 class="basis-30">
+              <span class="an-custom-checkbox">
+                <input type="checkbox" id="check-1">
+                <label for="check-1"></label>
+              </span>
+              Users
+            </h6>
+            <h6 class="basis-20">Date</h6>
+            <h6 class="basis-30">Text</h6>
+            <h6 class="basis-10">state</h6>
+            <h6 class="basis-10">Action</h6>
+          </div>
+
+          <div class="an-lists-body an-customScrollbar">
+
+            <div class="list-user-single" *ngFor="let message of messages">
+              <div class="list-name basis-30">
+                <span class="an-custom-checkbox">
+                  <input type="checkbox" id="check-2">
+                  <label for="check-2"></label>
+                </span>
+                <a href="#">{{ message.sender }}</a>
+              </div>
+              <div class="list-date basis-20">
+                <p style="margin: 0;">{{ message.date }}</p>
+              </div>
+              <div class="list-text basis-30">
+                <p>{{ message.text }}</p>
+              </div>
+              <div class="list-state basis-10">
+                <span class="msg-tag {{ message.status }}">{{ message.status | titlecase }}</span>
+              </div>
+              <div class="list-action basis-10">
+                <div class="btn-group">
+
+                  <div class="dropdown-menu right-align">
+                    <ul class="an-basic-list">
+                      <li>
+                        <a href="#">Mark as read</a>
+                      </li>
+                      <li>
+                        <a href="#">Mark as unread</a>
+                      </li>
+                      <li>
+                        <a href="#">Select</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <button class="an-btn an-btn-icon small muted danger">
+                  <i class="icon-trash"></i>
+                </button>
+              </div>
+            </div>
+            <!-- end .USER-LIST-SINGLE -->
+
+          </div>
+          <!-- end .AN-LISTS-BODY -->
+        </div>
+      </div>
+      <!-- end .AN-COMPONENT-BODY -->
+    </div>
+    <!-- end .AN-SINGLE-COMPONENT messages -->
+  </div>
+  <div class="col-sm-6">
+    <div class="an-single-component with-shadow">
+      <div class="an-component-header">
+        <h6 class="full-width">Group announcement
+          <span class="pull-right">
+            <span class="pull-right">
+              <a href="#" data-toggle="modal" data-target="#announcement" class="an-btn an-btn-primary btn-xs">
+                <i class="glyphicon glyphicon-plus"></i>&nbsp; Create</a>
+            </span>
+          </span>
+        </h6>
+
+      </div>
+      <div class="an-component-body">
+        <div class="an-feeds-content an-customScrollbar ps-container ps-theme-default" data-ps-id="4a944349-5994-36e2-cbac-a05816458d09">
+          <div class="an-info-single unread" *ngFor="let announcement of groupAnnouncements">
+            <a href="#">
+              <span class="icon-container important">
+                <i class="glyphicon glyphicon-bullhorn"></i>
+              </span>
+              <div class="info-content">
+                <h5 class="user-name">{{ announcement.title }}</h5>
+                <p class="content">
+                  <i class="icon-clock"></i> {{ announcement.createdAt }}</p>
+              </div>
+            </a>
+          </div>
+
+
+          <!-- end .AN-FEEDS-CONTENT -->
+          <!--<div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;"><div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div></div>-->
+          <!--<div class="ps-scrollbar-y-rail" style="top: 0px; height: 370px; right: 0px;"><div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 220px;"></div></div>-->
+          <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;">
+            <div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+          </div>
+          <div class="ps-scrollbar-y-rail" style="top: 0px; right: 0px;">
+            <div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 0px;"></div>
+          </div>
+        </div>
+        <!-- end .TAB-CONTENT -->
+      </div>
+      <!-- end .AN-COMPONENT-BODY -->
+    </div>
+    <!-- end .AN-SINGLE-COMPONENT feeds -->
+    <div class="clearfix"></div>
+  </div>
+</div>
+
+<app-create-announcment-modal></app-create-announcment-modal>

@@ -1,0 +1,9 @@
+@import "../../../../../../assets/css/bootstrap-select.css";
+
+.modal-content {
+    box-shadow: none;
+}
+
+.same-an-btn {
+    padding: 8px 20px;
+}

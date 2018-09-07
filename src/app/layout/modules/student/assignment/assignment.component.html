@@ -1,0 +1,98 @@
+<div class="an-breadcrumb wow fadeInUp">
+    <ol class="breadcrumb">
+        <li>
+            <a href="#">Dashboard</a>
+        </li>
+        <li>
+            <a href="#">Courses</a>
+        </li>
+        <li class="active">Assignments</li>
+    </ol>
+</div>
+<!-- end AN-BREADCRUMB -->
+
+<div class="an-body-topbar wow fadeIn">
+    <div class="an-page-title" style="width:100%;">
+        <h2>Home Assignments
+            <!--<span class="pull-right"><a href="create_course2.html" class="an-btn btn-default" style="padding:8px 20px;">Cancel</a> <a href="#" class="an-btn an-btn-default">Next</a></span>-->
+        </h2>
+    </div>
+</div>
+<!-- end AN-BODY-TOPBAR -->
+
+
+<div class="row">
+    <div class="an-single-component with-shadow">
+        <div class="an-component-header">
+
+            <div class="an-tab-control">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs text-right" role="tablist" style="margin-bottom:-1px;">
+                    <li role="presentation" [class.active]="assignmentFilter === null">
+                        <a (click)="setAssignmentFilter(null)">All Assignments</a>
+                    </li>
+                    <li role="presentation" [class.active]="assignmentFilter === assignmentFilters.submitted">
+                        <a (click)="setAssignmentFilter('submitted')">Submitted</a>
+                    </li>
+                    <li role="presentation" [class.active]="assignmentFilter === assignmentFilters.upcoming">
+                        <a (click)="setAssignmentFilter('upcoming')">Upcoming</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="an-component-body">
+            <div class="an-helper-block">
+                <div class="an-bootstrap-custom-tab" style="padding-top:0;">
+
+
+                    <!-- Tab panes -->
+                    <div class="tab-content" style="padding:0;">
+                        <div role="tabpanel" class="tab-pane fade in active" id="diska2">
+                            <div class="prog-div" *ngFor="let course of courses">
+                                <h5>{{ course.name | uppercase }}</h5>
+                                <div class="an-scrollable-x">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th width="20%">Assignment Name</th>
+                                                <th width="30%">Description</th>
+
+                                                <th width="20%" class="text-center">Due Date</th>
+                                                <!--<th class="text-center">Upload</th>-->
+                                                <th class="text-right"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let assignment of course.assignments | filter: assignmentFilter">
+                                                <td>
+                                                    <a [routerLink]="['./', assignment.id]">{{ assignment.name }}</a>
+                                                </td>
+                                                <td>{{ assignment.description }}</td>
+
+                                                <td class="text-center">{{ assignment.dueDate }}</td>
+                                                <!--<td class="text-center"><div tabindex="500" class="an-btn an-btn-primary btn-xs btn-file"><i class="glyphicon glyphicon-paperclip"></i>&nbsp;  <span class="hidden-xs">Upload</span><input id="input-id" type="file"></div>
+</td>-->
+                                                <td class="text-right">
+                                                    <a href="#" class="an-btn btn-xs {{ getButtonClass(assignment.status) }}">
+                                                        <i class="glyphicon glyphicon-ok"></i> &nbsp;{{ assignment.status | titlecase }}</a> &nbsp;
+                                                    <a [routerLink]="['./', assignment.id]" class="btn btn-xs btn-primary">
+                                                        <i class="glyphicon glyphicon-eye-open"></i> &nbsp;View</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- end .TAB-PANE -->
+                    </div>
+                    <!-- end .TAB-CONTENT -->
+                </div>
+
+            </div>
+            <!-- end .AN-HELPER-BLOCK -->
+        </div>
+        <!-- end .AN-COMPONENT-BODY -->
+    </div>
+</div>

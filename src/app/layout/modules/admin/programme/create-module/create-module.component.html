@@ -1,0 +1,93 @@
+<div class="an-breadcrumb wow fadeInUp">
+  <ol class="breadcrumb">
+    <li>
+      <a href="#">Home</a>
+    </li>
+    <li class="active">Exams</li>
+  </ol>
+</div>
+<!-- end AN-BREADCRUMB -->
+
+<div class="an-body-topbar wow fadeIn">
+  <div class="an-page-title full-width">
+    <h2>Create Module
+      <span class="pull-right">
+        <a routerLink="../" class="an-btn an-btn-default same-an-btn">
+          <i class="glyphicon glyphicon glyphicon-arrow-left"></i> Back</a>
+      </span>
+    </h2>
+
+  </div>
+</div>
+<!-- end AN-BODY-TOPBAR -->
+
+<!--<div class="an-doc-block default with-shadow">
+    <p>This is default page layout.</p>
+  </div>-->
+<div class="row">
+  <div class="col-md-12">
+    <div class="an-single-component with-shadow">
+      <div class="an-component-header">
+        <h6 class="full-width">Create Module
+          <!--<span class="pull-right"><b>Current EMBA:	19</b></span>-->
+        </h6>
+
+      </div>
+      <div class="an-component-body">
+        <div class="an-helper-block">
+          <div class="col-sm-12">
+            <h4>Select Format
+              <span class="pull-right">
+                <!--<a href="#" class="an-btn an-btn-primary"><i class="glyphicon glyphicon-floppy-saved"></i> Save All</a> <a href="#" class="an-btn an-btn-primary"><i class="glyphicon glyphicon glyphicon-repeat"></i> Reset</a>-->
+                <a href="#" class="an-btn an-btn-primary">
+                  <i class="glyphicon glyphicon-download-alt"></i> Import</a>
+              </span>
+            </h4>
+          </div>
+
+          <div class="col-sm-4">
+            <span class="an-custom-radiobox primary blocked">
+              <input type="radio" name="name2" id="radio-1" checked="" (click)="type = 1">
+              <label for="radio-1"> Module And Course</label>
+            </span>
+          </div>
+          <div class="col-sm-4">
+            <span class="an-custom-radiobox primary blocked">
+              <input type="radio" name="name2" id="radio-2" (click)="type = 2">
+              <label for="radio-2">Module Only</label>
+            </span>
+          </div>
+          <div class="col-sm-4">
+            <span class="an-custom-radiobox primary blocked">
+              <input type="radio" name="name2" id="radio-3" (click)="type = 3">
+              <label for="radio-3">Diploma Paper</label>
+            </span>
+          </div>
+          <div class="clearfix"></div>
+          <hr>
+
+          <div *ngIf="type === 1">
+            <app-module-and-course></app-module-and-course>
+          </div>
+
+          <div id="div2" *ngIf="type === 2">
+            <app-module></app-module>
+          </div>
+
+          <div id="div3d" *ngIf="type === 3">
+            <app-diploma-paper></app-diploma-paper>
+          </div>
+
+        </div>
+      </div>
+      <!-- end .AN-COMPONENT-BODY -->
+    </div>
+    <!-- end .AN-SINGLE-COMPONENT -->
+
+  </div>
+
+
+
+</div>
+
+<!-- end row -->

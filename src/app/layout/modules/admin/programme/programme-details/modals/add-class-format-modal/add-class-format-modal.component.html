@@ -1,0 +1,98 @@
+<div id="class" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">
+          <i class="glyphicon glyphicon-remove"></i>
+        </button>
+        <h4 class="modal-title">ADD CLASS FORMAT</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="">
+              <!--<div class="an-component-header">
+                      <h6>Class Format <small><b>tai tas ir tas.</b></small></h6>
+                      
+                    </div>-->
+              <div class="">
+                <div class="">
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <label>Select course</label>
+                      <select class="an-form-control">
+                        <option>Teacher 1</option>
+                        <option>Teacher 2</option>
+                        <option>Teacher 3</option>
+                      </select>
+                    </div>
+                    <div class="col-sm-6">
+                      <label>Days</label>
+                      <input type="text" class="an-form-control" value="Thursday-Saturday and Monday-Wednesday every 6 weeks" />
+                    </div>
+
+                    <div class="clearfix"></div>
+                    <div class="col-sm-12">
+                      <label>Schedule</label>
+                      <div class="an-scrollable-x">
+                        <table class="table table-bordered table-hover">
+                          <thead>
+                            <tr>
+                              <th width="5%">#</th>
+                              <th>Form</th>
+                              <th>To</th>
+                              <th>Details</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let slot of schedule; let i = index">
+                              <td>{{ i + 1 }}</td>
+                              <td>
+                                <input type="text" class="an-form-control" [value]="slot.from" />
+                              </td>
+                              <td>
+                                <input type="text" class="an-form-control" [value]="slot.to" />
+                                <!--<select class="an-form-control">
+                              <option></option>
+                              <option>BMI Leadership</option>
+                              <option>BMI Innovation</option>
+                              </select>-->
+                              </td>
+                              <td>
+                                <input type="text" class="an-form-control" [value]="slot.details" />
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <span class="pull-right">
+                          <a href="#" class="an-btn an-btn-primary" (click)="addAnotherSchedule($event)">
+                            <i class="glyphicon glyphicon-plus"></i>&nbsp; Add Another Schedule</a>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- end .AN-COMPONENT-BODY -->
+            </div>
+            <!-- end .AN-SINGLE-COMPONENT -->
+          </div>
+
+
+
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <span class="pull-right">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <a href="#" class="an-btn an-btn-primary" data-dismiss="modal">
+            <i class="glyphicon glyphicon-floppy-saved"></i> Save</a>
+        </span>
+      </div>
+    </div>
+
+  </div>
+</div>

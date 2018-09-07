@@ -1,0 +1,57 @@
+@charset "utf-8";
+/* CSS Document */
+@media screen and (min-width:992px) and (max-width:1024px){
+	
+	}
+@media screen and (min-width:768px) and (max-width:991px){
+	.days li, .weekdays li {
+    width: 12.9%;
+	}
+	}
+@media screen and (max-width:767px){
+.map-part .an-profile-left-part{ width:100%;}
+.map-part .an-profile-section{ width:100%; max-width:100%;}
+.map-part .an-profile-details .an-profile-section .user-information{ padding-left:10px; }
+.map-part .an-profile-details .an-profile-section{ border:none; }
+.map-part .an-banner-content{ padding:0; }
+.map-part a.pull-right{ float:left !important;}
+.an-btn-transparent, .an-btn-default, .an-file-upload-container .btn.btn-primary.btn-file, .ranges li, .range_inputs button,.same-an-btn{
+	padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+	margin-bottom:4px !important;
+	margin-top:4px;
+	}
+.line-control-menu-bar .btn{ padding:6px 10px; }
+.an-btn, .an-file-upload-container .btn.btn-primary.btn-file, .ranges li, .range_inputs button, .an-control-btn, .sa-confirm-button-container .confirm, .sa-button-container .cancel{ 
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+	margin-bottom:4px;
+	margin-top:4px; }
+.label{ display:block; }
+.head-text{ width:100%; }
+.year-head{ margin-top:15px; }
+.cus-grp-input{ height:31px; }
+.drop-float{ position:relative; display:block; margin-top:10px; float:left !important; left:0;  }
+.drop-float .an-form-control{ margin-bottom:0; }
+.btn-xs{ padding: 1px 5px; }
+.an-recent-users.cus-user .an-single-user-main-body{ width:100%; }
+.an-user-lists.class .list-user-single .list-state { top:0; text-align:center; }
+.an-component-header h6{ font-size:14px; }
+.prof-btn-holder{ position:relative; z-index:99; margin-top:10%; left:15px; }
+.prof-btn-holder .pull-right{ float:left !important; }
+
+}
+@media screen and (max-width:500px){
+.an-recent-users.cus-map .an-single-user-main-body{ width:100% }
+.responsive-calendar .day .badge{ padding:2px 4px; font-size:9px;}
+}
+@media screen and (max-width:320px){
+	.an-component-header h6{ font-size:13px; }
+	.social-list li .glyphicon{ font-size:19px; }
+	.social-list li:nth-child(3){ line-height:1.7; }
+	.social-list li{ font-size:13px; }
+	}

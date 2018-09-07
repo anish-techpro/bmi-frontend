@@ -1,0 +1,989 @@
+<div class="an-breadcrumb wow fadeInUp">
+  <ol class="breadcrumb">
+    <li>
+      <a href="#">Home</a>
+    </li>
+    <li class="active">Exams</li>
+  </ol>
+</div>
+<!-- end AN-BREADCRUMB -->
+
+<div class="an-body-topbar wow fadeIn">
+  <div class="an-page-title">
+    <h2>Programmes</h2>
+
+  </div>
+</div>
+<!-- end AN-BODY-TOPBAR -->
+
+<!--<div class="an-doc-block default with-shadow">
+    <p>This is default page layout.</p>
+  </div>-->
+<div class="row">
+  <div class="an-single-component with-shadow">
+    <div class="an-component-header full-width">
+      <h6>BMI Executive MBA &nbsp;
+        <span class="drop-float">
+          <span class="inline">
+            <select class="an-form-control">
+              <option>Select Year</option>
+              <option>Emba XIX</option>
+              <option>Emba VIII</option>
+              <option>Emba VII</option>
+            </select>
+          </span>
+          <span class="inline">
+            <a href="#" class="an-btn an-btn-primary" data-toggle="modal" data-target="#year" style="margin-top:-5px;">
+              <i class="glyphicon glyphicon-plus"></i> Create Year</a>
+          </span>
+        </span>
+      </h6>
+    </div>
+    <div class="an-component-body">
+      <div class="an-helper-block">
+        <div class="row">
+          <div class="an-bootstrap-custom-tab">
+
+            <div class="an-tab-control">
+              <!-- Nav tabs -->
+              <ul class="nav nav-tabs text-left" role="tablist">
+                <li role="presentation" class="active">
+                  <a href="#diskf" aria-controls="diskf" role="tab" data-toggle="tab">Create Year</a>
+                </li>
+                <li role="presentation">
+                  <a href="#diska" aria-controls="diska" role="tab" data-toggle="tab">Details Of Programme</a>
+                </li>
+                <li role="presentation">
+                  <a href="#diskb" aria-controls="diskb" role="tab" data-toggle="tab">Student's Details</a>
+                </li>
+                <li role="presentation">
+                  <a href="#diskc" aria-controls="diskc" role="tab" data-toggle="tab">Teachers</a>
+                </li>
+                <!--<li role="presentation"><a href="#diskd" aria-controls="diskd" role="tab" data-toggle="tab">All Modules</a>
+                </li>-->
+                <!--<li role="presentation"><a href="#diske" aria-controls="diske" role="tab" data-toggle="tab">Class Format</a>
+                </li>-->
+
+              </ul>
+            </div>
+            <!-- Tab panes -->
+            <div class="tab-content">
+              <div role="tabpanel" class="tab-pane fade in active" id="diskf">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="an-single-component with-shadow">
+                      <div class="an-component-header">
+                        <h6>Create Year
+                          <small>
+                            <b>Currently set : 19</b>
+                          </small>
+                        </h6>
+
+                      </div>
+                      <div class="an-component-body">
+                        <div class="an-helper-block">
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <label>Create Year</label>
+                              <input type="text" class="an-form-control" value="19" />
+                              <button class="an-btn an-btn-primary">
+                                <i class="glyphicon glyphicon-floppy-saved"></i> Save</button>
+                            </div>
+
+                            <div class="clearfix"></div>
+
+                          </div>
+                        </div>
+                      </div>
+                      <!-- end .AN-COMPONENT-BODY -->
+                    </div>
+                    <!-- end .AN-SINGLE-COMPONENT -->
+                  </div>
+
+
+
+                </div>
+              </div>
+              <div role="tabpanel" class="tab-pane fade" id="diska">
+                <div class="row">
+                  <div class="col-sm-3">
+                    <div class="an-input-group right">
+                      <div class="an-input-group-addon">
+                        <i class="ion-search"></i>
+                      </div>
+                      <input type="email" class="an-form-control" placeholder="Search Module Details, etc.">
+                    </div>
+                  </div>
+                  <div class="col-sm-3 col-sm-offset-6">
+                    <a routerLink="./create-module" class="an-btn an-btn-primary pull-right">
+                      <i class="glyphicon glyphicon-plus"></i> Create Module</a>
+                  </div>
+                </div>
+                <div class="prog-div">
+                  <h5>STUDIES DOCUMENTATION</h5>
+                  <div class="an-scrollable-x offset">
+                    <table class="table prog-same hov">
+                      <thead>
+                        <tr>
+
+                          <th>
+                            <span class="mov-ico" style="visibility:hidden !important;"></span>Title</th>
+                          <th>Starts</th>
+                          <th>End</th>
+                          <th>Edit</th>
+                          <th class="text-center">Class Format</th>
+                          <th>Details</th>
+                        </tr>
+                      </thead>
+                      <tbody dragula="COURSES">
+                        <tr>
+
+                          <td>
+                            <span class="mov-ico"></span>BMI Administration Team</td>
+                          <td>2017-11-09, 4.00 pm</td>
+                          <td>2019-06-21, 5.00 pm</td>
+
+                          <td>
+                            <a href="#" data-toggle="modal" data-target="#editProg" class="an-btn btn-xs an-btn-primary">
+                              <i class="glyphicon glyphicon glyphicon-pencil"></i>
+                            </a>
+                          </td>
+                          <td class="text-center">
+                            <a href="#" data-toggle="modal" data-target="#class" class="an-btn btn-xs an-btn-primary">
+                              <i class="glyphicon glyphicon-plus"></i> Add</a>
+                          </td>
+                          <td>
+                            <a href="#" data-toggle="modal" data-target="#viewProg" style="text-transform:capitalize;" class="an-btn btn-xs an-btn-primary">
+                              <i class="glyphicon glyphicon-eye-open"></i> View</a>
+                          </td>
+                        </tr>
+                        <tr>
+
+                          <td>
+                            <span class="mov-ico"></span>Student Handbook</td>
+                          <td>2017-11-09, 4.00 pm</td>
+                          <td>2019-06-21, 5.00 pm</td>
+
+                          <td>
+                            <a href="#" data-toggle="modal" data-target="#editProg" class="an-btn btn-xs an-btn-primary">
+                              <i class="glyphicon glyphicon glyphicon-pencil"></i>
+                            </a>
+                          </td>
+                          <td class="text-center">
+                            <a href="#" data-toggle="modal" data-target="#class" class="an-btn btn-xs an-btn-primary">
+                              <i class="glyphicon glyphicon-plus"></i> Add</a>
+                          </td>
+                          <td>
+                            <a href="#" data-toggle="modal" data-target="#viewProg" style="text-transform:capitalize;" class="an-btn btn-xs an-btn-primary">
+                              <i class="glyphicon glyphicon-eye-open"></i> View</a>
+                          </td>
+                        </tr>
+                        <tr>
+
+                          <td>
+                            <span class="mov-ico"></span>Programme Objectives &amp; Intended Learning Outcomes</td>
+                          <td>2017-11-09, 4.00 pm</td>
+                          <td>2019-06-21, 5.00 pm</td>
+
+                          <td>
+                            <a href="#" data-toggle="modal" data-target="#editProg" class="an-btn btn-xs an-btn-primary">
+                              <i class="glyphicon glyphicon glyphicon-pencil"></i>
+                            </a>
+                          </td>
+                          <td class="text-center">
+                            <a href="#" data-toggle="modal" data-target="#class" class="an-btn btn-xs an-btn-primary">
+                              <i class="glyphicon glyphicon-plus"></i> Add</a>
+                          </td>
+                          <td>
+                            <a href="#" data-toggle="modal" data-target="#viewProg" style="text-transform:capitalize;" class="an-btn btn-xs an-btn-primary">
+                              <i class="glyphicon glyphicon-eye-open"></i> View</a>
+                          </td>
+                        </tr>
+                        <tr>
+
+                          <td>
+                            <span class="mov-ico"></span>Learning Outcomes</td>
+                          <td>2017-11-09, 4.00 pm</td>
+                          <td>2019-06-21, 5.00 pm</td>
+
+                          <td>
+                            <a href="#" data-toggle="modal" data-target="#editProg" class="an-btn btn-xs an-btn-primary">
+                              <i class="glyphicon glyphicon glyphicon-pencil"></i>
+                            </a>
+                          </td>
+                          <td class="text-center">
+                            <a href="#" data-toggle="modal" data-target="#class" class="an-btn btn-xs an-btn-primary">
+                              <i class="glyphicon glyphicon-plus"></i> Add</a>
+                          </td>
+                          <td>
+                            <a href="#" data-toggle="modal" data-target="#viewProg" style="text-transform:capitalize;" class="an-btn btn-xs an-btn-primary">
+                              <i class="glyphicon glyphicon-eye-open"></i> View</a>
+                          </td>
+                        </tr>
+                        <tr>
+
+                          <td>
+                            <span class="mov-ico"></span>BMI Integrity Policy</td>
+                          <td>2017-11-09, 4.00 pm</td>
+                          <td>2019-06-21, 5.00 pm</td>
+
+                          <td>
+                            <a href="#" data-toggle="modal" data-target="#editProg" class="an-btn btn-xs an-btn-primary">
+                              <i class="glyphicon glyphicon glyphicon-pencil"></i>
+                            </a>
+                          </td>
+                          <td class="text-center">
+                            <a href="#" data-toggle="modal" data-target="#class" class="an-btn btn-xs an-btn-primary">
+                              <i class="glyphicon glyphicon-plus"></i> Add</a>
+                          </td>
+                          <td>
+                            <a href="#" data-toggle="modal" data-target="#viewProg" style="text-transform:capitalize;" class="an-btn btn-xs an-btn-primary">
+                              <i class="glyphicon glyphicon-eye-open"></i> View</a>
+                          </td>
+                        </tr>
+                        <tr>
+
+                          <td>
+                            <span class="mov-ico"></span>Academic Regulation of Studies</td>
+                          <td>2017-11-09, 4.00 pm</td>
+                          <td>2019-06-21, 5.00 pm</td>
+
+                          <td>
+                            <a href="#" data-toggle="modal" data-target="#editProg" class="an-btn btn-xs an-btn-primary">
+                              <i class="glyphicon glyphicon glyphicon-pencil"></i>
+                            </a>
+                          </td>
+                          <td class="text-center">
+                            <a href="#" data-toggle="modal" data-target="#class" class="an-btn btn-xs an-btn-primary">
+                              <i class="glyphicon glyphicon-plus"></i> Add</a>
+                          </td>
+                          <td>
+                            <a href="#" data-toggle="modal" data-target="#viewProg" style="text-transform:capitalize;" class="an-btn btn-xs an-btn-primary">
+                              <i class="glyphicon glyphicon-eye-open"></i> View</a>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="prog-div">
+                  <h5>MODULE 1: INTRODUCTORY SESSION</h5>
+                  <div class="an-scrollable-x offset">
+                    <table class="table prog-same hov">
+                      <thead>
+                        <tr>
+
+                          <th>
+                            <span class="mov-ico" style="visibility:hidden !important;"></span>Title</th>
+                          <th>Starts</th>
+                          <th>End</th>
+
+                          <th>Edit</th>
+                          <th class="text-center">Class Format</th>
+                          <th>Details</th>
+                        </tr>
+                      </thead>
+                      <tbody dragula="COURSES">
+                        <tr>
+
+                          <td>
+                            <span class="mov-ico"></span>Leadership & Executive Presence</td>
+                          <td>2017-11-09, 4.00 pm</td>
+                          <td>2019-06-21, 5.00 pm</td>
+
+                          <td>
+                            <a href="#" data-toggle="modal" data-target="#editProg" class="an-btn btn-xs an-btn-primary">
+                              <i class="glyphicon glyphicon glyphicon-pencil"></i>
+                            </a>
+                          </td>
+                          <td class="text-center">
+                            <a href="#" data-toggle="modal" data-target="#class" class="an-btn btn-xs an-btn-primary">
+                              <i class="glyphicon glyphicon-plus"></i> Add</a>
+                          </td>
+                          <td>
+                            <a href="#" data-toggle="modal" data-target="#viewProg" style="text-transform:capitalize;" class="an-btn btn-xs an-btn-primary">
+                              <i class="glyphicon glyphicon-eye-open"></i> View</a>
+                          </td>
+                        </tr>
+                        <tr>
+
+                          <td>
+                            <span class="mov-ico"></span>Negotiation Skills</td>
+                          <td>2017-11-09, 4.00 pm</td>
+                          <td>2019-06-21, 5.00 pm</td>
+
+                          <td>
+                            <a href="#" data-toggle="modal" data-target="#editProg" class="an-btn btn-xs an-btn-primary">
+                              <i class="glyphicon glyphicon glyphicon-pencil"></i>
+                            </a>
+                          </td>
+                          <td class="text-center">
+                            <a href="#" data-toggle="modal" data-target="#class" class="an-btn btn-xs an-btn-primary">
+                              <i class="glyphicon glyphicon-plus"></i> Add</a>
+                          </td>
+                          <td>
+                            <a href="#" data-toggle="modal" data-target="#viewProg" style="text-transform:capitalize;" class="an-btn btn-xs an-btn-primary">
+                              <i class="glyphicon glyphicon-eye-open"></i> View</a>
+                          </td>
+                        </tr>
+                        <tr>
+
+                          <td>
+                            <span class="mov-ico"></span>Business Simulation Game</td>
+                          <td>2017-11-09, 4.00 pm</td>
+                          <td>2019-06-21, 5.00 pm</td>
+
+                          <td>
+                            <a href="#" data-toggle="modal" data-target="#editProg" class="an-btn btn-xs an-btn-primary">
+                              <i class="glyphicon glyphicon glyphicon-pencil"></i>
+                            </a>
+                          </td>
+                          <td class="text-center">
+                            <a href="#" data-toggle="modal" data-target="#class" class="an-btn btn-xs an-btn-primary">
+                              <i class="glyphicon glyphicon-plus"></i> Add</a>
+                          </td>
+                          <td>
+                            <a href="#" data-toggle="modal" data-target="#viewProg" style="text-transform:capitalize;" class="an-btn btn-xs an-btn-primary">
+                              <i class="glyphicon glyphicon-eye-open"></i> View</a>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="prog-div">
+                  <h5>MODULE 2: ACCOUNTING</h5>
+                  <div class="an-scrollable-x offset">
+                    <table class="table prog-same hov">
+                      <thead>
+                        <tr>
+
+                          <th>
+                            <span class="mov-ico" style="visibility:hidden !important;"></span>Title</th>
+                          <th>Starts</th>
+                          <th>End</th>
+                          <th>Edit</th>
+                          <th class="text-center">Class Format</th>
+                          <th>Details</th>
+                        </tr>
+                      </thead>
+                      <tbody dragula="COURSES">
+                        <tr>
+
+                          <td>
+                            <span class="mov-ico"></span>Financial Accounting</td>
+                          <td>2017-11-09, 4.00 pm</td>
+                          <td>2019-06-21, 5.00 pm</td>
+                          <td>
+                            <a href="#" data-toggle="modal" data-target="#editProg" class="an-btn btn-xs an-btn-primary">
+                              <i class="glyphicon glyphicon glyphicon-pencil"></i>
+                            </a>
+                          </td>
+                          <td class="text-center">
+                            <a href="#" data-toggle="modal" data-target="#class" class="an-btn btn-xs an-btn-primary">
+                              <i class="glyphicon glyphicon-plus"></i> Add</a>
+                          </td>
+                          <td>
+                            <a href="#" data-toggle="modal" data-target="#viewProg" style="text-transform:capitalize;" class="an-btn btn-xs an-btn-primary">
+                              <i class="glyphicon glyphicon-eye-open"></i> View</a>
+                          </td>
+                        </tr>
+                        <tr>
+
+                          <td>
+                            <span class="mov-ico"></span>Management Accounting & Control</td>
+                          <td>2017-11-09, 4.00 pm</td>
+                          <td>2019-06-21, 5.00 pm</td>
+                          <td>
+                            <a href="#" data-toggle="modal" data-target="#editProg" class="an-btn btn-xs an-btn-primary">
+                              <i class="glyphicon glyphicon glyphicon-pencil"></i>
+                            </a>
+                          </td>
+                          <td class="text-center">
+                            <a href="#" data-toggle="modal" data-target="#class" class="an-btn btn-xs an-btn-primary">
+                              <i class="glyphicon glyphicon-plus"></i> Add</a>
+                          </td>
+                          <td>
+                            <a href="#" data-toggle="modal" data-target="#viewProg" style="text-transform:capitalize;" class="an-btn btn-xs an-btn-primary">
+                              <i class="glyphicon glyphicon-eye-open"></i> View</a>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="prog-div" style=" margin-left:20px;">
+                  <h5 style="background:#eded; padding:5px 12px;">Diploma Papers</h5>
+                  <div class="an-scrollable-x offset">
+                    <table class="table prog-same hov">
+                      <thead>
+                        <tr>
+
+                          <th style="width:41% !important;">
+                            <span class="mov-ico" style="visibility:hidden !important;"></span>Title</th>
+                          <th>Starts</th>
+                          <th>End</th>
+                          <th></th>
+                          <th class="text-center">Edit</th>
+                          <th class="text-center">Details</th>
+
+                        </tr>
+                      </thead>
+                      <tbody dragula="DIPLOMA_PAPERS">
+                        <tr>
+
+                          <td>
+                            <span class="mov-ico"></span>DP Process Overview & EXAMPLES </td>
+                          <td>2017-11-09, 4.00 pm</td>
+                          <td>2019-06-21, 5.00 pm</td>
+                          <td class="text-center">
+                          </td>
+                          <td class="text-center">
+                            <a href="#" data-toggle="modal" data-target="#editDiploma" class="an-btn btn-xs an-btn-primary">
+                              <i class="glyphicon glyphicon glyphicon-pencil"></i>
+                            </a>
+                          </td>
+
+                          <td class="text-center">
+                            <a href="#" data-toggle="modal" data-target="#viewDiploma" style="text-transform:capitalize;" class="an-btn btn-xs an-btn-primary">
+                              <i class="glyphicon glyphicon-eye-open"></i> View</a>
+                          </td>
+
+                        </tr>
+                        <tr>
+
+                          <td>
+                            <span class="mov-ico"></span>DP Coaching Session</td>
+                          <td>2017-11-09, 4.00 pm</td>
+                          <td>2019-06-21, 5.00 pm</td>
+                          <td class="text-center">
+                          </td>
+                          <td class="text-center">
+                            <a href="#" data-toggle="modal" data-target="#editDiploma" class="an-btn btn-xs an-btn-primary">
+                              <i class="glyphicon glyphicon glyphicon-pencil"></i>
+                            </a>
+                          </td>
+
+                          <td class="text-center">
+                            <a href="#" data-toggle="modal" data-target="#viewDiploma" style="text-transform:capitalize;" class="an-btn btn-xs an-btn-primary">
+                              <i class="glyphicon glyphicon-eye-open"></i> View</a>
+                          </td>
+
+                        </tr>
+
+                        <tr>
+
+                          <td>
+                            <span class="mov-ico"></span>DIPLOMA PAPER ORAL PRESENTATION AND DEFENCE </td>
+                          <td>2017-11-09, 4.00 pm</td>
+                          <td>2019-06-21, 5.00 pm</td>
+                          <td class="text-center">
+                          </td>
+                          <td class="text-center">
+                            <a href="#" data-toggle="modal" data-target="#editDiploma" class="an-btn btn-xs an-btn-primary">
+                              <i class="glyphicon glyphicon glyphicon-pencil"></i>
+                            </a>
+                          </td>
+
+                          <td class="text-center">
+                            <a href="#" data-toggle="modal" data-target="#viewDiploma" style="text-transform:capitalize;" class="an-btn btn-xs an-btn-primary">
+                              <i class="glyphicon glyphicon-eye-open"></i> View</a>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <!-- end .TAB-PANE -->
+
+              <div role="tabpanel" class="tab-pane fade in" id="diskb">
+                <div class="row">
+                  <br>
+                  <div class="col-sm-3">
+                    <div class="an-input-group right">
+                      <div class="an-input-group-addon">
+                        <i class="ion-search"></i>
+                      </div>
+                      <input type="email" class="an-form-control" placeholder="Search Student">
+                    </div>
+                  </div>
+                  <div class="col-sm-6 col-sm-offset-3">
+                    <span class="pull-right">
+                      <a href="#" class="an-btn an-btn-primary">
+                        <i class="glyphicon glyphicon-download-alt"></i> &nbsp;Export</a>&nbsp;
+                      <a href="#" class="an-btn an-btn-primary">
+                        <i class="glyphicon glyphicon-print"></i> &nbsp;Print</a>&nbsp;
+                      <a href="#" class="an-btn an-btn-primary">
+                        <i class="glyphicon glyphicon-send"></i> &nbsp;Message</a>&nbsp;
+                      <a href="#" class="an-btn an-btn-primary" data-toggle="modal" data-target="#createGroup">
+                        <i class="glyphicon glyphicon-plus"></i> &nbsp;Create Group</a>
+                    </span>
+                  </div>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="an-scrollable-x">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th width="5%">
+                          <span class="an-custom-checkbox blocked danger">
+                            <input type="checkbox" id="select_all">
+                            <label for="select_all" style="margin-bottom:0;"></label>
+                          </span>
+                        </th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Course</th>
+                        <th class="text-center">Student ID</th>
+                        <th class="text-center">Status</th>
+                        <th width="15%"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <span class="an-custom-checkbox blocked danger">
+                            <input type="checkbox" class="checkbox" id="check-1">
+                            <label for="check-1"></label>
+                          </span>
+                        </td>
+                        <td>
+                          <a href="profile_student.html">Bendikaitė Jurga</a>
+                        </td>
+                        <td>jurga@bmi.lt </td>
+                        <td>EMBA 19</td>
+                        <td class="text-center">1721</td>
+                        <td class="text-center">Active</td>
+                        <td>
+                          <a href="profile_student.html" class="an-btn an-btn-default btn-xs">
+                            <i class="glyphicon glyphicon-eye-open"></i>&nbsp;View</a> &nbsp;
+                          <a href="students-activity.html" class="an-btn an-btn-default btn-xs">
+                            <i class="glyphicon glyphicon-signal"></i>&nbsp;Activity</a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <span class="an-custom-checkbox blocked danger">
+                            <input type="checkbox" class="checkbox" id="check-2">
+                            <label for="check-2"></label>
+                          </span>
+                        </td>
+                        <td>Bendikaitė Jurga</td>
+                        <td>jurga@bmi.lt </td>
+                        <td>EMBA 19</td>
+                        <td class="text-center">1722</td>
+                        <td class="text-center">Inactive</td>
+                        <td>
+                          <a href="profile_student.html" class="an-btn an-btn-default btn-xs">
+                            <i class="glyphicon glyphicon-eye-open"></i>&nbsp;View</a> &nbsp;
+                          <a href="students-activity.html" class="an-btn an-btn-default btn-xs">
+                            <i class="glyphicon glyphicon-signal"></i>&nbsp;Activity</a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <span class="an-custom-checkbox blocked danger">
+                            <input type="checkbox" class="checkbox" id="check-3">
+                            <label for="check-3"></label>
+                          </span>
+                        </td>
+                        <td>Bendikaitė Jurga</td>
+                        <td>jurga@bmi.lt </td>
+                        <td>EMBA 19</td>
+                        <td class="text-center">1723</td>
+                        <td class="text-center">Hold</td>
+                        <td>
+                          <a href="profile_student.html" class="an-btn an-btn-default btn-xs">
+                            <i class="glyphicon glyphicon-eye-open"></i>&nbsp;View</a> &nbsp;
+                          <a href="students-activity.html" class="an-btn an-btn-default btn-xs">
+                            <i class="glyphicon glyphicon-signal"></i>&nbsp;Activity</a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <!--<span class="pull-right"><a href="#" class="an-btn an-btn-primary"><i class="glyphicon glyphicon-floppy-saved"></i> Save</a></span>-->
+              </div>
+              <!-- end .TAB-PANE -->
+
+              <div role="tabpanel" class="tab-pane fade in" id="diskc">
+                <div class="row">
+                  <br>
+                  <div class="col-sm-3">
+                    <div class="an-input-group right">
+                      <div class="an-input-group-addon">
+                        <i class="ion-search"></i>
+                      </div>
+                      <input type="email" class="an-form-control" placeholder="Search Teacher">
+                    </div>
+                  </div>
+                  <div class="col-sm-6 col-sm-offset-3">
+                    <span class="pull-right">
+                      <a href="#" class="an-btn an-btn-primary">
+                        <i class="glyphicon glyphicon-download-alt"></i> Export</a>&nbsp;&nbsp;
+                      <a href="#" class="an-btn an-btn-primary">
+                        <i class="glyphicon glyphicon-print"></i> Print</a>&nbsp;&nbsp;
+                      <a href="#" class="an-btn an-btn-primary">
+                        <i class="glyphicon glyphicon-send"></i> Message</a>
+                    </span>
+                  </div>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="an-scrollable-x">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th width="5%">
+                          <span class="an-custom-checkbox blocked danger">
+                            <input type="checkbox" id="select">
+                            <label for="select" style="margin-bottom:0;"></label>
+                          </span>
+                        </th>
+                        <th>#</th>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Course</th>
+                        <th>University</th>
+                        <th>Email</th>
+                        <th>Ph No</th>
+                        <th>Details</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <span class="an-custom-checkbox primary">
+                            <input type="checkbox" class="checkbox" id="check-11">
+                            <label for="check-11"></label>
+                          </span>
+                        </td>
+                        <td>1</td>
+                        <td>1234</td>
+                        <td>
+                          <a href="profile_teacher.html">Bendikaitė Jurga</a>
+                        </td>
+                        <td>Course1</td>
+                        <td>Boston</td>
+                        <td>jurga@bmi.lt </td>
+
+                        <td>1234567890</td>
+                        <td>
+                          <a href="profile_teacher.html" class="an-btn btn-xs an-btn-primary">
+                            <i class="glyphicon glyphicon-eye-open"></i> View</a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <span class="an-custom-checkbox primary">
+                            <input type="checkbox" class="checkbox" id="check-12">
+                            <label for="check-12"></label>
+                          </span>
+                        </td>
+                        <td>2</td>
+                        <td>1234</td>
+                        <td>
+                          <a href="profile_teacher.html">Bendikaitė Jurga</a>
+                        </td>
+                        <td>Course2</td>
+                        <td>Boston</td>
+                        <td>jurga@bmi.lt </td>
+                        <td>1234567890</td>
+                        <td>
+                          <a href="profile_teacher.html" class="an-btn btn-xs an-btn-primary">
+                            <i class="glyphicon glyphicon-eye-open"></i> View</a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <span class="an-custom-checkbox primary">
+                            <input type="checkbox" class="checkbox" id="check-13">
+                            <label for="check-13"></label>
+                          </span>
+                        </td>
+                        <td>3</td>
+                        <td>1234</td>
+                        <td>
+                          <a href="profile_teacher.html">Bendikaitė Jurga</a>
+                        </td>
+                        <td>Course1</td>
+                        <td>Boston</td>
+                        <td>jurga@bmi.lt </td>
+
+                        <td>1234567890</td>
+                        <td>
+                          <a href="profile_teacher.html" class="an-btn btn-xs an-btn-primary">
+                            <i class="glyphicon glyphicon-eye-open"></i> View</a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <!--<span class="pull-right"><a href="#" class="an-btn an-btn-primary"><i class="glyphicon glyphicon-floppy-saved"></i> Save</a></span>-->
+              </div>
+              <!-- end .TAB-PANE -->
+              <div role="tabpanel" class="tab-pane fade in" id="diskd">
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="an-single-component with-shadow">
+                      <div class="an-component-header">
+                        <h6>Create Modules</h6>
+
+                      </div>
+                      <div class="an-component-body">
+
+                        <div class="col-sm-12">
+                          <br>
+                          <a href="create-module.html" class="an-btn an-btn-primary">Create New</a>
+                          <br>
+                          <br>
+                        </div>
+                        <div class="clearfix"></div>
+                      </div>
+                      <!-- end .AN-COMPONENT-BODY -->
+                    </div>
+                    <!-- end .AN-SINGLE-COMPONENT -->
+                  </div>
+
+
+
+                </div>
+                <div class="an-single-component with-shadow">
+                  <div class="an-component-header" style="width:100%;">
+                    <h6 style="width:100%;">All Modules
+                      <span class="drop-float">
+                        <select class="an-form-control">
+                          <option>Select Course</option>
+                          <option>Emba XIX</option>
+                          <option>Emba VIII</option>
+                          <option>Emba VII</option>
+                        </select>
+                      </span>
+                    </h6>
+                  </div>
+                  <div class="an-component-body">
+                    <div class="an-helper-block">
+
+                      <div class="an-scrollable-x">
+                        <table class="table">
+                          <thead>
+                            <tr>
+                              <th>#</th>
+
+                              <th>Title</th>
+                              <th>Order</th>
+                              <th>Details</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>
+                                <span class="an-custom-checkbox primary">
+                                  <input type="checkbox" id="check-1">
+                                  <label for="check-1"></label>
+                                </span>
+                              </td>
+                              <td>
+                                <a href="create-module.html">STUDIES DOCUMENTATION </a>
+                              </td>
+                              <td>1</td>
+                              <td>
+                                <a href="#" style="text-transform:capitalize;" class="an-btn btn-xs an-btn-primary">
+                                  <i class="glyphicon glyphicon-eye-open"></i> View</a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <span class="an-custom-checkbox primary">
+                                  <input type="checkbox" id="check-1">
+                                  <label for="check-1"></label>
+                                </span>
+                              </td>
+                              <td>
+                                <a href="create-module.html">MODULE 1: INTRODUCTORY SESSION </a>
+                              </td>
+                              <td>2</td>
+                              <td>
+                                <a href="#" style="text-transform:capitalize;" class="an-btn btn-xs an-btn-primary">
+                                  <i class="glyphicon glyphicon-eye-open"></i> View</a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <span class="an-custom-checkbox primary">
+                                  <input type="checkbox" id="check-1">
+                                  <label for="check-1"></label>
+                                </span>
+                              </td>
+                              <td>
+                                <a href="create-module.html"> MODULE 2: ACCOUNTING </a>
+                              </td>
+                              <td>3</td>
+                              <td>
+                                <a href="#" style="text-transform:capitalize;" class="an-btn btn-xs an-btn-primary">
+                                  <i class="glyphicon glyphicon-eye-open"></i> View</a>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <!-- end .AN-HELPER-BLOCK -->
+                  </div>
+                  <!-- end .AN-COMPONENT-BODY -->
+                </div>
+              </div>
+              <!-- end .TAB-PANE -->
+              <div role="tabpanel" class="tab-pane fade in" id="diske">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="an-single-component with-shadow">
+                      <div class="an-component-header">
+                        <h6>Class Format
+                          <small>
+                            <b>tai tas ir tas.</b>
+                          </small>
+                        </h6>
+
+                      </div>
+                      <div class="an-component-body">
+                        <div class="an-helper-block">
+                          <div class="row">
+                            <div class="col-sm-4">
+                              <label>Select course</label>
+                              <select class="an-form-control">
+                                <option>Teacher 1</option>
+                                <option>Teacher 2</option>
+                                <option>Teacher 3</option>
+                              </select>
+                            </div>
+                            <div class="col-sm-6">
+                              <label>Days</label>
+                              <input type="text" class="an-form-control" value="Thursday-Saturday and Monday-Wednesday every 6 weeks" />
+                            </div>
+
+                            <div class="clearfix"></div>
+                            <div class="col-sm-12">
+                              <label>Schedule</label>
+                              <div class="an-scrollable-x">
+                                <table class="table table-bordered table-hover">
+                                  <thead>
+                                    <tr>
+                                      <th width="5%">#</th>
+                                      <th>Form</th>
+                                      <th>To</th>
+                                      <th>Details</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>1</td>
+                                      <td>
+                                        <input type="text" class="an-form-control" value="9.30" />
+                                      </td>
+                                      <td>
+                                        <input type="text" class="an-form-control" value="10.30" />
+                                        <!--<select class="an-form-control">
+                    <option></option>
+                    <option>BMI Leadership</option>
+                    <option>BMI Innovation</option>
+                    </select>-->
+                                      </td>
+                                      <td>
+                                        <input type="text" class="an-form-control" value="Lectures" />
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>2</td>
+                                      <td>
+                                        <input type="text" class="an-form-control" value="10.30" />
+                                      </td>
+                                      <td>
+                                        <input type="text" class="an-form-control" value="10.45" />
+                                        <!--<select class="an-form-control">
+                    <option></option>
+                    <option>BMI Leadership</option>
+                    <option>BMI Innovation</option>
+                    </select>-->
+                                      </td>
+                                      <td>
+                                        <input type="text" class="an-form-control" value="Coffee break" />
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>3</td>
+                                      <td>
+                                        <input type="text" class="an-form-control" value="10.45" />
+                                      </td>
+                                      <td>
+                                        <input type="text" class="an-form-control" value="12.30" />
+                                        <!--<select class="an-form-control">
+                    <option></option>
+                    <option>BMI Leadership</option>
+                    <option>BMI Innovation</option>
+                    </select>-->
+                                      </td>
+                                      <td>
+                                        <input type="text" class="an-form-control" value="Lectures" />
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>4</td>
+                                      <td>
+                                        <input type="text" class="an-form-control" value="12.30" />
+                                      </td>
+                                      <td>
+                                        <input type="text" class="an-form-control" value="13.30" />
+                                        <!--<select class="an-form-control">
+                    <option></option>
+                    <option>BMI Leadership</option>
+                    <option>BMI Innovation</option>
+                    </select>-->
+                                      </td>
+                                      <td>
+                                        <input type="text" class="an-form-control" value="Lunch break" />
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                                <span class="pull-right">
+                                  <a href="#" class="an-btn an-btn-primary">
+                                    <i class="glyphicon glyphicon-plus"></i>&nbsp; Add Schedule</a>
+                                  <a href="#" class="an-btn an-btn-primary">
+                                    <i class="glyphicon glyphicon-floppy-saved"></i> Save</a>
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- end .AN-COMPONENT-BODY -->
+                    </div>
+                    <!-- end .AN-SINGLE-COMPONENT -->
+                  </div>
+
+
+
+                </div>
+              </div>
+              <!-- end .TAB-PANE -->
+              <!-- end .TAB-PANE -->
+            </div>
+            <!-- end .TAB-CONTENT -->
+          </div>
+        </div>
+      </div>
+      <!-- end .AN-HELPER-BLOCK -->
+    </div>
+    <!-- end .AN-COMPONENT-BODY -->
+  </div>
+
+</div>
+
+<!-- end row -->
+
+<app-create-year-modal></app-create-year-modal>
+<app-create-group-modal></app-create-group-modal>
+<app-add-class-format-modal></app-add-class-format-modal>
+<app-edit-course-modal></app-edit-course-modal>
+<app-view-course-modal></app-view-course-modal>
