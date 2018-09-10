@@ -4,15 +4,12 @@ import { Observable } from "rxjs";
 import 'rxjs/add/operator/catch';
 
 import swal from 'sweetalert2';
-import { UiService } from "../ui/ui.service";
 
 @Injectable()
 export class ApiInterceptor implements HttpInterceptor {
 
 
-    constructor(
-        private ui: UiService
-    ) {}
+    constructor() {}
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         const token = localStorage.getItem('access_token');

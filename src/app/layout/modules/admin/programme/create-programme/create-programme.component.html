@@ -50,7 +50,7 @@
                   <div class="row">
                     <div class="col-md-12">
 
-                      <div style="position:relative; height:200px; max-height:200px; background-size:cover; background-position: center;" [ngStyle]="{ background: 'url(' + programme.coverImage + ')' }">
+                      <div style="position:relative; height:200px; max-height:200px; background-repeat: no-repeat; background-size:cover; background-position: center;" [ngStyle]="{ background: 'url(' + programme.coverImage + ')' }">
                         <!-- <a href="#" class="an-btn an-btn-default upload">Upload Cover</a> -->
                         <div class="an-file-upload-container upload" style="margin-bottom:0;">
                           <div tabindex="500" class="btn btn-primary btn-file">
@@ -136,10 +136,13 @@
                             <div class="row">
                               <div class="col-sm-4" *ngFor="let photo of programme.photos; let i = index">
                                 <div class="folder">
-                                  <a class="an-btn btn-xs an-btn-primary folder-btn" (click)="removePhoto(i)">
+                                  <a class="an-btn btn-xs an-btn-primary folder-btn" *ngIf="photo.status === 1" (click)="removePhoto(i)">
                                     <i class="glyphicon glyphicon-remove"></i>
                                   </a>
-                                  <img [src]="photo" class=" img-responsive thumbnail" />
+                                  <img [src]="photo.src" class=" img-responsive thumbnail" />
+                                  <div class="loader" *ngIf="photo.status === 0">
+                                    <div class="spinner"></div>
+                                  </div>
                                 </div>
                               </div>
                             </div>

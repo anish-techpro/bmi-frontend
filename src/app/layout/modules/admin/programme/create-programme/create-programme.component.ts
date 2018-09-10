@@ -4,6 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { concatMap } from 'rxjs/operator/concatMap';
 
+import * as shortid from 'shortid';
+
 interface IProgramme {
   name: string;
   startDate: Date;
@@ -81,7 +83,14 @@ export class CreateProgrammeComponent implements OnInit {
         const reader = new FileReader();
         reader.onload = (event: ProgressEvent) => {
           const url = (<FileReader>event.target).result;
-          this.programme.photos.push(url);
+          const photo = {
+            src: url,
+            status: 0
+          };
+          this.programme.photos.push(photo);
+          setTimeout((photo) => {
+            photo.status = 1;
+          }, 3000, photo);
         }
         reader.readAsDataURL(file);
       }
@@ -91,20 +100,5 @@ export class CreateProgrammeComponent implements OnInit {
   removePhoto(index) {
     this.programme.photos.splice(index, 1);
   }
-
-  // uploadImages() {
-  //   let index = 0;
-  //   const getReq = (photo, i) => {
-  //     return this.http.post('https://fakerestapi.azurewebsites.net/api/CoverPhotos', {
-  //       Url: photo,
-  //       ID: i,
-  //       IDBook: i
-  //     });
-  //   }
-  //   Observable
-  //     .from(this.programme.photos)
-  //     .concatMap(photo => getReq(photo, index++))
-  //     .subscribe(console.log);
-  // }
 
 }
