@@ -25,11 +25,11 @@
       <h6>BMI Executive MBA &nbsp;
         <span class="drop-float">
           <span class="inline">
-            <select class="an-form-control">
-              <option>Select Year</option>
-              <option>Emba XIX</option>
-              <option>Emba VIII</option>
-              <option>Emba VII</option>
+            <select class="an-form-control" (change)="onClassSelect($event.target.value)">
+              <option value="" hidden>Select Year</option>
+              <option *ngFor="let class of classList" [value]="class.id">
+                {{ class.name }}
+              </option>
             </select>
           </span>
           <span class="inline">
@@ -119,381 +119,158 @@
                       <i class="glyphicon glyphicon-plus"></i> Create Module</a>
                   </div>
                 </div>
-                <div class="prog-div">
-                  <h5>STUDIES DOCUMENTATION</h5>
-                  <div class="an-scrollable-x offset">
-                    <table class="table prog-same hov">
-                      <thead>
-                        <tr>
-
-                          <th>
-                            <span class="mov-ico" style="visibility:hidden !important;"></span>Title</th>
-                          <th>Starts</th>
-                          <th>End</th>
-                          <th>Edit</th>
-                          <th class="text-center">Class Format</th>
-                          <th>Details</th>
-                        </tr>
-                      </thead>
-                      <tbody dragula="COURSES">
-                        <tr>
-
-                          <td>
-                            <span class="mov-ico"></span>BMI Administration Team</td>
-                          <td>2017-11-09, 4.00 pm</td>
-                          <td>2019-06-21, 5.00 pm</td>
-
-                          <td>
-                            <a href="#" data-toggle="modal" data-target="#editProg" class="an-btn btn-xs an-btn-primary">
-                              <i class="glyphicon glyphicon glyphicon-pencil"></i>
-                            </a>
-                          </td>
-                          <td class="text-center">
-                            <a href="#" data-toggle="modal" data-target="#class" class="an-btn btn-xs an-btn-primary">
-                              <i class="glyphicon glyphicon-plus"></i> Add</a>
-                          </td>
-                          <td>
-                            <a href="#" data-toggle="modal" data-target="#viewProg" style="text-transform:capitalize;" class="an-btn btn-xs an-btn-primary">
-                              <i class="glyphicon glyphicon-eye-open"></i> View</a>
-                          </td>
-                        </tr>
-                        <tr>
-
-                          <td>
-                            <span class="mov-ico"></span>Student Handbook</td>
-                          <td>2017-11-09, 4.00 pm</td>
-                          <td>2019-06-21, 5.00 pm</td>
-
-                          <td>
-                            <a href="#" data-toggle="modal" data-target="#editProg" class="an-btn btn-xs an-btn-primary">
-                              <i class="glyphicon glyphicon glyphicon-pencil"></i>
-                            </a>
-                          </td>
-                          <td class="text-center">
-                            <a href="#" data-toggle="modal" data-target="#class" class="an-btn btn-xs an-btn-primary">
-                              <i class="glyphicon glyphicon-plus"></i> Add</a>
-                          </td>
-                          <td>
-                            <a href="#" data-toggle="modal" data-target="#viewProg" style="text-transform:capitalize;" class="an-btn btn-xs an-btn-primary">
-                              <i class="glyphicon glyphicon-eye-open"></i> View</a>
-                          </td>
-                        </tr>
-                        <tr>
-
-                          <td>
-                            <span class="mov-ico"></span>Programme Objectives &amp; Intended Learning Outcomes</td>
-                          <td>2017-11-09, 4.00 pm</td>
-                          <td>2019-06-21, 5.00 pm</td>
-
-                          <td>
-                            <a href="#" data-toggle="modal" data-target="#editProg" class="an-btn btn-xs an-btn-primary">
-                              <i class="glyphicon glyphicon glyphicon-pencil"></i>
-                            </a>
-                          </td>
-                          <td class="text-center">
-                            <a href="#" data-toggle="modal" data-target="#class" class="an-btn btn-xs an-btn-primary">
-                              <i class="glyphicon glyphicon-plus"></i> Add</a>
-                          </td>
-                          <td>
-                            <a href="#" data-toggle="modal" data-target="#viewProg" style="text-transform:capitalize;" class="an-btn btn-xs an-btn-primary">
-                              <i class="glyphicon glyphicon-eye-open"></i> View</a>
-                          </td>
-                        </tr>
-                        <tr>
-
-                          <td>
-                            <span class="mov-ico"></span>Learning Outcomes</td>
-                          <td>2017-11-09, 4.00 pm</td>
-                          <td>2019-06-21, 5.00 pm</td>
-
-                          <td>
-                            <a href="#" data-toggle="modal" data-target="#editProg" class="an-btn btn-xs an-btn-primary">
-                              <i class="glyphicon glyphicon glyphicon-pencil"></i>
-                            </a>
-                          </td>
-                          <td class="text-center">
-                            <a href="#" data-toggle="modal" data-target="#class" class="an-btn btn-xs an-btn-primary">
-                              <i class="glyphicon glyphicon-plus"></i> Add</a>
-                          </td>
-                          <td>
-                            <a href="#" data-toggle="modal" data-target="#viewProg" style="text-transform:capitalize;" class="an-btn btn-xs an-btn-primary">
-                              <i class="glyphicon glyphicon-eye-open"></i> View</a>
-                          </td>
-                        </tr>
-                        <tr>
-
-                          <td>
-                            <span class="mov-ico"></span>BMI Integrity Policy</td>
-                          <td>2017-11-09, 4.00 pm</td>
-                          <td>2019-06-21, 5.00 pm</td>
-
-                          <td>
-                            <a href="#" data-toggle="modal" data-target="#editProg" class="an-btn btn-xs an-btn-primary">
-                              <i class="glyphicon glyphicon glyphicon-pencil"></i>
-                            </a>
-                          </td>
-                          <td class="text-center">
-                            <a href="#" data-toggle="modal" data-target="#class" class="an-btn btn-xs an-btn-primary">
-                              <i class="glyphicon glyphicon-plus"></i> Add</a>
-                          </td>
-                          <td>
-                            <a href="#" data-toggle="modal" data-target="#viewProg" style="text-transform:capitalize;" class="an-btn btn-xs an-btn-primary">
-                              <i class="glyphicon glyphicon-eye-open"></i> View</a>
-                          </td>
-                        </tr>
-                        <tr>
-
-                          <td>
-                            <span class="mov-ico"></span>Academic Regulation of Studies</td>
-                          <td>2017-11-09, 4.00 pm</td>
-                          <td>2019-06-21, 5.00 pm</td>
-
-                          <td>
-                            <a href="#" data-toggle="modal" data-target="#editProg" class="an-btn btn-xs an-btn-primary">
-                              <i class="glyphicon glyphicon glyphicon-pencil"></i>
-                            </a>
-                          </td>
-                          <td class="text-center">
-                            <a href="#" data-toggle="modal" data-target="#class" class="an-btn btn-xs an-btn-primary">
-                              <i class="glyphicon glyphicon-plus"></i> Add</a>
-                          </td>
-                          <td>
-                            <a href="#" data-toggle="modal" data-target="#viewProg" style="text-transform:capitalize;" class="an-btn btn-xs an-btn-primary">
-                              <i class="glyphicon glyphicon-eye-open"></i> View</a>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
+                <ng-container *ngIf="programme; else noData">
+                  <div class="prog-div" *ngFor="let module of programme.module">
+                    <h5>{{ module.name }}</h5>
+                    <div class="an-scrollable-x offset">
+                      <table class="table prog-same hov">
+                        <thead>
+                          <tr>
+  
+                            <th>
+                              <span class="mov-ico" style="visibility:hidden !important;"></span>Title</th>
+                            <th>Starts</th>
+                            <th>End</th>
+                            <th>Edit</th>
+                            <th class="text-center">Class Format</th>
+                            <th>Details</th>
+                          </tr>
+                        </thead>
+                        <tbody dragula="COURSES">
+                          <tr *ngFor="let course of module.courses">
+  
+                            <td>
+                              <span class="mov-ico"></span>{{ course.name }}</td>
+                            <td>{{ course.available_from }}</td>
+                            <td>{{ course.available_till }}</td>
+  
+                            <td>
+                              <a href="#" data-toggle="modal" data-target="#editProg" class="an-btn btn-xs an-btn-primary">
+                                <i class="glyphicon glyphicon glyphicon-pencil"></i>
+                              </a>
+                            </td>
+                            <td class="text-center">
+                              <a href="#" data-toggle="modal" data-target="#class" class="an-btn btn-xs an-btn-primary">
+                                <i class="glyphicon glyphicon-plus"></i> Add</a>
+                            </td>
+                            <td>
+                              <a href="#" data-toggle="modal" data-target="#viewProg" style="text-transform:capitalize;" class="an-btn btn-xs an-btn-primary">
+                                <i class="glyphicon glyphicon-eye-open"></i> View</a>
+                            </td>
+                          </tr>
+                          <tr>
+  
+                            <td>
+                              <span class="mov-ico"></span>Student Handbook</td>
+                            <td>2017-11-09, 4.00 pm</td>
+                            <td>2019-06-21, 5.00 pm</td>
+  
+                            <td>
+                              <a href="#" data-toggle="modal" data-target="#editProg" class="an-btn btn-xs an-btn-primary">
+                                <i class="glyphicon glyphicon glyphicon-pencil"></i>
+                              </a>
+                            </td>
+                            <td class="text-center">
+                              <a href="#" data-toggle="modal" data-target="#class" class="an-btn btn-xs an-btn-primary">
+                                <i class="glyphicon glyphicon-plus"></i> Add</a>
+                            </td>
+                            <td>
+                              <a href="#" data-toggle="modal" data-target="#viewProg" style="text-transform:capitalize;" class="an-btn btn-xs an-btn-primary">
+                                <i class="glyphicon glyphicon-eye-open"></i> View</a>
+                            </td>
+                          </tr>
+                          <tr>
+  
+                            <td>
+                              <span class="mov-ico"></span>Programme Objectives &amp; Intended Learning Outcomes</td>
+                            <td>2017-11-09, 4.00 pm</td>
+                            <td>2019-06-21, 5.00 pm</td>
+  
+                            <td>
+                              <a href="#" data-toggle="modal" data-target="#editProg" class="an-btn btn-xs an-btn-primary">
+                                <i class="glyphicon glyphicon glyphicon-pencil"></i>
+                              </a>
+                            </td>
+                            <td class="text-center">
+                              <a href="#" data-toggle="modal" data-target="#class" class="an-btn btn-xs an-btn-primary">
+                                <i class="glyphicon glyphicon-plus"></i> Add</a>
+                            </td>
+                            <td>
+                              <a href="#" data-toggle="modal" data-target="#viewProg" style="text-transform:capitalize;" class="an-btn btn-xs an-btn-primary">
+                                <i class="glyphicon glyphicon-eye-open"></i> View</a>
+                            </td>
+                          </tr>
+                          <tr>
+  
+                            <td>
+                              <span class="mov-ico"></span>Learning Outcomes</td>
+                            <td>2017-11-09, 4.00 pm</td>
+                            <td>2019-06-21, 5.00 pm</td>
+  
+                            <td>
+                              <a href="#" data-toggle="modal" data-target="#editProg" class="an-btn btn-xs an-btn-primary">
+                                <i class="glyphicon glyphicon glyphicon-pencil"></i>
+                              </a>
+                            </td>
+                            <td class="text-center">
+                              <a href="#" data-toggle="modal" data-target="#class" class="an-btn btn-xs an-btn-primary">
+                                <i class="glyphicon glyphicon-plus"></i> Add</a>
+                            </td>
+                            <td>
+                              <a href="#" data-toggle="modal" data-target="#viewProg" style="text-transform:capitalize;" class="an-btn btn-xs an-btn-primary">
+                                <i class="glyphicon glyphicon-eye-open"></i> View</a>
+                            </td>
+                          </tr>
+                          <tr>
+  
+                            <td>
+                              <span class="mov-ico"></span>BMI Integrity Policy</td>
+                            <td>2017-11-09, 4.00 pm</td>
+                            <td>2019-06-21, 5.00 pm</td>
+  
+                            <td>
+                              <a href="#" data-toggle="modal" data-target="#editProg" class="an-btn btn-xs an-btn-primary">
+                                <i class="glyphicon glyphicon glyphicon-pencil"></i>
+                              </a>
+                            </td>
+                            <td class="text-center">
+                              <a href="#" data-toggle="modal" data-target="#class" class="an-btn btn-xs an-btn-primary">
+                                <i class="glyphicon glyphicon-plus"></i> Add</a>
+                            </td>
+                            <td>
+                              <a href="#" data-toggle="modal" data-target="#viewProg" style="text-transform:capitalize;" class="an-btn btn-xs an-btn-primary">
+                                <i class="glyphicon glyphicon-eye-open"></i> View</a>
+                            </td>
+                          </tr>
+                          <tr>
+  
+                            <td>
+                              <span class="mov-ico"></span>Academic Regulation of Studies</td>
+                            <td>2017-11-09, 4.00 pm</td>
+                            <td>2019-06-21, 5.00 pm</td>
+  
+                            <td>
+                              <a href="#" data-toggle="modal" data-target="#editProg" class="an-btn btn-xs an-btn-primary">
+                                <i class="glyphicon glyphicon glyphicon-pencil"></i>
+                              </a>
+                            </td>
+                            <td class="text-center">
+                              <a href="#" data-toggle="modal" data-target="#class" class="an-btn btn-xs an-btn-primary">
+                                <i class="glyphicon glyphicon-plus"></i> Add</a>
+                            </td>
+                            <td>
+                              <a href="#" data-toggle="modal" data-target="#viewProg" style="text-transform:capitalize;" class="an-btn btn-xs an-btn-primary">
+                                <i class="glyphicon glyphicon-eye-open"></i> View</a>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
-                </div>
-                <div class="prog-div">
-                  <h5>MODULE 1: INTRODUCTORY SESSION</h5>
-                  <div class="an-scrollable-x offset">
-                    <table class="table prog-same hov">
-                      <thead>
-                        <tr>
-
-                          <th>
-                            <span class="mov-ico" style="visibility:hidden !important;"></span>Title</th>
-                          <th>Starts</th>
-                          <th>End</th>
-
-                          <th>Edit</th>
-                          <th class="text-center">Class Format</th>
-                          <th>Details</th>
-                        </tr>
-                      </thead>
-                      <tbody dragula="COURSES">
-                        <tr>
-
-                          <td>
-                            <span class="mov-ico"></span>Leadership & Executive Presence</td>
-                          <td>2017-11-09, 4.00 pm</td>
-                          <td>2019-06-21, 5.00 pm</td>
-
-                          <td>
-                            <a href="#" data-toggle="modal" data-target="#editProg" class="an-btn btn-xs an-btn-primary">
-                              <i class="glyphicon glyphicon glyphicon-pencil"></i>
-                            </a>
-                          </td>
-                          <td class="text-center">
-                            <a href="#" data-toggle="modal" data-target="#class" class="an-btn btn-xs an-btn-primary">
-                              <i class="glyphicon glyphicon-plus"></i> Add</a>
-                          </td>
-                          <td>
-                            <a href="#" data-toggle="modal" data-target="#viewProg" style="text-transform:capitalize;" class="an-btn btn-xs an-btn-primary">
-                              <i class="glyphicon glyphicon-eye-open"></i> View</a>
-                          </td>
-                        </tr>
-                        <tr>
-
-                          <td>
-                            <span class="mov-ico"></span>Negotiation Skills</td>
-                          <td>2017-11-09, 4.00 pm</td>
-                          <td>2019-06-21, 5.00 pm</td>
-
-                          <td>
-                            <a href="#" data-toggle="modal" data-target="#editProg" class="an-btn btn-xs an-btn-primary">
-                              <i class="glyphicon glyphicon glyphicon-pencil"></i>
-                            </a>
-                          </td>
-                          <td class="text-center">
-                            <a href="#" data-toggle="modal" data-target="#class" class="an-btn btn-xs an-btn-primary">
-                              <i class="glyphicon glyphicon-plus"></i> Add</a>
-                          </td>
-                          <td>
-                            <a href="#" data-toggle="modal" data-target="#viewProg" style="text-transform:capitalize;" class="an-btn btn-xs an-btn-primary">
-                              <i class="glyphicon glyphicon-eye-open"></i> View</a>
-                          </td>
-                        </tr>
-                        <tr>
-
-                          <td>
-                            <span class="mov-ico"></span>Business Simulation Game</td>
-                          <td>2017-11-09, 4.00 pm</td>
-                          <td>2019-06-21, 5.00 pm</td>
-
-                          <td>
-                            <a href="#" data-toggle="modal" data-target="#editProg" class="an-btn btn-xs an-btn-primary">
-                              <i class="glyphicon glyphicon glyphicon-pencil"></i>
-                            </a>
-                          </td>
-                          <td class="text-center">
-                            <a href="#" data-toggle="modal" data-target="#class" class="an-btn btn-xs an-btn-primary">
-                              <i class="glyphicon glyphicon-plus"></i> Add</a>
-                          </td>
-                          <td>
-                            <a href="#" data-toggle="modal" data-target="#viewProg" style="text-transform:capitalize;" class="an-btn btn-xs an-btn-primary">
-                              <i class="glyphicon glyphicon-eye-open"></i> View</a>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-                <div class="prog-div">
-                  <h5>MODULE 2: ACCOUNTING</h5>
-                  <div class="an-scrollable-x offset">
-                    <table class="table prog-same hov">
-                      <thead>
-                        <tr>
-
-                          <th>
-                            <span class="mov-ico" style="visibility:hidden !important;"></span>Title</th>
-                          <th>Starts</th>
-                          <th>End</th>
-                          <th>Edit</th>
-                          <th class="text-center">Class Format</th>
-                          <th>Details</th>
-                        </tr>
-                      </thead>
-                      <tbody dragula="COURSES">
-                        <tr>
-
-                          <td>
-                            <span class="mov-ico"></span>Financial Accounting</td>
-                          <td>2017-11-09, 4.00 pm</td>
-                          <td>2019-06-21, 5.00 pm</td>
-                          <td>
-                            <a href="#" data-toggle="modal" data-target="#editProg" class="an-btn btn-xs an-btn-primary">
-                              <i class="glyphicon glyphicon glyphicon-pencil"></i>
-                            </a>
-                          </td>
-                          <td class="text-center">
-                            <a href="#" data-toggle="modal" data-target="#class" class="an-btn btn-xs an-btn-primary">
-                              <i class="glyphicon glyphicon-plus"></i> Add</a>
-                          </td>
-                          <td>
-                            <a href="#" data-toggle="modal" data-target="#viewProg" style="text-transform:capitalize;" class="an-btn btn-xs an-btn-primary">
-                              <i class="glyphicon glyphicon-eye-open"></i> View</a>
-                          </td>
-                        </tr>
-                        <tr>
-
-                          <td>
-                            <span class="mov-ico"></span>Management Accounting & Control</td>
-                          <td>2017-11-09, 4.00 pm</td>
-                          <td>2019-06-21, 5.00 pm</td>
-                          <td>
-                            <a href="#" data-toggle="modal" data-target="#editProg" class="an-btn btn-xs an-btn-primary">
-                              <i class="glyphicon glyphicon glyphicon-pencil"></i>
-                            </a>
-                          </td>
-                          <td class="text-center">
-                            <a href="#" data-toggle="modal" data-target="#class" class="an-btn btn-xs an-btn-primary">
-                              <i class="glyphicon glyphicon-plus"></i> Add</a>
-                          </td>
-                          <td>
-                            <a href="#" data-toggle="modal" data-target="#viewProg" style="text-transform:capitalize;" class="an-btn btn-xs an-btn-primary">
-                              <i class="glyphicon glyphicon-eye-open"></i> View</a>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-                <div class="prog-div" style=" margin-left:20px;">
-                  <h5 style="background:#eded; padding:5px 12px;">Diploma Papers</h5>
-                  <div class="an-scrollable-x offset">
-                    <table class="table prog-same hov">
-                      <thead>
-                        <tr>
-
-                          <th style="width:41% !important;">
-                            <span class="mov-ico" style="visibility:hidden !important;"></span>Title</th>
-                          <th>Starts</th>
-                          <th>End</th>
-                          <th></th>
-                          <th class="text-center">Edit</th>
-                          <th class="text-center">Details</th>
-
-                        </tr>
-                      </thead>
-                      <tbody dragula="DIPLOMA_PAPERS">
-                        <tr>
-
-                          <td>
-                            <span class="mov-ico"></span>DP Process Overview & EXAMPLES </td>
-                          <td>2017-11-09, 4.00 pm</td>
-                          <td>2019-06-21, 5.00 pm</td>
-                          <td class="text-center">
-                          </td>
-                          <td class="text-center">
-                            <a href="#" data-toggle="modal" data-target="#editDiploma" class="an-btn btn-xs an-btn-primary">
-                              <i class="glyphicon glyphicon glyphicon-pencil"></i>
-                            </a>
-                          </td>
-
-                          <td class="text-center">
-                            <a href="#" data-toggle="modal" data-target="#viewDiploma" style="text-transform:capitalize;" class="an-btn btn-xs an-btn-primary">
-                              <i class="glyphicon glyphicon-eye-open"></i> View</a>
-                          </td>
-
-                        </tr>
-                        <tr>
-
-                          <td>
-                            <span class="mov-ico"></span>DP Coaching Session</td>
-                          <td>2017-11-09, 4.00 pm</td>
-                          <td>2019-06-21, 5.00 pm</td>
-                          <td class="text-center">
-                          </td>
-                          <td class="text-center">
-                            <a href="#" data-toggle="modal" data-target="#editDiploma" class="an-btn btn-xs an-btn-primary">
-                              <i class="glyphicon glyphicon glyphicon-pencil"></i>
-                            </a>
-                          </td>
-
-                          <td class="text-center">
-                            <a href="#" data-toggle="modal" data-target="#viewDiploma" style="text-transform:capitalize;" class="an-btn btn-xs an-btn-primary">
-                              <i class="glyphicon glyphicon-eye-open"></i> View</a>
-                          </td>
-
-                        </tr>
-
-                        <tr>
-
-                          <td>
-                            <span class="mov-ico"></span>DIPLOMA PAPER ORAL PRESENTATION AND DEFENCE </td>
-                          <td>2017-11-09, 4.00 pm</td>
-                          <td>2019-06-21, 5.00 pm</td>
-                          <td class="text-center">
-                          </td>
-                          <td class="text-center">
-                            <a href="#" data-toggle="modal" data-target="#editDiploma" class="an-btn btn-xs an-btn-primary">
-                              <i class="glyphicon glyphicon glyphicon-pencil"></i>
-                            </a>
-                          </td>
-
-                          <td class="text-center">
-                            <a href="#" data-toggle="modal" data-target="#viewDiploma" style="text-transform:capitalize;" class="an-btn btn-xs an-btn-primary">
-                              <i class="glyphicon glyphicon-eye-open"></i> View</a>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
+                </ng-container>
+                <ng-template #noData>
+                  No data found.
+                </ng-template>
               </div>
               <!-- end .TAB-PANE -->
 
@@ -981,8 +758,7 @@
 </div>
 
 <!-- end row -->
-
-<app-create-year-modal></app-create-year-modal>
+<app-create-year-modal [programmeId]="programmeId"></app-create-year-modal>
 <app-create-group-modal></app-create-group-modal>
 <app-add-class-format-modal></app-add-class-format-modal>
 <app-edit-course-modal></app-edit-course-modal>

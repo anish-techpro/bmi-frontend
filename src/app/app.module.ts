@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FullCalendarModule } from 'ng-fullcalendar';
+import { EmbedVideo } from 'ngx-embed-video';
 
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
@@ -32,7 +33,8 @@ import { ApiInterceptor } from './services/api-interceptor/api-interceptor';
     AppRoutingModule,
     SharedModule,
     FullCalendarModule,
-    DragulaModule.forRoot()
+    DragulaModule.forRoot(),
+    EmbedVideo.forRoot()
   ],
   declarations: [AppComponent],
   providers: [

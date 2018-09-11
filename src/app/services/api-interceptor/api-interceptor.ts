@@ -13,14 +13,23 @@ export class ApiInterceptor implements HttpInterceptor {
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         const token = localStorage.getItem('access_token');
-        let headers = req.headers.set('Content-Type', 'application/json');
+
+        const contentType = req.headers.get('Content-Type') || 'application/json'; 
+        let headers = req.headers;
+
+        if (!headers.get('no-content-type')) {
+            headers = headers.set('Content-Type', 'application/json');
+        }
+
         if (token) {
             headers = headers.set('Authorization', 'Bearer ' + token);
         }
+        
         req = req.clone({
             headers,
             url: 'http://192.168.1.59:8001/api' + req.url
-        })
+        });
+        
         return next.handle(req).catch(
             err => {
                 let errorObj = {};

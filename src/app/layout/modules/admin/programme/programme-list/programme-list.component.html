@@ -13,7 +13,8 @@
     <h2>Programmes
       <span class="pull-right">
         <a routerLink="./create" class="an-btn an-btn-default">
-          <i class="glyphicon glyphicon-plus"></i> Create New</a>
+          <i class="glyphicon glyphicon-plus"></i> Create New
+        </a>
       </span>
     </h2>
 
@@ -45,20 +46,23 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let programme of programmes; let i = index;">
+                <tr *ngFor="let programme of programmes; let i = index">
                   <td>{{ i + 1 }}</td>
                   <td>
-                    <a [routerLink]="['./', i+1]">{{ programme.name }}</a>
+                    <a [routerLink]="['./', programme.id]">{{ programme.name }}</a>
                   </td>
-                  <td class="text-center">{{ programme.modules }}</td>
-                  <td class="text-center">{{ programme.createdAt | date }}</td>
+                  <td class="text-center">{{ programme.module_count }} / {{ programme.course_count }}</td>
+                  <td class="text-center">{{ programme.created_at | date }}</td>
                   <td class="text-center">
-                    <a [routerLink]="['./', i+1]" style="text-transform:capitalize;" class="an-btn btn-xs an-btn-primary">
+                    <a [routerLink]="['./', programme.id]" style="text-transform:capitalize;" class="an-btn btn-xs an-btn-primary">
                       <i class="glyphicon glyphicon-eye-open"></i> View</a>
                   </td>
                 </tr>
               </tbody>
             </table>
+            <div class="paginate" *ngIf="showLoadMore">
+              <a (click)="getProgrammes()">Load More Programmes</a>
+            </div>
           </div>
         </div>
         <!-- end .AN-HELPER-BLOCK -->

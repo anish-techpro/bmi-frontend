@@ -12,16 +12,24 @@
         <div class="modal-body">
           <div class="col-sm-6">
   
-            <input type="text" class="an-form-control" placeholder="Set Emba Year">
+            <input type="text" class="an-form-control" name="embaName" [(ngModel)]="emba.name" placeholder="Set Emba Name">
           </div>
           <div class="col-sm-3">
-            <button class="an-btn an-btn-primary">
+            <select name="embaYear" class="an-form-control" [(ngModel)]="emba.year">
+              <option value="" hidden>Select Year</option>
+              <option *ngFor="let value of generateYears(2007, 2030)" [value]="value">
+                {{ value }}
+              </option>
+            </select>
+          </div>
+          <div class="col-sm-3">
+            <button class="an-btn an-btn-primary" (click)="createYear()">
               <i class="glyphicon glyphicon-plus"></i> Create</button>
           </div>
           <div class="clearfix"></div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal" #closeBtn>Close</button>
         </div>
       </div>
   

@@ -1,7 +1,7 @@
 <router-outlet></router-outlet>
 
 
-<ng-container *ngIf="ui.loaderState">
+<ng-container *ngIf="ui.getLoaderState()">
     <div class="an-loader-container" style="display:flex;">
         <img src="../assets/loader.gif" alt="">
     </div>

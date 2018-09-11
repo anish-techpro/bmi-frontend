@@ -1,5 +1,7 @@
 import { Injectable, HostListener } from '@angular/core';
 
+import swal from 'sweetalert2';
+
 @Injectable()
 export class UiService {
 
@@ -11,11 +13,21 @@ export class UiService {
   }
 
   public loader = {
-    show: () => this._loaderState = true,
-    hide: () => this._loaderState = false,
+    show: () => setTimeout(() => { this._loaderState = true }, 0),
+    hide: () => setTimeout(() => { this._loaderState = false }, 0),
     toggle: () => this._loaderState = !this._loaderState
   }
 
+  public alert = {
+    error: (message) => {
+      swal('Oops!', message, 'error');
+    }
+  }
+
   constructor() { }
+
+  getLoaderState() {
+    return this._loaderState;
+  }
 
 }

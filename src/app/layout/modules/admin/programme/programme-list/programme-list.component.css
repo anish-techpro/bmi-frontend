@@ -1,0 +1,7 @@
+.paginate {
+    text-align: right;
+}
+
+.paginate a {
+    cursor: pointer;
+}

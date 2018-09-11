@@ -13,7 +13,7 @@
     <h2>Programme
       <span class="pull-right">
         <a routerLink="../" class="an-btn btn-default same-an-btn">Cancel</a>
-        <a class="an-btn an-btn-default" (click)="onSaveBtnClick()">
+        <a class="an-btn an-btn-default" (click)="saveProgramme()">
           <i class="glyphicon glyphicon-floppy-saved"></i> Save</a>
       </span>
     </h2>
@@ -129,12 +129,11 @@
                       <div class="an-single-component with-shadow">
                         <div class="an-component-header">
                           <h6>Uploaded Photos</h6>
-
                         </div>
                         <div class="an-component-body">
                           <div class="an-helper-block">
                             <div class="row">
-                              <div class="col-sm-4" *ngFor="let photo of programme.photos; let i = index">
+                              <div class="col-sm-4" *ngFor="let photo of programmePhotos; let i = index">
                                 <div class="folder">
                                   <a class="an-btn btn-xs an-btn-primary folder-btn" *ngIf="photo.status === 1" (click)="removePhoto(i)">
                                     <i class="glyphicon glyphicon-remove"></i>
@@ -146,7 +145,7 @@
                                 </div>
                               </div>
                             </div>
-                            <div *ngIf="programme.photos.length === 0">
+                            <div *ngIf="programmePhotos.length === 0">
                               No photos yet.
                             </div>
                           </div>
@@ -162,18 +161,21 @@
                         <div class="an-component-body">
                           <div class="an-helper-block">
                             <div class="row">
-                              <div class="col-sm-4" *ngFor="let url of programme.sanitizedUrls; let i = index; trackBy: trackFn">
+                              <div class="col-sm-4" *ngFor="let video of programme.videos; let i = index; trackBy: trackFn">
                                 <div class="folder">
-                                  <a class="an-btn btn-xs an-btn-primary folder-btn" (click)="removeVideoUrl(i)">
+                                  <a class="an-btn btn-xs an-btn-primary folder-btn" *ngIf="video.status === 1" (click)="removeVideoUrl(i)">
                                     <i class="glyphicon glyphicon-remove"></i>
                                   </a>
                                   <div class="videoWrapper">
-                                    <iframe width="560" height="300" [src]="url" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                                    <iframe width="560" height="300" [src]="video.sanitizedUrl" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                                  </div>
+                                  <div class="loader" *ngIf="video.status === 0">
+                                    <div class="spinner"></div>
                                   </div>
                                 </div>
                               </div>
                             </div>
-                            <div *ngIf="programme.sanitizedUrls.length === 0">
+                            <div *ngIf="programme.videos.length === 0">
                               No videos yet.
                             </div>
                           </div>

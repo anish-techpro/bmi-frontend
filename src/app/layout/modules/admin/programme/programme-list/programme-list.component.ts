@@ -1,44 +1,44 @@
 import { Component, OnInit } from '@angular/core';
+import { UiService } from '../../../../../services/ui/ui.service';
+import { AdminService } from '../../services/admin/admin.service';
+import { ProgrammeService } from '../../services/programme/programme.service';
 
 interface IProgramme {
   name: string;
-  modules: number;
-  createdAt: Date;
+  modules: any[];
+  created_at: Date;
 }
 
 @Component({
   selector: 'app-programme-list',
   templateUrl: './programme-list.component.html',
-  styleUrls: ['./programme-list.component.css']
+  styleUrls: ['./programme-list.component.css'],
+  providers: [ProgrammeService]
 })
 export class ProgrammeListComponent implements OnInit {
 
-  public programmes: IProgramme[] = [];
+  public programmes = [];
+  public showLoadMore = false;
 
-  constructor() { }
+  private page = 1;
+
+  constructor(
+    private ui: UiService,
+    private programmeService: ProgrammeService
+  ) { }
 
   ngOnInit() {
     this.getProgrammes();
   }
 
-  private getProgrammes() {
-    this.programmes = [
-      {
-        name: 'BMI Executive MBA',
-        modules: 20,
-        createdAt: new Date('07-10-2001')
-      },
-      {
-        name: 'BMI Leadership',
-        modules: 22,
-        createdAt: new Date('07-10-2008')
-      },
-      {
-        name: 'BMI Innovation',
-        modules: 36,
-        createdAt: new Date('07-10-2003')
-      }
-    ];
+  getProgrammes() {
+    this.ui.loader.show();
+    this.programmeService.get(this.page, res => {
+      this.ui.loader.hide();
+      this.programmes = [...this.programmes, ...res.data];
+      this.page = this.page + 1;
+      this.showLoadMore = res.current_page !== res.last_page;
+    });
   }
 
 }

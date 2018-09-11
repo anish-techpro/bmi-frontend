@@ -13,6 +13,8 @@ import { NewsComponent } from './news/news.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { CreateAnnouncmentModalComponent } from './dashboard/create-announcment-modal/create-announcment-modal.component';
 import { CreateNewsModalComponent } from './news/create-news-modal/create-news-modal.component';
+import { AdminService } from './services/admin/admin.service';
+import { ProgrammeService } from './services/programme/programme.service';
 
 @NgModule({
   imports: [
@@ -30,6 +32,10 @@ import { CreateNewsModalComponent } from './news/create-news-modal/create-news-m
     CalendarComponent,
     CreateAnnouncmentModalComponent,
     CreateNewsModalComponent,
+  ],
+  providers: [
+    AdminService,
+    // ProgrammeService
   ]
 })
 export class AdminModule { }
