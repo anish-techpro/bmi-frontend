@@ -1,5 +1,15 @@
-import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
 import { AdminService } from '../../../../services/admin/admin.service';
+
+import * as moment from 'moment';
+import swal from 'sweetalert2';
+
+interface IEmba {
+  name: string;
+  year: string;
+  start_date: Date;
+  end_date: Date;
+};
 
 @Component({
   selector: 'app-create-year-modal',
@@ -11,17 +21,32 @@ export class CreateYearModalComponent implements OnInit {
   @ViewChild('closeBtn') public closeBtn: ElementRef;
 
   @Input() programmeId = null;
+  @Output() created = new EventEmitter<any>();
 
-  public emba = {
-    name: '',
-    year: ''
-  };
+  public emba: IEmba;
+  public error = {};
 
   constructor(
     private adminService: AdminService
-  ) { }
+  ) {
+    this.setEmba();
+  }
 
   ngOnInit() {
+  }
+
+  private setEmba() {
+    this.emba = {
+      name: '',
+      year: '',
+      start_date: new Date(),
+      end_date: new Date()
+    }
+  }
+
+  reset() {
+    this.setEmba();
+    this.error = {};
   }
 
   generateYears(startYear, endYear) {
@@ -33,14 +58,29 @@ export class CreateYearModalComponent implements OnInit {
   }
 
   createYear() {
+    this.error = {};
+    for (let key in this.emba) {
+      if (!this.emba[key]) {
+        this.error[key] = `The ${key} field is required.`;
+        return;
+      }
+    }
+    if (this.emba.start_date > this.emba.end_date) {
+      swal('Error!', 'Start Date should be before End Date.', 'warning');
+      return;
+    }
     const payload = {
       ...this.emba,
+      start_date: moment(this.emba.start_date).format('YYYY-MM-DD'),
+      end_date: moment(this.emba.end_date).format('YYYY-MM-DD'),
       programme_id: this.programmeId
     }
     this.adminService.createYear(payload, (err, res) => {
       if (err) {
-        // TODO: error handler
+        this.error = err;
       } else {
+        this.setEmba();
+        this.created.emit(res.year);
         this.closeBtn.nativeElement.click();
       }
     });

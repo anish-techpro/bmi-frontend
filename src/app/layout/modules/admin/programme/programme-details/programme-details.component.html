@@ -22,11 +22,15 @@
 <div class="row">
   <div class="an-single-component with-shadow">
     <div class="an-component-header full-width">
-      <h6>BMI Executive MBA &nbsp;
+      <h6>BMI Executive MBA
+        <small *ngIf="currentlySetYear">
+          <b>Currently set : {{ currentlySetYear % 100 }}</b>
+        </small>
+        &nbsp;
         <span class="drop-float">
           <span class="inline">
-            <select class="an-form-control" (change)="onClassSelect($event.target.value)">
-              <option value="" hidden>Select Year</option>
+            <select class="an-form-control" [(ngModel)]="classId" (change)="onClassSelect($event.target.value)">
+              <option value="" hidden>Select Class</option>
               <option *ngFor="let class of classList" [value]="class.id">
                 {{ class.name }}
               </option>
@@ -34,7 +38,7 @@
           </span>
           <span class="inline">
             <a href="#" class="an-btn an-btn-primary" data-toggle="modal" data-target="#year" style="margin-top:-5px;">
-              <i class="glyphicon glyphicon-plus"></i> Create Year</a>
+              <i class="glyphicon glyphicon-plus"></i> Create Class</a>
           </span>
         </span>
       </h6>
@@ -47,10 +51,10 @@
             <div class="an-tab-control">
               <!-- Nav tabs -->
               <ul class="nav nav-tabs text-left" role="tablist">
-                <li role="presentation" class="active">
+                <!-- <li role="presentation" class="active">
                   <a href="#diskf" aria-controls="diskf" role="tab" data-toggle="tab">Create Year</a>
-                </li>
-                <li role="presentation">
+                </li> -->
+                <li role="presentation" class="active">
                   <a href="#diska" aria-controls="diska" role="tab" data-toggle="tab">Details Of Programme</a>
                 </li>
                 <li role="presentation">
@@ -58,6 +62,9 @@
                 </li>
                 <li role="presentation">
                   <a href="#diskc" aria-controls="diskc" role="tab" data-toggle="tab">Teachers</a>
+                </li>
+                <li role="presentation">
+                  <a href="#diske" aria-controls="diske" role="tab" data-toggle="tab">Class Format</a>
                 </li>
                 <!--<li role="presentation"><a href="#diskd" aria-controls="diskd" role="tab" data-toggle="tab">All Modules</a>
                 </li>-->
@@ -68,7 +75,7 @@
             </div>
             <!-- Tab panes -->
             <div class="tab-content">
-              <div role="tabpanel" class="tab-pane fade in active" id="diskf">
+              <div role="tabpanel" class="tab-pane fade" id="diskf">
                 <div class="row">
                   <div class="col-md-12">
                     <div class="an-single-component with-shadow">
@@ -104,7 +111,7 @@
 
                 </div>
               </div>
-              <div role="tabpanel" class="tab-pane fade" id="diska">
+              <div role="tabpanel" class="tab-pane fade in active" id="diska">
                 <div class="row">
                   <div class="col-sm-3">
                     <div class="an-input-group right">
@@ -126,140 +133,43 @@
                       <table class="table prog-same hov">
                         <thead>
                           <tr>
-  
+
                             <th>
                               <span class="mov-ico" style="visibility:hidden !important;"></span>Title</th>
                             <th>Starts</th>
                             <th>End</th>
                             <th>Edit</th>
-                            <th class="text-center">Class Format</th>
+                            <!-- <th class="text-center">Class Format</th> -->
+                            <th class="text-center">Participant</th>
                             <th>Details</th>
                           </tr>
                         </thead>
                         <tbody dragula="COURSES">
                           <tr *ngFor="let course of module.courses">
-  
+
                             <td>
                               <span class="mov-ico"></span>{{ course.name }}</td>
                             <td>{{ course.available_from }}</td>
                             <td>{{ course.available_till }}</td>
-  
+
                             <td>
                               <a href="#" data-toggle="modal" data-target="#editProg" class="an-btn btn-xs an-btn-primary">
                                 <i class="glyphicon glyphicon glyphicon-pencil"></i>
                               </a>
                             </td>
-                            <td class="text-center">
+                            <!-- <td class="text-center">
                               <a href="#" data-toggle="modal" data-target="#class" class="an-btn btn-xs an-btn-primary">
                                 <i class="glyphicon glyphicon-plus"></i> Add</a>
-                            </td>
-                            <td>
-                              <a href="#" data-toggle="modal" data-target="#viewProg" style="text-transform:capitalize;" class="an-btn btn-xs an-btn-primary">
-                                <i class="glyphicon glyphicon-eye-open"></i> View</a>
-                            </td>
-                          </tr>
-                          <tr>
-  
-                            <td>
-                              <span class="mov-ico"></span>Student Handbook</td>
-                            <td>2017-11-09, 4.00 pm</td>
-                            <td>2019-06-21, 5.00 pm</td>
-  
-                            <td>
-                              <a href="#" data-toggle="modal" data-target="#editProg" class="an-btn btn-xs an-btn-primary">
-                                <i class="glyphicon glyphicon glyphicon-pencil"></i>
+                            </td> -->
+                            <td class="text-center">
+                              <a href="#" data-toggle="modal" data-target="#participant" class="an-btn btn-xs an-btn-primary"
+                                (click)="event.emit('selectedCourseId', course.id)">
+                                <i class="glyphicon glyphicon-plus"></i> Add
                               </a>
                             </td>
-                            <td class="text-center">
-                              <a href="#" data-toggle="modal" data-target="#class" class="an-btn btn-xs an-btn-primary">
-                                <i class="glyphicon glyphicon-plus"></i> Add</a>
-                            </td>
                             <td>
-                              <a href="#" data-toggle="modal" data-target="#viewProg" style="text-transform:capitalize;" class="an-btn btn-xs an-btn-primary">
-                                <i class="glyphicon glyphicon-eye-open"></i> View</a>
-                            </td>
-                          </tr>
-                          <tr>
-  
-                            <td>
-                              <span class="mov-ico"></span>Programme Objectives &amp; Intended Learning Outcomes</td>
-                            <td>2017-11-09, 4.00 pm</td>
-                            <td>2019-06-21, 5.00 pm</td>
-  
-                            <td>
-                              <a href="#" data-toggle="modal" data-target="#editProg" class="an-btn btn-xs an-btn-primary">
-                                <i class="glyphicon glyphicon glyphicon-pencil"></i>
-                              </a>
-                            </td>
-                            <td class="text-center">
-                              <a href="#" data-toggle="modal" data-target="#class" class="an-btn btn-xs an-btn-primary">
-                                <i class="glyphicon glyphicon-plus"></i> Add</a>
-                            </td>
-                            <td>
-                              <a href="#" data-toggle="modal" data-target="#viewProg" style="text-transform:capitalize;" class="an-btn btn-xs an-btn-primary">
-                                <i class="glyphicon glyphicon-eye-open"></i> View</a>
-                            </td>
-                          </tr>
-                          <tr>
-  
-                            <td>
-                              <span class="mov-ico"></span>Learning Outcomes</td>
-                            <td>2017-11-09, 4.00 pm</td>
-                            <td>2019-06-21, 5.00 pm</td>
-  
-                            <td>
-                              <a href="#" data-toggle="modal" data-target="#editProg" class="an-btn btn-xs an-btn-primary">
-                                <i class="glyphicon glyphicon glyphicon-pencil"></i>
-                              </a>
-                            </td>
-                            <td class="text-center">
-                              <a href="#" data-toggle="modal" data-target="#class" class="an-btn btn-xs an-btn-primary">
-                                <i class="glyphicon glyphicon-plus"></i> Add</a>
-                            </td>
-                            <td>
-                              <a href="#" data-toggle="modal" data-target="#viewProg" style="text-transform:capitalize;" class="an-btn btn-xs an-btn-primary">
-                                <i class="glyphicon glyphicon-eye-open"></i> View</a>
-                            </td>
-                          </tr>
-                          <tr>
-  
-                            <td>
-                              <span class="mov-ico"></span>BMI Integrity Policy</td>
-                            <td>2017-11-09, 4.00 pm</td>
-                            <td>2019-06-21, 5.00 pm</td>
-  
-                            <td>
-                              <a href="#" data-toggle="modal" data-target="#editProg" class="an-btn btn-xs an-btn-primary">
-                                <i class="glyphicon glyphicon glyphicon-pencil"></i>
-                              </a>
-                            </td>
-                            <td class="text-center">
-                              <a href="#" data-toggle="modal" data-target="#class" class="an-btn btn-xs an-btn-primary">
-                                <i class="glyphicon glyphicon-plus"></i> Add</a>
-                            </td>
-                            <td>
-                              <a href="#" data-toggle="modal" data-target="#viewProg" style="text-transform:capitalize;" class="an-btn btn-xs an-btn-primary">
-                                <i class="glyphicon glyphicon-eye-open"></i> View</a>
-                            </td>
-                          </tr>
-                          <tr>
-  
-                            <td>
-                              <span class="mov-ico"></span>Academic Regulation of Studies</td>
-                            <td>2017-11-09, 4.00 pm</td>
-                            <td>2019-06-21, 5.00 pm</td>
-  
-                            <td>
-                              <a href="#" data-toggle="modal" data-target="#editProg" class="an-btn btn-xs an-btn-primary">
-                                <i class="glyphicon glyphicon glyphicon-pencil"></i>
-                              </a>
-                            </td>
-                            <td class="text-center">
-                              <a href="#" data-toggle="modal" data-target="#class" class="an-btn btn-xs an-btn-primary">
-                                <i class="glyphicon glyphicon-plus"></i> Add</a>
-                            </td>
-                            <td>
-                              <a href="#" data-toggle="modal" data-target="#viewProg" style="text-transform:capitalize;" class="an-btn btn-xs an-btn-primary">
+                              <a href="#" data-toggle="modal" data-target="#viewProg" style="text-transform:capitalize;"
+                                class="an-btn btn-xs an-btn-primary">
                                 <i class="glyphicon glyphicon-eye-open"></i> View</a>
                             </td>
                           </tr>
@@ -612,136 +522,7 @@
               </div>
               <!-- end .TAB-PANE -->
               <div role="tabpanel" class="tab-pane fade in" id="diske">
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="an-single-component with-shadow">
-                      <div class="an-component-header">
-                        <h6>Class Format
-                          <small>
-                            <b>tai tas ir tas.</b>
-                          </small>
-                        </h6>
-
-                      </div>
-                      <div class="an-component-body">
-                        <div class="an-helper-block">
-                          <div class="row">
-                            <div class="col-sm-4">
-                              <label>Select course</label>
-                              <select class="an-form-control">
-                                <option>Teacher 1</option>
-                                <option>Teacher 2</option>
-                                <option>Teacher 3</option>
-                              </select>
-                            </div>
-                            <div class="col-sm-6">
-                              <label>Days</label>
-                              <input type="text" class="an-form-control" value="Thursday-Saturday and Monday-Wednesday every 6 weeks" />
-                            </div>
-
-                            <div class="clearfix"></div>
-                            <div class="col-sm-12">
-                              <label>Schedule</label>
-                              <div class="an-scrollable-x">
-                                <table class="table table-bordered table-hover">
-                                  <thead>
-                                    <tr>
-                                      <th width="5%">#</th>
-                                      <th>Form</th>
-                                      <th>To</th>
-                                      <th>Details</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    <tr>
-                                      <td>1</td>
-                                      <td>
-                                        <input type="text" class="an-form-control" value="9.30" />
-                                      </td>
-                                      <td>
-                                        <input type="text" class="an-form-control" value="10.30" />
-                                        <!--<select class="an-form-control">
-                    <option></option>
-                    <option>BMI Leadership</option>
-                    <option>BMI Innovation</option>
-                    </select>-->
-                                      </td>
-                                      <td>
-                                        <input type="text" class="an-form-control" value="Lectures" />
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td>2</td>
-                                      <td>
-                                        <input type="text" class="an-form-control" value="10.30" />
-                                      </td>
-                                      <td>
-                                        <input type="text" class="an-form-control" value="10.45" />
-                                        <!--<select class="an-form-control">
-                    <option></option>
-                    <option>BMI Leadership</option>
-                    <option>BMI Innovation</option>
-                    </select>-->
-                                      </td>
-                                      <td>
-                                        <input type="text" class="an-form-control" value="Coffee break" />
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td>3</td>
-                                      <td>
-                                        <input type="text" class="an-form-control" value="10.45" />
-                                      </td>
-                                      <td>
-                                        <input type="text" class="an-form-control" value="12.30" />
-                                        <!--<select class="an-form-control">
-                    <option></option>
-                    <option>BMI Leadership</option>
-                    <option>BMI Innovation</option>
-                    </select>-->
-                                      </td>
-                                      <td>
-                                        <input type="text" class="an-form-control" value="Lectures" />
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td>4</td>
-                                      <td>
-                                        <input type="text" class="an-form-control" value="12.30" />
-                                      </td>
-                                      <td>
-                                        <input type="text" class="an-form-control" value="13.30" />
-                                        <!--<select class="an-form-control">
-                    <option></option>
-                    <option>BMI Leadership</option>
-                    <option>BMI Innovation</option>
-                    </select>-->
-                                      </td>
-                                      <td>
-                                        <input type="text" class="an-form-control" value="Lunch break" />
-                                      </td>
-                                    </tr>
-                                  </tbody>
-                                </table>
-                                <span class="pull-right">
-                                  <a href="#" class="an-btn an-btn-primary">
-                                    <i class="glyphicon glyphicon-plus"></i>&nbsp; Add Schedule</a>
-                                  <a href="#" class="an-btn an-btn-primary">
-                                    <i class="glyphicon glyphicon-floppy-saved"></i> Save</a>
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- end .AN-COMPONENT-BODY -->
-                    </div>
-                    <!-- end .AN-SINGLE-COMPONENT -->
-                  </div>
-
-
-
-                </div>
+                <app-programme-class-format [classId]="classId"></app-programme-class-format>
               </div>
               <!-- end .TAB-PANE -->
               <!-- end .TAB-PANE -->
@@ -756,10 +537,11 @@
   </div>
 
 </div>
+<app-add-class-format-modal></app-add-class-format-modal>
 
 <!-- end row -->
-<app-create-year-modal [programmeId]="programmeId"></app-create-year-modal>
+<app-create-year-modal [programmeId]="programmeId" (created)="onClassCreated($event)"></app-create-year-modal>
 <app-create-group-modal></app-create-group-modal>
-<app-add-class-format-modal></app-add-class-format-modal>
 <app-edit-course-modal></app-edit-course-modal>
 <app-view-course-modal></app-view-course-modal>
+<app-add-participant-modal></app-add-participant-modal>

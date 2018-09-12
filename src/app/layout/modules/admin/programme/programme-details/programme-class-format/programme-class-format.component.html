@@ -1,0 +1,89 @@
+<div class="row" *ngIf="classFormat">
+  <div class="col-md-12">
+    <div class="an-single-component with-shadow">
+      <div class="an-component-header">
+        <h6>Class Format
+          <!-- <small>
+            <b>tai tas ir tas.</b>
+          </small> -->
+        </h6>
+
+      </div>
+      <div class="an-component-body">
+        <div class="an-helper-block">
+          <div class="row">
+            <!-- <div class="col-sm-4">
+              <label>Select course</label>
+              <select class="an-form-control">
+                <option>Teacher 1</option>
+                <option>Teacher 2</option>
+                <option>Teacher 3</option>
+              </select>
+            </div> -->
+            <div class="col-sm-12">
+              <label>Days</label>
+              <input type="text" class="an-form-control" [(ngModel)]="classFormat.days" />
+            </div>
+
+            <div class="clearfix"></div>
+            <div class="col-sm-12">
+              <label>Schedule</label>
+              <div class="an-scrollable-x">
+                <table class="table table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <th width="5%">#</th>
+                      <th>Form</th>
+                      <th>To</th>
+                      <th>Details</th>
+                      <th class="text-center">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of classFormat.schedule; let i = index">
+                      <td>{{ i + 1 }}</td>
+                      <td>
+                        <input type="text" class="an-form-control" [(ngModel)]="item.from" (keydown)="error = null" />
+                      </td>
+                      <td>
+                        <input type="text" class="an-form-control" [(ngModel)]="item.to" (keydown)="error = null" />
+                        <!--<select class="an-form-control">
+                              <option></option>
+                              <option>BMI Leadership</option>
+                              <option>BMI Innovation</option>
+                            </select>-->
+                      </td>
+                      <td>
+                        <input type="text" class="an-form-control" [(ngModel)]="item.details" (keydown)="error = null" />
+                      </td>
+                      <td class="text-center">
+                        <a class="an-btn btn-xs an-btn-primary" (click)="removeSchedule(i)" *ngIf="!item.initial">
+                          <i class="glyphicon glyphicon glyphicon-remove"></i>
+                        </a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <span class="pull-right">
+                  <span class="error" *ngIf="error">
+                    {{ error }}
+                  </span>
+                  <a class="an-btn an-btn-primary" (click)="addSchedule()">
+                    <i class="glyphicon glyphicon-plus"></i>&nbsp; Add Schedule</a>
+                  <a class="an-btn an-btn-primary" (click)="saveClassFormat()">
+                    <i class="glyphicon glyphicon-floppy-saved"></i> Save</a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end .AN-COMPONENT-BODY -->
+    </div>
+    <!-- end .AN-SINGLE-COMPONENT -->
+  </div>
+
+
+
+</div>

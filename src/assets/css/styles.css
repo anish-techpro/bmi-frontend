@@ -4462,7 +4462,8 @@ span.exam{ width:10px;height:10px; background:#3d5ca2; display:inline-block; mar
 .grade-all td:nth-child(5){
 	width:10%
 	}
-.scroll-div{ height:494px; overflow:auto; }
+/* .scroll-div{ height:494px; overflow:auto; } */
+.scroll-div { max-height: 494px; overflow: auto; }
 .final-grade th:nth-child(1),.final-grade td:nth-child(1){ width:40%; }
 .final-grade th:nth-child(2),.final-grade td:nth-child(2){ width:20%; }
 .final-grade th:nth-child(3),.final-grade td:nth-child(3){ width:20%; }

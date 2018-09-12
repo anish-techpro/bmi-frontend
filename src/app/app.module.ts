@@ -21,6 +21,7 @@ import { UserService } from './services/user/user.service';
 import { AuthGuardService } from './services/route-guards/auth-guard/auth-guard.service';
 import { NoAuthGuardService } from './services/route-guards/no-auth-guard/no-auth-guard.service';
 import { ApiInterceptor } from './services/api-interceptor/api-interceptor';
+import { EventService } from './services/event/event.service';
 
 @NgModule({
   imports: [
@@ -43,6 +44,7 @@ import { ApiInterceptor } from './services/api-interceptor/api-interceptor';
     UserService,
     AuthGuardService,
     NoAuthGuardService,
+    EventService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ApiInterceptor,

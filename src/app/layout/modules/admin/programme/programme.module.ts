@@ -18,6 +18,8 @@ import { CreateModuleComponent } from './create-module/create-module.component';
 import { ModuleAndCourseComponent } from './create-module/module-and-course/module-and-course.component';
 import { ModuleComponent } from './create-module/module/module.component';
 import { DiplomaPaperComponent } from './create-module/diploma-paper/diploma-paper.component';
+import { AddParticipantModalComponent } from './programme-details/modals/add-participant-modal/add-participant-modal.component';
+import { ProgrammeClassFormatComponent } from './programme-details/programme-class-format/programme-class-format.component';
 
 @NgModule({
   imports: [
@@ -40,7 +42,9 @@ import { DiplomaPaperComponent } from './create-module/diploma-paper/diploma-pap
     CreateModuleComponent,
     ModuleAndCourseComponent,
     ModuleComponent,
-    DiplomaPaperComponent
+    DiplomaPaperComponent,
+    AddParticipantModalComponent,
+    ProgrammeClassFormatComponent
   ]
 })
 export class ProgrammeModule { }

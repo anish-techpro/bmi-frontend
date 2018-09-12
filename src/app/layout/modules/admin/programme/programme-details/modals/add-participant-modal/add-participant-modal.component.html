@@ -1,0 +1,65 @@
+<div id="participant" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><i class="icon-close"></i></button>
+        <h4 class="modal-title">Add Participant</h4>
+      </div>
+      <div class="modal-body scroll-div">
+
+        <div class="col-sm-6 pull-right">
+          <div class="an-input-group right">
+            <div class="an-input-group-addon"><i class="ion-search"></i></div>
+            <input type="text" class="an-form-control marg-sm" placeholder="Search Student">
+          </div>
+        </div>
+        <div class="row">
+          <div style="display:table; margin:0 auto; width:100%;">
+            <div class="col-sm-12">
+              <ul class="invite">
+                <li *ngFor="let participant of participants; let i = index">
+                  <input type="checkbox" id="cb-{{i}}" [(ngModel)]="participant.selected" />
+                  <label for="cb-{{i}}">
+                    <img [src]="participant.image" />
+                    <span>{{ participant.name }}</span>
+                  </label>
+                </li>
+              </ul>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+        </div>
+        <div class="pagination text-center">
+          <a (click)="getParticipants(1)" [class.selected]="currentPage === 1">
+            First
+          </a>
+          <a *ngFor="let page of generatePageNumbers()" (click)="getParticipants(page)" [class.selected]="currentPage === page">
+            {{ page }}
+          </a>
+          <a (click)="getParticipants(totalPages)" [class.selected]="currentPage === totalPages">
+            Last
+          </a>
+        </div>
+
+        <div class="clearfix"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default same-an-btn pull-left" data-dismiss="modal" #closeBtn>
+          Close
+        </button>
+        <button type="button" class="btn btn-default same-an-btn" (click)="selectAll()">
+          Select All
+        </button>
+        <button type="button" class="btn btn-default same-an-btn" (click)="deselectAll()">
+          Select None
+        </button>
+        <button type="button" class="an-btn an-btn-default" (click)="save()">
+          <i class="glyphicon glyphicon-floppy-disk"></i> Save
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>

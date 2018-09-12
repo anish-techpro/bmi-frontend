@@ -8,18 +8,20 @@ import { FormGroup } from '@angular/forms';
 export class DatetimepickerComponent implements OnInit {
 
   @Input() date = new Date();
+  @Input() onlyDate = false;
   @Output() dateChange = new EventEmitter();
 
-  public settings = {
-    // bigBanner: true,
-    timePicker: true,
-    format: 'yyyy-MM-dd hh:mm a',
-    closeOnSelect: false
-  }
+  public settings = {}
 
   constructor() { }
 
   ngOnInit() {
+    this.settings = {
+      // bigBanner: true,
+      timePicker: !this.onlyDate,
+      format: this.onlyDate ? 'yyyy-MM-dd' : 'yyyy-MM-dd hh:mm a',
+      closeOnSelect: false
+    }
   }
 
   onDateSelect(event) {

@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
 @Injectable()
 export class ProgrammeService {
 
+  public selectedCourseId = null;
+
   constructor(
     private http: HttpClient,
     private router: Router
@@ -15,8 +17,9 @@ export class ProgrammeService {
   get(page, callback) {
     this.http.get('/programme?page=' + page).subscribe(callback);
   }
-  
+
   uploadAttachment(payload, callback) {
+    // FIXME: upload not reflecting in database
     const formData = new FormData();
     Object.entries(payload).forEach((entry: any) => formData.append(entry[0], entry[1]));
     let headers = new HttpHeaders();

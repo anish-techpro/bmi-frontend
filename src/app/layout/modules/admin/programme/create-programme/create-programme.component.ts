@@ -70,7 +70,7 @@ export class CreateProgrammeComponent implements OnInit {
       unique_id: this.unique_id,
     };
     if (this.programme.coverImageFile) {
-      payload['cover_img'] =  this.programme.coverImageFile;
+      payload['cover_img'] = this.programme.coverImageFile;
     }
     this.programmeService.create(payload, (err, res) => {
       if (err) {
@@ -103,7 +103,8 @@ export class CreateProgrammeComponent implements OnInit {
 
     this.programme.videos.push(video);
 
-    const payload = { link: video.url, unique_id: this.unique_id };
+    // type:2 for video-link
+    const payload = { link: video.url, unique_id: this.unique_id, type: 2 };
     this.programmeService.uploadAttachment(payload, (err, res) => {
       if (err) {
         this.programme.videos = this.programme.videos.filter(V => V !== video);
@@ -115,9 +116,15 @@ export class CreateProgrammeComponent implements OnInit {
   }
 
   removeVideoUrl(index) {
-    // TODO: implement remove video api
-    console.log(this.programme.videos[index]);
-    this.programme.videos.splice(index, 1);
+    const video = this.programme.videos[index];
+    video.status = 0;
+    this.programmeService.removeAttachment(video.id, (err, res) => {
+      if (err) {
+        // TODO: implement error handler
+      } else {
+        this.programme.videos.splice(index, 1);
+      }
+    });
   }
 
   addPhotos(event) {
@@ -142,7 +149,8 @@ export class CreateProgrammeComponent implements OnInit {
   }
 
   private uploadPhoto(file, photo) {
-    const payload = { img: file, unique_id: this.unique_id };
+    // type:1 for photo
+    const payload = { img: file, unique_id: this.unique_id, type: 1 };
     this.programmeService.uploadAttachment(payload, (err, res) => {
       if (err) {
         this.programmePhotos = this.programmePhotos.filter(P => P !== photo);

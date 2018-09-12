@@ -14,7 +14,7 @@ import { CalendarComponent } from './calendar/calendar.component';
 import { CreateAnnouncmentModalComponent } from './dashboard/create-announcment-modal/create-announcment-modal.component';
 import { CreateNewsModalComponent } from './news/create-news-modal/create-news-modal.component';
 import { AdminService } from './services/admin/admin.service';
-import { ProgrammeService } from './services/programme/programme.service';
+import { SharedService } from './services/shared/shared.service';
 
 @NgModule({
   imports: [
@@ -35,7 +35,7 @@ import { ProgrammeService } from './services/programme/programme.service';
   ],
   providers: [
     AdminService,
-    // ProgrammeService
+    SharedService
   ]
 })
 export class AdminModule { }

@@ -1,37 +1,64 @@
 <div id="year" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-  
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">
-            <i class="glyphicon glyphicon-remove"></i>
-          </button>
-          <h4 class="modal-title">Create Emba Year</h4>
-        </div>
-        <div class="modal-body">
-          <div class="col-sm-6">
-  
-            <input type="text" class="an-form-control" name="embaName" [(ngModel)]="emba.name" placeholder="Set Emba Name">
-          </div>
-          <div class="col-sm-3">
-            <select name="embaYear" class="an-form-control" [(ngModel)]="emba.year">
-              <option value="" hidden>Select Year</option>
-              <option *ngFor="let value of generateYears(2007, 2030)" [value]="value">
-                {{ value }}
-              </option>
-            </select>
-          </div>
-          <div class="col-sm-3">
-            <button class="an-btn an-btn-primary" (click)="createYear()">
-              <i class="glyphicon glyphicon-plus"></i> Create</button>
-          </div>
-          <div class="clearfix"></div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal" #closeBtn>Close</button>
-        </div>
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" (click)="reset()">
+          <i class="glyphicon glyphicon-remove"></i>
+        </button>
+        <h4 class="modal-title">Create Emba Year</h4>
       </div>
-  
+      <div class="modal-body">
+        <div class="col-sm-6">
+          <input type="text" class="an-form-control" style="margin-bottom: 0;" name="embaName" [(ngModel)]="emba.name"
+            placeholder="Set Emba Name">
+          <div class="error">{{ error['name'] || '' }}</div>
+        </div>
+        <div class="col-sm-6">
+          <select name="embaYear" class="an-form-control" style="margin-bottom: 0;" [(ngModel)]="emba.year">
+            <option value="" hidden>Select Year</option>
+            <option *ngFor="let value of generateYears(2007, 2030)" [value]="value">
+              {{ value }}
+            </option>
+          </select>
+          <div class="error">{{ error['year'] || '' }}</div>
+        </div>
+        <div class="col-sm-6">
+          <label>Start Date</label>
+          <div class="an-date-time-picker">
+
+            <div class="an-input-group">
+              <div class="an-input-group-addon">
+                <i class="ion-android-calendar"></i>
+              </div>
+              <!-- <input type="text" class="an-form-control an-date-time" placeholder="Select Date" id="datetimepicker2"> -->
+              <app-datetimepicker [(date)]="emba.start_date" [onlyDate]="true"></app-datetimepicker>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <label>End Date</label>
+          <div class="an-date-time-picker">
+
+            <div class="an-input-group">
+              <div class="an-input-group-addon">
+                <i class="ion-android-calendar"></i>
+              </div>
+              <!-- <input type="text" class="an-form-control an-date-time" placeholder="Select Date" id="datetimepicker2"> -->
+              <app-datetimepicker [(date)]="emba.end_date" [onlyDate]="true"></app-datetimepicker>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" #closeBtn (click)="reset()">Close</button>
+        <button class="an-btn an-btn-primary" style="margin-left: 10px;" (click)="createYear()">
+          <i class="glyphicon glyphicon-plus"></i> Create
+        </button>
+      </div>
     </div>
+
   </div>
+</div>
