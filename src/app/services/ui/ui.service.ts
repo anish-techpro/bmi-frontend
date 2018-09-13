@@ -7,15 +7,20 @@ export class UiService {
 
   public showSidebar = true;
 
-  private _loaderState = false;
+  private _loaderCounter = 0;
   get loaderState() {
-    return this._loaderState;
+    return this._loaderCounter !== 0;
   }
 
   public loader = {
-    show: () => setTimeout(() => { this._loaderState = true }, 0),
-    hide: () => setTimeout(() => { this._loaderState = false }, 0),
-    toggle: () => this._loaderState = !this._loaderState
+    show: () => {
+      console.log('loader_show');
+      setTimeout(() => { this._loaderCounter++; }, 0);
+    },
+    hide: () => {
+      console.log('loader_hide');
+      setTimeout(() => { this._loaderCounter--; }, 0);
+    }
   }
 
   public alert = {
@@ -27,7 +32,7 @@ export class UiService {
   constructor() { }
 
   getLoaderState() {
-    return this._loaderState;
+    return this._loaderCounter;
   }
 
 }

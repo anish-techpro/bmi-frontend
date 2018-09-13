@@ -63,4 +63,15 @@ export class AdminService {
     );
   }
 
+  getStudentList(class_id, callback) {
+    this.http.get('/student/classes/' + class_id).subscribe(
+      res => {
+        callback(null, res);
+      },
+      err => {
+        callback(err);
+      }
+    );
+  }
+
 }

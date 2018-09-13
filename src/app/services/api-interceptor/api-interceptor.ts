@@ -2,19 +2,23 @@ import { Injectable } from "@angular/core";
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpErrorResponse } from "@angular/common/http";
 import { Observable } from "rxjs";
 import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/do';
 
 import swal from 'sweetalert2';
+import { UiService } from "../ui/ui.service";
 
 @Injectable()
 export class ApiInterceptor implements HttpInterceptor {
 
 
-    constructor() {}
+    constructor(
+        private ui: UiService
+    ) { }
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         const token = localStorage.getItem('access_token');
 
-        const contentType = req.headers.get('Content-Type') || 'application/json'; 
+        const contentType = req.headers.get('Content-Type') || 'application/json';
         let headers = req.headers;
 
         if (!headers.get('no-content-type')) {
@@ -24,14 +28,13 @@ export class ApiInterceptor implements HttpInterceptor {
         if (token) {
             headers = headers.set('Authorization', 'Bearer ' + token);
         }
-        
+
         req = req.clone({
             headers,
             url: 'http://192.168.1.59:8001/api' + req.url
         });
-        
-        return next.handle(req).catch(
-            err => {
+        return next.handle(req)
+            .catch(err => {
                 let errorObj = {};
                 if (err instanceof HttpErrorResponse) {
                     const error = err.error;
@@ -46,10 +49,11 @@ export class ApiInterceptor implements HttpInterceptor {
                                 errorObj[key] = msg[key][0];
                             });
                         }
+                    } else {
+                        swal('Oops!', 'Something went wrong', 'error');
                     }
                 }
                 return Observable.throw(errorObj);
-            }
-        )
+            });
     }
 }

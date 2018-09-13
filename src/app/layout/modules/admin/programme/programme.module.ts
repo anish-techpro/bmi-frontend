@@ -20,6 +20,7 @@ import { ModuleComponent } from './create-module/module/module.component';
 import { DiplomaPaperComponent } from './create-module/diploma-paper/diploma-paper.component';
 import { AddParticipantModalComponent } from './programme-details/modals/add-participant-modal/add-participant-modal.component';
 import { ProgrammeClassFormatComponent } from './programme-details/programme-class-format/programme-class-format.component';
+import { ProgrammeStudentListComponent } from './programme-details/programme-student-list/programme-student-list.component';
 
 @NgModule({
   imports: [
@@ -44,7 +45,8 @@ import { ProgrammeClassFormatComponent } from './programme-details/programme-cla
     ModuleComponent,
     DiplomaPaperComponent,
     AddParticipantModalComponent,
-    ProgrammeClassFormatComponent
+    ProgrammeClassFormatComponent,
+    ProgrammeStudentListComponent,
   ]
 })
 export class ProgrammeModule { }

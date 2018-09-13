@@ -24,7 +24,7 @@ export class CreateYearModalComponent implements OnInit {
   @Output() created = new EventEmitter<any>();
 
   public emba: IEmba;
-  public error = {};
+  public error = null;
 
   constructor(
     private adminService: AdminService
@@ -59,11 +59,9 @@ export class CreateYearModalComponent implements OnInit {
 
   createYear() {
     this.error = {};
-    for (let key in this.emba) {
-      if (!this.emba[key]) {
-        this.error[key] = `The ${key} field is required.`;
-        return;
-      }
+    if (!this.emba.year) {
+      this.error['year'] = `The year field is required.`;
+      return;
     }
     if (this.emba.start_date > this.emba.end_date) {
       swal('Error!', 'Start Date should be before End Date.', 'warning');

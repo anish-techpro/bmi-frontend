@@ -33,11 +33,13 @@ export class ProgrammeListComponent implements OnInit {
 
   getProgrammes() {
     this.ui.loader.show();
-    this.programmeService.get(this.page, res => {
+    this.programmeService.get(this.page, (err, res) => {
       this.ui.loader.hide();
-      this.programmes = [...this.programmes, ...res.data];
-      this.page = this.page + 1;
-      this.showLoadMore = res.current_page !== res.last_page;
+      if (!err) {
+        this.programmes = [...this.programmes, ...res.data];
+        this.page = this.page + 1;
+        this.showLoadMore = res.current_page !== res.last_page;
+      }
     });
   }
 

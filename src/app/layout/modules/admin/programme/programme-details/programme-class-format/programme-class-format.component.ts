@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { EventService } from '../../../../../../services/event/event.service';
 import { AdminService } from '../../../services/admin/admin.service';
 import swal from 'sweetalert2';
+import { UiService } from '../../../../../../services/ui/ui.service';
 
 @Component({
   selector: 'app-programme-class-format',
@@ -17,7 +18,8 @@ export class ProgrammeClassFormatComponent implements OnInit {
 
   constructor(
     private adminService: AdminService,
-    private event: EventService
+    private event: EventService,
+    private ui: UiService
   ) { }
 
   ngOnInit() {
@@ -26,7 +28,7 @@ export class ProgrammeClassFormatComponent implements OnInit {
     }
     this.event.on('selectedClassId', classId => {
       this.classId = classId;
-      this.getClassFormat()
+      this.getClassFormat();
     });
   }
 

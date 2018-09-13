@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 @Injectable()
 export class ProgrammeService {
 
-  public selectedCourseId = null;
+  public selectedClassId = null;
 
   constructor(
     private http: HttpClient,
@@ -15,7 +15,14 @@ export class ProgrammeService {
   ) { }
 
   get(page, callback) {
-    this.http.get('/programme?page=' + page).subscribe(callback);
+    this.http.get('/programme?page=' + page).subscribe(
+      res => {
+        callback(null, res);
+      },
+      err => {
+        callback(err);
+      }
+    );
   }
 
   uploadAttachment(payload, callback) {

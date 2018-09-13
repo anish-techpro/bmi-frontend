@@ -13,7 +13,7 @@
         <div class="col-sm-6">
           <input type="text" class="an-form-control" style="margin-bottom: 0;" name="embaName" [(ngModel)]="emba.name"
             placeholder="Set Emba Name">
-          <div class="error">{{ error['name'] || '' }}</div>
+          <div class="error">{{ error?.name || '' }}</div>
         </div>
         <div class="col-sm-6">
           <select name="embaYear" class="an-form-control" style="margin-bottom: 0;" [(ngModel)]="emba.year">
@@ -22,7 +22,7 @@
               {{ value }}
             </option>
           </select>
-          <div class="error">{{ error['year'] || '' }}</div>
+          <div class="error">{{ error?.year || '' }}</div>
         </div>
         <div class="col-sm-6">
           <label>Start Date</label>

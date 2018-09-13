@@ -1,0 +1,71 @@
+<div class="row">
+  <br>
+  <div class="col-sm-3">
+    <div class="an-input-group right">
+      <div class="an-input-group-addon">
+        <i class="ion-search"></i>
+      </div>
+      <input type="email" class="an-form-control" placeholder="Search Student">
+    </div>
+  </div>
+  <div class="col-sm-6 col-sm-offset-3">
+    <span class="pull-right">
+      <a href="#" class="an-btn an-btn-primary">
+        <i class="glyphicon glyphicon-download-alt"></i> &nbsp;Export</a>&nbsp;
+      <a href="#" class="an-btn an-btn-primary">
+        <i class="glyphicon glyphicon-print"></i> &nbsp;Print</a>&nbsp;
+      <a href="#" class="an-btn an-btn-primary">
+        <i class="glyphicon glyphicon-send"></i> &nbsp;Message</a>&nbsp;
+      <a href="#" class="an-btn an-btn-primary" data-toggle="modal" data-target="#createGroup">
+        <i class="glyphicon glyphicon-plus"></i> &nbsp;Create Group</a>
+    </span>
+  </div>
+  <div class="clearfix"></div>
+</div>
+<div class="an-scrollable-x">
+  <table class="table">
+    <thead>
+      <tr>
+        <th width="5%">
+          <span class="an-custom-checkbox blocked danger">
+            <input type="checkbox" id="select_all" [(ngModel)]="selectAllStudentsCheckbox" (change)="onSelectAllStudentsChange()">
+            <label for="select_all" style="margin-bottom:0;"></label>
+          </span>
+        </th>
+        <th>Name</th>
+        <th>Email</th>
+        <!-- <th>Course</th> -->
+        <th class="text-center">Student ID</th>
+        <th class="text-center">Status</th>
+        <th width="15%"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student of studentList; let i = index">
+        <td>
+          <span class="an-custom-checkbox blocked danger">
+            <input type="checkbox" class="checkbox" id="check-{{i}}" [(ngModel)]="student.selected">
+            <label for="check-{{i}}"></label>
+          </span>
+        </td>
+        <td>
+          <a href="profile_student.html">{{ student.name }}</a>
+        </td>
+        <td>{{ student.email }}</td>
+        <!-- <td>{{ course }}</td> -->
+        <td class="text-center">{{ student.id }}</td>
+        <td class="text-center">{{ student?.status }}</td>
+        <td>
+          <a href="profile_student.html" class="an-btn an-btn-default btn-xs">
+            <i class="glyphicon glyphicon-eye-open"></i>&nbsp;View</a> &nbsp;
+          <a href="students-activity.html" class="an-btn an-btn-default btn-xs">
+            <i class="glyphicon glyphicon-signal"></i>&nbsp;Activity</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div *ngIf="studentList.length === 0">
+    No students found.
+  </div>
+</div>
+<!--<span class="pull-right"><a href="#" class="an-btn an-btn-primary"><i class="glyphicon glyphicon-floppy-saved"></i> Save</a></span>-->
