@@ -4179,8 +4179,12 @@ input[type="button"].btn-block {
 .prog-same.hov th:nth-child(4){ width:5% }
 .prog-same.hov th:nth-child(5){ width:15% }
 .prog-same.hov th:nth-child(6){ width:5% }
-.folder{ width:100%; height:Auto; float:left; position:relative; overflow:hidden; max-width:100%; }
+/* .folder{ width:100%; height:Auto; float:left; position:relative; overflow:hidden; max-width:100%; } */
+
+.folder{ width:100%; height:100px; float:left; position:relative; overflow:hidden; max-width:100%; }
+.folder img{ height:100% !important; }
 .folder-btn{ position:absolute; right:5px; top:5px; opacity:0.8; z-index:1;}
+.marg-20{ margin-bottom: 20px; }
 .videoWrapper {
 	position: relative;
 	padding-bottom: 56.25%; /* 16:9 */
@@ -4410,7 +4414,7 @@ a{ text-decoration:none !important;}
 	position:absolute; top:11px; right:10px; z-index:1; pointer-events:none; border-radius:0; font-size:14px; background:rgba(178, 48, 77, 0.8); color:#fff; padding:5px 10px; border-radius:3px;
 	}
 .upload{ position:absolute; opacity:0.8; bottom:15px; right:15px; z-index:1; }
-.folder.thumbnail{ margin-bottom:0px; }
+/* .folder.thumbnail{ margin-bottom:0px; } */
 .multi-btn-holder{ display:inline-block; text-align:right; }
 .multi-btn-holder .an-btn{ margin-bottom:3px; }
 .head-text{ margin:3px 0 0 0; width:40%; }

@@ -21,7 +21,9 @@ export class ProgrammeStudentListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getStudentList();
+    if (this.classId) {
+      this.getStudentList();
+    }
     this.event.on('selectedClassId', classId => {
       this.classId = classId
       this.getStudentList();

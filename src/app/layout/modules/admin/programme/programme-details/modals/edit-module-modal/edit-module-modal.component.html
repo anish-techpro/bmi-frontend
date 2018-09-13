@@ -1,0 +1,43 @@
+<div id="editModule" class="modal fade" role="dialog" *ngIf="module">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">
+          <i class="glyphicon glyphicon-remove"></i>
+        </button>
+        <!-- <h4 class="modal-title">Programme Details</h4> -->
+        <h4 class="modal-title">Edit Module Details</h4>
+      </div>
+      <div class="modal-body">
+        <div class="an-single-component with-shadow">
+          <!-- UPDATED: Module details will be updated on different modal -->
+          <div class="an-component-header full-width">
+            <h6 class="full-width">
+              <div class="row">
+                <div class="col-xs-4">
+                  <input type="text" class="form-control" placeholder="Module Name" [(ngModel)]="module.name" (keydown)="error = null"
+                    (focus)="error = null" />
+                </div>
+                <div class="col-xs-8">
+                  <input type="text" class="form-control" placeholder="Module Description" [(ngModel)]="module.description" />
+                </div>
+              </div>
+            </h6>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <span class="error" *ngIf="error">{{ error }}</span>
+        <button type="button" class="btn btn-default" data-dismiss="modal" #closeBtn>Close</button>
+        <button class="an-btn an-btn-primary" (click)="saveModule()">
+          <i class="glyphicon glyphicon glyphicon-floppy-disk"></i> Save
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>

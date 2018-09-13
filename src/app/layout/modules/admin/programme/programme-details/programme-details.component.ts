@@ -28,6 +28,17 @@ export class ProgrammeDetailsComponent implements OnInit {
     this.programmeId = this.route.snapshot.paramMap.get('id');
     this.getClassList();
     this.getModulesList();
+
+    this.event.on('moduleUpdated', (module) => {
+      if (this.programme) {
+        this.programme.module.forEach(M => {
+          if (M.id === module.id) {
+            M.name = module.name;
+            M.description = module.description;
+          }
+        })
+      }
+    });
   }
 
   private setClassId(class_id) {
@@ -45,6 +56,7 @@ export class ProgrammeDetailsComponent implements OnInit {
         // TODO: implement error handler
       } else {
         this.classList = res.data;
+        // FIXME: get the selected class id by calling an API
         this.setClassId(1);
       }
     });
@@ -72,6 +84,14 @@ export class ProgrammeDetailsComponent implements OnInit {
   onClassCreated(year) {
     console.log(year);
     this.classList.push(year);
+  }
+
+  editModule(module) {
+    this.event.emit('editModule', module);
+  }
+
+  editCourse(courseId) {
+    this.event.emit('editCourse', courseId);
   }
 
 }

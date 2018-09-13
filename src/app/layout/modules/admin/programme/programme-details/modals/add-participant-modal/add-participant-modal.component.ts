@@ -28,9 +28,17 @@ export class AddParticipantModalComponent implements OnInit {
   ngOnInit() {
     // TODO: add loader (for every api call in other components as well)
     this.event.on('selectedCourseId', courseId => {
+      console.log(courseId);
       this.courseId = courseId;
+      this.reset();
       this.getParticipants();
     });
+  }
+
+  private reset() {
+    this.page = 1;
+    this.totalPages = 0;
+    this.currentPage = 0;
   }
 
   getParticipants(page = 1) {

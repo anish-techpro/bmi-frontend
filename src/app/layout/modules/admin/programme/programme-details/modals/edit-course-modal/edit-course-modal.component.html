@@ -1,4 +1,4 @@
-<div id="editProg" class="modal fade" role="dialog">
+<div id="editProg" class="modal fade" role="dialog" *ngIf="courseId">
   <div class="modal-dialog modal-lg">
 
     <!-- Modal content-->
@@ -7,24 +7,24 @@
         <button type="button" class="close" data-dismiss="modal">
           <i class="glyphicon glyphicon-remove"></i>
         </button>
-        <h4 class="modal-title">Programme Details</h4>
+        <!-- <h4 class="modal-title">Programme Details</h4> -->
+        <h4 class="modal-title">Edit Course Details</h4>
       </div>
       <div class="modal-body">
         <div class="an-single-component with-shadow">
-          <div class="an-component-header full-width">
+          <!-- <div class="an-component-header full-width">
             <h6 class="full-width">
               <div class="row">
                 <div class="col-xs-4">
                   <input type="text" class="form-control" placeholder="Module Name" value="STUDIES DOCUMENTATION" />
                 </div>
                 <div class="col-xs-8">
-                  <input type="text" class="form-control" placeholder="Module Description" value="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-                  />
+                  <input type="text" class="form-control" placeholder="Module Description" value="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book." />
                 </div>
               </div>
             </h6>
 
-          </div>
+          </div> -->
 
           <div class="an-component-body">
             <div class="an-bootstrap-custom-tab" style="padding-top:0; padding-bottom:0;">
@@ -32,34 +32,39 @@
                 <!-- Nav tabs -->
                 <ul class="nav nav-tabs text-left" role="tablist">
                   <li role="presentation" class="active">
-                    <a href="#diska1" aria-controls="diska" role="tab" data-toggle="tab" aria-expanded="true">Course</a>
+                    <a href="#diska1" aria-controls="diska" role="tab" data-toggle="tab" aria-expanded="true"
+                      #courseBtn>Course</a>
                   </li>
                   <li role="presentation" class="">
                     <a href="#diskaa" aria-controls="diskaa" role="tab" data-toggle="tab" aria-expanded="false">Description</a>
                   </li>
-                  <!--<li role="presentation" class=""><a href="#diskab" aria-controls="diskab" role="tab" data-toggle="tab" aria-expanded="false">Upload Course</a>
-                                        </li>-->
                   <li role="presentation" class="">
-                    <a href="#diskd4" aria-controls="diskd" role="tab" data-toggle="tab" aria-expanded="false">Assign Teacher</a>
+                    <a href="#diskab" aria-controls="diskab" role="tab" data-toggle="tab" aria-expanded="false">Upload
+                      Course</a>
+                  </li>
+                  <li role="presentation" class="">
+                    <a href="#diskd4" aria-controls="diskd" role="tab" data-toggle="tab" aria-expanded="false">Assign
+                      Teacher</a>
                   </li>
                   <li role="presentation" class="">
                     <a href="#diskb2" aria-controls="diskb" role="tab" data-toggle="tab" aria-expanded="false">Exam</a>
                   </li>
-                  <li role="presentation" class="">
-                    <a href="#diskc3" aria-controls="diskc" role="tab" data-toggle="tab" aria-expanded="false">Real Life Project</a>
-                  </li>
+                  <!-- <li role="presentation" class="">
+                    <a href="#diskc3" aria-controls="diskc" role="tab" data-toggle="tab" aria-expanded="false">Real
+                      Life Project</a>
+                  </li> -->
                 </ul>
               </div>
 
               <!-- Tab panes -->
-              <div class="tab-content">
+              <div class="tab-content" *ngIf="course">
                 <div role="tabpanel" class="tab-pane fade active in" id="diska1">
                   <div class="row">
-                    <div class="col-sm-3">
+                    <div class="col-sm-4">
                       <label>Course Name</label>
-                      <input type="text" class="an-form-control" placeholder="Enter Course Name" value="BMI Administration Team">
+                      <input type="text" class="an-form-control" placeholder="Enter Course Name" [(ngModel)]="course.name">
                     </div>
-                    <div class="col-sm-3">
+                    <div class="col-sm-4">
                       <label>Start Date</label>
                       <div class="an-date-time-picker">
 
@@ -68,11 +73,11 @@
                             <i class="ion-android-calendar"></i>
                           </div>
                           <!-- <input type="text" class="an-form-control an-date-time" placeholder="Select Date" id="datetimepicker3" value="2017-11-09, 4.00 pm"> -->
-                          <app-datetimepicker [(date)]="date"></app-datetimepicker>
+                          <app-datetimepicker [(date)]="course.available_from"></app-datetimepicker>
                         </div>
                       </div>
                     </div>
-                    <div class="col-sm-3">
+                    <div class="col-sm-4">
                       <label>End Date</label>
                       <div class="an-date-time-picker">
 
@@ -80,11 +85,12 @@
                           <div class="an-input-group-addon">
                             <i class="ion-android-calendar"></i>
                           </div>
-                          <input type="text" class="an-form-control an-date-time" placeholder="Select Date" id="datetimepicker4" value="2019-06-21, 5.00 pm">
+                          <!-- <input type="text" class="an-form-control an-date-time" placeholder="Select Date" id="datetimepicker4" value="2019-06-21, 5.00 pm"> -->
+                          <app-datetimepicker [(date)]="course.available_till"></app-datetimepicker>
                         </div>
                       </div>
                     </div>
-                    <div class="col-sm-3">
+                    <!-- <div class="col-sm-3">
                       <label></label>
                       <div class="an-file-upload-container" style="margin-bottom:15px;">
                         <div tabindex="500" class="btn btn-primary btn-file">
@@ -96,10 +102,10 @@
 
                       </div>
 
-                    </div>
+                    </div> -->
 
                   </div>
-                  <div class="row">
+                  <!-- <div class="row">
 
                     <div class="col-sm-12">
                       <div class="an-scrollable-x">
@@ -133,7 +139,7 @@
                       </div>
                       <div class="clearfix"></div>
                     </div>
-                  </div>
+                  </div> -->
                 </div>
                 <!-- end .TAB-PANE -->
 
@@ -142,20 +148,71 @@
                     <div class="col-sm-12">
                       <!-- <textarea id="txtEditor1"></textarea> -->
                       <!-- <app-ngx-editor [placeholder]="'Description...'" [spellcheck]="true"></app-ngx-editor> -->
-                      <app-ckeditor></app-ckeditor>
+                      <app-ckeditor [(textInput)]="course.description"></app-ckeditor>
                     </div>
                   </div>
                 </div>
 
-                <!--<div role="tabpanel" class="tab-pane fade" id="diskab">
-                                       
-                                      </div>-->
+                <div role="tabpanel" class="tab-pane fade in" id="diskab">
+                  <div class="col-sm-3">
+                    <label></label>
+                    <!-- <div class="an-file-upload-container" style="margin-bottom:0;">
+                        <div>
+                          <i class="glyphicon glyphicon-paperclip"></i>&nbsp;
+                          <span class="hidden-xs">Upload Course</span>
+                          <input id="input-id" type="file">
+                        </div>
+                      </div> -->
+                    <input type="file" accept=".pdf, .xls, .xlsx, .doc, .csv" #uploadCourseInput style="display:none;"
+                      (change)="addCourseDocument($event)">
+                    <button tabindex="500" class="an-btn an-btn-primary" (click)="uploadCourseInput.click()">
+                      <i class="glyphicon glyphicon-paperclip"></i>&nbsp;
+                      <span class="hidden-xs">Upload Course</span>
+                    </button>
+                  </div>
+                </div>
 
                 <div role="tabpanel" class="tab-pane fade" id="diskd4">
                   <div class="row">
-                    <div class="col-sm-5">
-                      <label></label>
-                      <a href="#" class="an-btn an-btn-primary" data-toggle="modal" data-target="#myModal22">Assign Teacher</a>
+                    <div class="col-sm-12">
+                      <!-- <label></label>
+                      <a href="#" class="an-btn an-btn-primary" data-toggle="modal" data-target="#myModal22">Assign
+                        Teacher</a> -->
+                      <div>
+                        <div class="col-sm-6">
+                          <div class="an-input-group right">
+                            <div class="an-input-group-addon">
+                              <i class="ion-search"></i>
+                            </div>
+                            <input class="an-form-control marg-sm" placeholder="Search Teacher" type="text">
+                          </div>
+                        </div>
+                        <div class="col-sm-3 col-sm-offset-3">
+                          <button class="an-btn an-btn-default pull-right" data-backdrop="static" data-keyboard="false"
+                            data-target="#send22" data-toggle="modal" type="button">
+                            <i class="glyphicon glyphicon-plus"></i> Invite New Teacher</button>
+                          <div class="clearfix"></div>
+
+                        </div>
+                        <div class="clearfix"></div>
+                        <hr>
+                        <div class="col-sm-12">
+                          <ul class="invite">
+                            <li *ngFor="let teacher of teacherList; let i = index">
+                              <input id="cb-{{i}}" type="checkbox" [(ngModel)]="teacher.selected">
+                              <label for="cb-{{i}}">
+                                <img src="../assets/img/profile-image.jpg">
+                                <span>{{ teacher.name }}</span>
+                              </label>
+                            </li>
+                          </ul>
+                          <div class="clearfix"></div>
+                        </div>
+
+
+
+                        <div class="clearfix"></div>
+                      </div>
                       <div class="clearfix"></div>
                       <br>
                       <!-- Modal -->
@@ -180,8 +237,8 @@
                                 </div>
                               </div>
                               <div class="col-sm-3 col-sm-offset-3">
-                                <button type="button" class="an-btn an-btn-default pull-right" data-toggle="modal" data-backdrop="static" data-keyboard="false"
-                                  data-target="#send22">
+                                <button type="button" class="an-btn an-btn-default pull-right" data-toggle="modal"
+                                  data-backdrop="static" data-keyboard="false" data-target="#send22">
                                   <i class="glyphicon glyphicon-plus"></i> Invite New Teacher</button>
                                 <div class="clearfix"></div>
 
@@ -236,7 +293,8 @@
                             <div class="modal-footer">
                               <button type="button" class="btn btn-default same-an-btn pull-left" data-dismiss="modal">Close</button>
                               <button type="button" class="btn btn-default same-an-btn" data-dismiss="modal">Select All</button>
-                              <button type="button" class="btn btn-default same-an-btn" data-dismiss="modal">Select None</button>
+                              <button type="button" class="btn btn-default same-an-btn" data-dismiss="modal">Select
+                                None</button>
                               <button type="button" class="an-btn an-btn-default">
                                 <i class="glyphicon glyphicon-ok"></i> Assign Teacher</button>
                             </div>
@@ -283,7 +341,7 @@
                     </div>
                     <div class="clearfix"></div>
                   </div>
-                  <div class="table-responsive">
+                  <!-- <div class="table-responsive">
                     <table class="table table-hover">
                       <thead>
                         <tr>
@@ -311,7 +369,7 @@
                         </tr>
                       </tbody>
                     </table>
-                  </div>
+                  </div> -->
                 </div>
 
                 <div role="tabpanel" class="tab-pane fade" id="diskb2">
@@ -329,7 +387,8 @@
                             <div class="an-input-group-addon">
                               <i class="ion-android-calendar"></i>
                             </div>
-                            <input type="text" class="an-form-control an-date-time" placeholder="Select Date" id="datetimepicker5">
+                            <!-- <input type="text" class="an-form-control an-date-time" placeholder="Select Date" id="datetimepicker5"> -->
+                            <app-datetimepicker></app-datetimepicker>
                           </div>
                         </div>
                       </div>
@@ -341,11 +400,21 @@
                             <div class="an-input-group-addon">
                               <i class="ion-android-calendar"></i>
                             </div>
-                            <input type="text" class="an-form-control an-date-time" placeholder="Select Date" id="datetimepicker6">
+                            <!-- <input type="text" class="an-form-control an-date-time" placeholder="Select Date" id="datetimepicker6"> -->
+                            <app-datetimepicker></app-datetimepicker>
                           </div>
                         </div>
                       </div>
                       <div class="clearfix"></div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12">
+                        <div class="pull-right">
+                          <a href="#" class="an-btn an-btn-primary">
+                            <i class="glyphicon glyphicon-plus" style="margin-right: 5px;"></i> Add
+                          </a>
+                        </div>
+                      </div>
                     </div>
                     <div class="table-responsive">
                       <table class="table table-hover exam-cus-table">
@@ -357,22 +426,8 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td>Business performance management</td>
-                            <td class="text-center">
-                              <select class="an-form-control">
-                                <option>1 Time</option>
-                                <option>2 Time</option>
-                              </select>
-                            </td>
-                            <td>
-                              <a href="#" class="an-btn an-btn-primary btn-xs">
-                                <i class="glyphicon glyphicon-remove"></i>
-                              </a>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>Academic Regulation of Studies</td>
+                          <tr *ngFor="let exam of course.exam">
+                            <td>{{ exam.exam_name }}</td>
                             <td class="text-center">
                               <select class="an-form-control">
                                 <option>1 Time</option>
@@ -392,6 +447,7 @@
                 </div>
                 <!-- end .TAB-PANE -->
 
+                <!-- UPDATED: Real Life Project will be under Module Edit -->
                 <div role="tabpanel" class="tab-pane fade" id="diskc3">
                   <div class="row">
                     <div class="col-sm-4">
@@ -406,7 +462,8 @@
                           <div class="an-input-group-addon">
                             <i class="ion-android-calendar"></i>
                           </div>
-                          <input type="text" class="an-form-control an-date-time" placeholder="Select Date" id="datetimepicker7">
+                          <!-- <input type="text" class="an-form-control an-date-time" placeholder="Select Date" id="datetimepicker7"> -->
+                          <app-datetimepicker></app-datetimepicker>
                         </div>
                       </div>
                     </div>
@@ -418,7 +475,8 @@
                           <div class="an-input-group-addon">
                             <i class="ion-android-calendar"></i>
                           </div>
-                          <input type="text" class="an-form-control an-date-time" placeholder="Select Date" id="datetimepicker8">
+                          <!-- <input type="text" class="an-form-control an-date-time" placeholder="Select Date" id="datetimepicker8"> -->
+                          <app-datetimepicker></app-datetimepicker>
                         </div>
                       </div>
                     </div>

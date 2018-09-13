@@ -3,7 +3,7 @@
 }
 
 .pagination a {
-    background: rgba(0, 0, 0, 0.1);
+    background: rgba(0, 0, 0, 0.075);
     padding: 0.5rem 1rem;
     border-radius: 3px;
     text-decoration: none;
@@ -11,8 +11,13 @@
     cursor: pointer;
 }
 
+.pagination a:hover {
+    background: rgba(0, 0, 0, 0.1);
+    color: #3d5ca2;
+}
+
 .pagination a.selected {
-    background: rgba(0, 0, 0, 0.25);
+    background: rgba(0, 0, 0, 0.15) !important;
     cursor: default;
     color: #4c4646 !important;
 }

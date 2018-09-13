@@ -50,7 +50,8 @@
                   <div class="row">
                     <div class="col-md-12">
 
-                      <div style="position:relative; height:200px; max-height:200px; background-repeat: no-repeat; background-size:cover; background-position: center;" [ngStyle]="{ background: 'url(' + programme.coverImage + ')' }">
+                      <div style="position:relative; height:200px; max-height:200px; background-repeat: no-repeat; background-size:cover; background-position: center;"
+                        [ngStyle]="{ background: 'url(' + programme.coverImage + ')' }">
                         <!-- <a href="#" class="an-btn an-btn-default upload">Upload Cover</a> -->
                         <div class="an-file-upload-container upload" style="margin-bottom:0;">
                           <div tabindex="500" class="btn btn-primary btn-file">
@@ -134,11 +135,11 @@
                           <div class="an-helper-block">
                             <div class="row">
                               <div class="col-sm-4" *ngFor="let photo of programmePhotos; let i = index">
-                                <div class="folder">
+                                <div class="folder thumbnail">
                                   <a class="an-btn btn-xs an-btn-primary folder-btn" *ngIf="photo.status === 1" (click)="removePhoto(i)">
                                     <i class="glyphicon glyphicon-remove"></i>
                                   </a>
-                                  <img [src]="photo.src" class=" img-responsive thumbnail" />
+                                  <img [src]="photo.src" class=" img-responsive" />
                                   <div class="loader" *ngIf="photo.status === 0">
                                     <div class="spinner"></div>
                                   </div>
@@ -162,12 +163,13 @@
                           <div class="an-helper-block">
                             <div class="row">
                               <div class="col-sm-4" *ngFor="let video of programme.videos; let i = index; trackBy: trackFn">
-                                <div class="folder">
+                                <div class="folder marg-20">
                                   <a class="an-btn btn-xs an-btn-primary folder-btn" *ngIf="video.status === 1" (click)="removeVideoUrl(i)">
                                     <i class="glyphicon glyphicon-remove"></i>
                                   </a>
                                   <div class="videoWrapper">
-                                    <iframe width="560" height="300" [src]="video.sanitizedUrl" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                                    <iframe width="560" height="300" [src]="video.sanitizedUrl" frameborder="0" allow="autoplay; encrypted-media"
+                                      allowfullscreen></iframe>
                                   </div>
                                   <div class="loader" *ngIf="video.status === 0">
                                     <div class="spinner"></div>
@@ -353,7 +355,8 @@
                                       <div class="an-input-group-addon">
                                         <i class="ion-android-calendar"></i>
                                       </div>
-                                      <input type="text" class="an-form-control an-date-time" placeholder="Select Date" id="datetimepicker10">
+                                      <input type="text" class="an-form-control an-date-time" placeholder="Select Date"
+                                        id="datetimepicker10">
                                     </div>
                                   </div>
                                 </div>
@@ -365,7 +368,8 @@
                                       <div class="an-input-group-addon">
                                         <i class="ion-android-calendar"></i>
                                       </div>
-                                      <input type="text" class="an-form-control an-date-time" placeholder="Select Date" id="datetimepicker11">
+                                      <input type="text" class="an-form-control an-date-time" placeholder="Select Date"
+                                        id="datetimepicker11">
                                     </div>
                                   </div>
                                 </div>
@@ -396,7 +400,8 @@
                                       <div class="an-input-group-addon">
                                         <i class="ion-android-calendar"></i>
                                       </div>
-                                      <input type="text" class="an-form-control an-date-time" placeholder="Select Date" id="datetimepicker12">
+                                      <input type="text" class="an-form-control an-date-time" placeholder="Select Date"
+                                        id="datetimepicker12">
                                     </div>
                                   </div>
                                 </div>
@@ -408,7 +413,8 @@
                                       <div class="an-input-group-addon">
                                         <i class="ion-android-calendar"></i>
                                       </div>
-                                      <input type="text" class="an-form-control an-date-time" placeholder="Select Date" id="datetimepicker13">
+                                      <input type="text" class="an-form-control an-date-time" placeholder="Select Date"
+                                        id="datetimepicker13">
                                     </div>
                                   </div>
                                 </div>
@@ -448,7 +454,8 @@
                                       <div class="an-input-group-addon">
                                         <i class="ion-android-calendar"></i>
                                       </div>
-                                      <input type="text" class="an-form-control an-date-time" placeholder="Select Date" id="datetimepicker14">
+                                      <input type="text" class="an-form-control an-date-time" placeholder="Select Date"
+                                        id="datetimepicker14">
                                     </div>
                                   </div>
                                 </div>
@@ -460,7 +467,8 @@
                                       <div class="an-input-group-addon">
                                         <i class="ion-android-calendar"></i>
                                       </div>
-                                      <input type="text" class="an-form-control an-date-time" placeholder="Select Date" id="datetimepicker15">
+                                      <input type="text" class="an-form-control an-date-time" placeholder="Select Date"
+                                        id="datetimepicker15">
                                     </div>
                                   </div>
                                 </div>
