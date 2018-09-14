@@ -403,19 +403,19 @@
                         <thead>
                           <tr>
                             <th>Exam Name</th>
-                            <th class="text-center" width="25%">Student Take / Retake Exam</th>
-                            <th></th>
+                            <!-- <th class="text-center" width="25%">Student Take / Retake Exam</th> -->
+                            <th>Actions</th>
                           </tr>
                         </thead>
                         <tbody class="exam-list">
                           <tr *ngFor="let exam of course.exam; let examIndex = index">
                             <td>{{ exam.exam_name }}</td>
-                            <td class="text-center">
+                            <!-- <td class="text-center">
                               <select class="an-form-control">
                                 <option>1 Time</option>
                                 <option>2 Time</option>
                               </select>
-                            </td>
+                            </td> -->
                             <td>
                               <a (click)="removeExam(examIndex)" class="an-btn an-btn-primary btn-xs">
                                 <i class="glyphicon glyphicon-remove"></i>
