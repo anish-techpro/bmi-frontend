@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { bindCallback } from 'rxjs/observable/bindCallback';
 
 @Injectable()
 export class AdminService {
@@ -111,6 +112,54 @@ export class AdminService {
           courseData: res[0],
           teacherListData: res[1]
         });
+      },
+      err => {
+        callback(err);
+      }
+    );
+  }
+
+  addCourseDocument(file, callback) {
+    const formData = new FormData();
+    formData.append('file', file);
+    let headers = new HttpHeaders().set('no-content-type', 'true');
+    this.http.post('/course/files', formData, { headers }).subscribe(
+      res => {
+        callback(null, res);
+      },
+      err => {
+        callback(err);
+      }
+    );
+  }
+
+  removeCourseDocument(file, callback) {
+    this.http.delete('/course/files/' + file.enc_name + '/' + file.extension).subscribe(
+      res => {
+        callback(null, res);
+      },
+      err => {
+        callback(err)
+      }
+    );
+  }
+
+  sendInvitationLinkToTeacher(email, callback) {
+    // TODO: also send course id to notify teacher about the course details
+    this.http.patch('/teacher/sent-invitation', { email }).subscribe(
+      res => {
+        callback(null, res);
+      },
+      err => {
+        callback(err);
+      }
+    );
+  }
+
+  updateCourse(courseId, payload, callback) {
+    this.http.patch('/course/' + courseId, payload).subscribe(
+      res => {
+        callback(null, res);
       },
       err => {
         callback(err);

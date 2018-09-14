@@ -4,7 +4,7 @@
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">
+        <button type="button" class="close" data-dismiss="modal" #closeBtn>
           <i class="glyphicon glyphicon-remove"></i>
         </button>
         <!-- <h4 class="modal-title">Programme Details</h4> -->
@@ -169,6 +169,18 @@
                       <i class="glyphicon glyphicon-paperclip"></i>&nbsp;
                       <span class="hidden-xs">Upload Course</span>
                     </button>
+                  </div>
+                  <div class="col-sm-12">
+                    <div class="row" style="margin-top: 10px;">
+                      <div class="col-sm-4" *ngFor="let file of uploadedFiles; let i = index">
+                        <div class="uploaded-file">
+                          <span>
+                            {{ file.name }}
+                          </span>
+                          <i class="glyphicon glyphicon-remove" (click)="removeCourseDocument(i)"></i>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
@@ -342,7 +354,7 @@
                     <div class="row">
                       <div class="col-sm-4">
                         <label>Exam Name</label>
-                        <input type="text" class="an-form-control" placeholder="Enter Exam Name">
+                        <input type="text" class="an-form-control" placeholder="Enter Exam Name" [(ngModel)]="exam.exam_name">
                       </div>
                       <div class="col-sm-4">
                         <label>Start Date</label>
@@ -353,7 +365,7 @@
                               <i class="ion-android-calendar"></i>
                             </div>
                             <!-- <input type="text" class="an-form-control an-date-time" placeholder="Select Date" id="datetimepicker5"> -->
-                            <app-datetimepicker></app-datetimepicker>
+                            <app-datetimepicker [(date)]="exam.start_date"></app-datetimepicker>
                           </div>
                         </div>
                       </div>
@@ -366,7 +378,7 @@
                               <i class="ion-android-calendar"></i>
                             </div>
                             <!-- <input type="text" class="an-form-control an-date-time" placeholder="Select Date" id="datetimepicker6"> -->
-                            <app-datetimepicker></app-datetimepicker>
+                            <app-datetimepicker [(date)]="exam.end_date"></app-datetimepicker>
                           </div>
                         </div>
                       </div>
@@ -375,9 +387,13 @@
                     <div class="row">
                       <div class="col-xs-12">
                         <div class="pull-right">
-                          <a href="#" class="an-btn an-btn-primary">
+                          <span class="error" *ngIf="exam.error">
+                            {{ exam.error }}
+                          </span>
+                          <button href="#" class="an-btn an-btn-primary" (click)="addExam()" [disabled]="!exam.exam_name"
+                            [attr.title]="!exam.exam_name ? 'Enter exam name.' : ''">
                             <i class="glyphicon glyphicon-plus" style="margin-right: 5px;"></i> Add
-                          </a>
+                          </button>
                         </div>
                       </div>
                     </div>
@@ -391,7 +407,7 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr *ngFor="let exam of course.exam">
+                          <tr *ngFor="let exam of course.exam; let examIndex = index">
                             <td>{{ exam.exam_name }}</td>
                             <td class="text-center">
                               <select class="an-form-control">
@@ -400,8 +416,11 @@
                               </select>
                             </td>
                             <td>
-                              <a href="#" class="an-btn an-btn-primary btn-xs">
+                              <a (click)="removeExam(examIndex)" class="an-btn an-btn-primary btn-xs">
                                 <i class="glyphicon glyphicon-remove"></i>
+                              </a>
+                              <a class="an-btn btn-xs an-btn-primary" (click)="editExam(exam)">
+                                <i class="glyphicon glyphicon glyphicon-pencil"></i>
                               </a>
                             </td>
                           </tr>
@@ -497,7 +516,7 @@
         <button class="an-btn an-btn-primary">
           <i class="glyphicon glyphicon glyphicon-floppy-disk"></i> Save</button>
 
-        <button class="an-btn an-btn-primary">
+        <button class="an-btn an-btn-primary" (click)="saveCourse()">
           <i class="glyphicon glyphicon-floppy-saved"></i> Save &amp; Publish</button>
       </div>
     </div>
@@ -520,11 +539,12 @@
 
 
         <div class="col-sm-9">
-          <input type="email" class="an-form-control" placeholder="Enter Email Id">
+          <input type="email" class="an-form-control" placeholder="Enter Email Id" #teacherEmail (keyup.enter)="sendInvitationLinkBtn.click()">
           <div class="clearfix"></div>
         </div>
         <div class="col-sm-3">
-          <button type="button" class="an-btn an-btn-primary">
+          <button type="button" class="an-btn an-btn-primary" [disabled]="!teacherEmail.value" #sendInvitationLinkBtn
+            (click)="sendInvitationLink(teacherEmail.value)">
             <i class="glyphicon glyphicon-send"></i> Send</button>
           <div class="clearfix"></div>
         </div>
@@ -533,7 +553,7 @@
         <div class="clearfix"></div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default same-an-btn" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default same-an-btn" data-dismiss="modal" #invitationCloseBtn>Close</button>
       </div>
     </div>
 

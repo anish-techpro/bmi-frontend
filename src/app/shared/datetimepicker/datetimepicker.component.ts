@@ -20,7 +20,7 @@ export class DatetimepickerComponent implements OnInit {
       // bigBanner: true,
       timePicker: !this.onlyDate,
       format: this.onlyDate ? 'yyyy-MM-dd' : 'yyyy-MM-dd hh:mm a',
-      closeOnSelect: false
+      closeOnSelect: true
     }
   }
 

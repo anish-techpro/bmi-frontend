@@ -127,9 +127,9 @@
                   </div>
                 </div>
                 <ng-container *ngIf="programme; else noData">
-                  <div class="prog-div" *ngFor="let module of programme.module">
+                  <div class="prog-div" *ngFor="let module of programme.module; let i = index">
                     <h5 style="display:flex;justify-content:space-between;align-items:center;">
-                      <span>{{ module.name }}</span>
+                      <span>MODULE {{ i + 1 }}: {{ module.name }}</span>
                       <a href="#" data-toggle="modal" data-target="#editModule" class="an-btn btn-xs an-btn-primary"
                         (click)="editModule(module)">
                         <i class="glyphicon glyphicon glyphicon-pencil"></i>
