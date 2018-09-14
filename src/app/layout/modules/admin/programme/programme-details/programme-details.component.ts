@@ -29,6 +29,12 @@ export class ProgrammeDetailsComponent implements OnInit {
     this.getClassList();
     this.getModulesList();
 
+    this.event.on('updateModuleList', (flag) => {
+      if (flag) {
+        this.getModulesList();
+      }
+    });
+
     this.event.on('moduleUpdated', (module) => {
       if (this.programme) {
         this.programme.module.forEach(M => {
@@ -72,6 +78,16 @@ export class ProgrammeDetailsComponent implements OnInit {
         // TODO: implement error handler
       } else {
         this.programme = res.data[0];
+        this.programme.module.forEach(module => {
+          let modifiedCourses = [];
+          for (let course of module.courses) {
+            modifiedCourses.push(course);
+            if (course.exam) {
+              modifiedCourses = [...modifiedCourses, ...course.exam];
+            }
+          }
+          module.courses = modifiedCourses;
+        })
       }
     });
   }

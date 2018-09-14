@@ -392,7 +392,8 @@
                           </span>
                           <button href="#" class="an-btn an-btn-primary" (click)="addExam()" [disabled]="!exam.exam_name"
                             [attr.title]="!exam.exam_name ? 'Enter exam name.' : ''">
-                            <i class="glyphicon glyphicon-plus" style="margin-right: 5px;"></i> Add
+                            <i class="glyphicon glyphicon-plus" style="margin-right: 5px;"></i> {{ exam.id ? 'Update' :
+                            'Add' }}
                           </button>
                         </div>
                       </div>
@@ -406,7 +407,7 @@
                             <th></th>
                           </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="exam-list">
                           <tr *ngFor="let exam of course.exam; let examIndex = index">
                             <td>{{ exam.exam_name }}</td>
                             <td class="text-center">

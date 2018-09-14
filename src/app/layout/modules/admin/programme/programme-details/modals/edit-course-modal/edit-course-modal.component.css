@@ -22,3 +22,7 @@
     cursor: pointer;
     color: red;
 }
+
+.exam-list tr td:first-child {
+    width: 50%;
+}
