@@ -153,14 +153,14 @@
                         <tbody dragula="COURSES">
                           <tr *ngFor="let course of module.courses">
 
-                            <td>
-                              <span class="mov-ico"></span>{{ course.name }}</td>
-                            <td>{{ course.available_from }}</td>
-                            <td>{{ course.available_till }}</td>
+                            <td [ngStyle]="{ 'padding-left': course.exam ? '' : '30px'  }">
+                              <span class="mov-ico"></span>{{ course.name || course.exam_name }}</td>
+                            <td>{{ course.available_from || course.start_date | date: 'medium' }}</td>
+                            <td>{{ course.available_till || course.end_date | date: 'medium' }}</td>
 
                             <td>
                               <a href="#" data-toggle="modal" data-target="#editProg" class="an-btn btn-xs an-btn-primary"
-                                (click)="editCourse(course.id)">
+                                (click)="editCourse(course.id)" *ngIf="course.exam">
                                 <i class="glyphicon glyphicon glyphicon-pencil"></i>
                               </a>
                             </td>
@@ -170,13 +170,13 @@
                             </td> -->
                             <td class="text-center">
                               <a href="#" data-toggle="modal" data-target="#participant" class="an-btn btn-xs an-btn-primary"
-                                (click)="event.emit('selectedCourseId', course.id)">
+                                (click)="event.emit('selectedCourseId', course.id)" *ngIf="course.exam">
                                 <i class="glyphicon glyphicon-plus"></i> Add
                               </a>
                             </td>
                             <td>
                               <a href="#" data-toggle="modal" data-target="#viewProg" style="text-transform:capitalize;"
-                                class="an-btn btn-xs an-btn-primary">
+                                class="an-btn btn-xs an-btn-primary" *ngIf="course.exam">
                                 <i class="glyphicon glyphicon-eye-open"></i> View</a>
                             </td>
                           </tr>

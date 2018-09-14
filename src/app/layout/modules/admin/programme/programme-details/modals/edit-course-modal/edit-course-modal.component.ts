@@ -126,12 +126,16 @@ export class EditCourseModalComponent implements OnInit {
             this.exam.error = 'Start Date should be less than End Date.';
             return;
         }
+        this.exam.edited = true;
         this.examPayload.updated.push(this.exam);
         this.course.exam.push(this.exam);
         this.setExam();
     }
 
     editExam(exam) {
+        if (this.exam.id) {
+            this.course.exam.push(this.exam);
+        }
         this.exam = exam;
         this.exam.start_date = this.exam.start_date || new Date();
         this.exam.end_date = this.exam.end_date || new Date();
@@ -153,7 +157,7 @@ export class EditCourseModalComponent implements OnInit {
             exam.start_date = moment(exam.start_date).format('YYYY-MM-DD HH:MM:SS');
             exam.end_date = moment(exam.end_date).format('YYYY-MM-DD HH:MM:SS');
             return exam;
-        })
+        });
         const selectedTeacher = this.teacherList.reduce((result, teacher) => {
             if (teacher.selected) {
                 result.push(teacher.id);
@@ -175,6 +179,7 @@ export class EditCourseModalComponent implements OnInit {
                 console.log(err);
             } else {
                 console.log(res);
+                this.event.emit('updateModuleList', true);
                 swal('Success!', 'Course updated successfully.', 'success');
                 this.closeBtn.nativeElement.click();
             }
