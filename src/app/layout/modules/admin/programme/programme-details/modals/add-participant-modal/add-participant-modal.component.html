@@ -20,8 +20,8 @@
             <div class="col-sm-12">
               <ul class="invite">
                 <li *ngFor="let participant of participants; let i = index">
-                  <input type="checkbox" id="cb-{{i}}" [(ngModel)]="participant.selected" />
-                  <label for="cb-{{i}}">
+                  <input type="checkbox" id="cb-participant-{{i}}" [(ngModel)]="participant.selected" />
+                  <label for="cb-participant-{{i}}">
                     <img [src]="participant.image" />
                     <span>{{ participant.name }}</span>
                   </label>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProgrammeService } from '../../services/programme/programme.service';
 import { EventService } from '../../../../../services/event/event.service';
+import { DragulaService } from 'ng2-dragula';
 
 @Component({
   selector: 'app-programme-details',
@@ -21,8 +22,14 @@ export class ProgrammeDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private programmeService: ProgrammeService,
-    public event: EventService
-  ) { }
+    public event: EventService,
+    private dragulaService: DragulaService
+  ) {
+    this.dragulaService.createGroup('COURSES', {
+      moves: (el, source, handle, sibling) => !el.classList.contains('ignore-item'),
+      accepts: (el, target, source, sibling) => target !== source,
+    });
+  }
 
   ngOnInit() {
     this.programmeId = this.route.snapshot.paramMap.get('id');

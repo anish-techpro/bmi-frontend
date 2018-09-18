@@ -7,3 +7,7 @@
 .same-an-btn {
     padding: 8px 20px;
 }
+
+.ignore-item {
+    cursor: default !important;
+}

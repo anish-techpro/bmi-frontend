@@ -211,8 +211,8 @@
                         <div class="col-sm-12">
                           <ul class="invite">
                             <li *ngFor="let teacher of teacherList; let i = index">
-                              <input id="cb-{{i}}" type="checkbox" [(ngModel)]="teacher.selected">
-                              <label for="cb-{{i}}">
+                              <input id="cb-edit-course-teacher-{{i}}" type="checkbox" [(ngModel)]="teacher.selected">
+                              <label for="cb-edit-course-teacher-{{i}}">
                                 <img src="../assets/img/profile-image.jpg">
                                 <span>{{ teacher.name }}</span>
                               </label>

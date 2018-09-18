@@ -150,8 +150,8 @@
                             <th>Details</th>
                           </tr>
                         </thead>
-                        <tbody dragula="COURSES">
-                          <tr *ngFor="let course of module.courses">
+                        <tbody dragula="COURSES" [(dragulaModel)]="module.courses">
+                          <tr *ngFor="let course of module.courses" [ngClass]="{ 'ignore-item': !course.exam }">
 
                             <td [ngStyle]="{ 'padding-left': course.exam ? '' : '30px'  }">
                               <span class="mov-ico"></span>{{ course.name || course.exam_name }}</td>
