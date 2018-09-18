@@ -2,13 +2,20 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { bindCallback } from 'rxjs/observable/bindCallback';
+import { EventService } from '../../../../../services/event/event.service';
 
 @Injectable()
 export class AdminService {
 
+  public programmeId = null;
+  public classId = null;
+
   constructor(
-    private http: HttpClient
-  ) { }
+    private http: HttpClient,
+    private event: EventService
+  ) {
+    this.event.on('selectedClassId', classId => this.classId = classId);
+  }
 
   createYear(payload, callback) {
     this.http.post('/programme/classes', payload).subscribe(

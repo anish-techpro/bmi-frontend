@@ -6,14 +6,15 @@
           <div class="col-sm-3">
             <!--<label>Module Name</label>-->
             <!--<h4>Module Name &nbsp; &nbsp;<Small>Module Description</Small></h4>-->
-            <input type="text" class="an-form-control cus-input" placeholder="Module Name" (keyup)="onModuleNameKeyup($event)" name="moduleName"
-              [(ngModel)]="module.name" />
+            <input type="text" class="an-form-control cus-input" placeholder="Module Name" (keyup)="onModuleNameKeyup($event)"
+              name="moduleName" [(ngModel)]="module.name" />
           </div>
 
           <div class="col-sm-6">
             <!--<label>Module Description</label>-->
             <input type="text" class="an-form-control cus-input" placeholder="Module Description" [disabled]="!ui.moduleNameEntered"
-              name="moduleDescription" [(ngModel)]="module.description" />
+              name="moduleDescription" [attr.title]="!ui.moduleNameEntered ? 'Enter module name first.' : ''"
+              [(ngModel)]="module.description" />
 
           </div>
           <div class="col-sm-3" *ngIf="ui.moduleNameEntered">
@@ -79,9 +80,9 @@
                 <li role="presentation">
                   <a href="#diskb2" aria-controls="diskb" role="tab" data-toggle="tab">Exam</a>
                 </li>
-                <li role="presentation">
+                <!-- <li role="presentation">
                   <a href="#diskc3" aria-controls="diskc" role="tab" data-toggle="tab">Real Life Project</a>
-                </li>
+                </li> -->
               </ul>
             </div>
 
@@ -91,7 +92,8 @@
                 <div class="row">
                   <div class="col-sm-3">
                     <label>Course Name</label>
-                    <input type="text" class="an-form-control" placeholder="Enter Course Name" name="courseName" [(ngModel)]="course.name" />
+                    <input type="text" class="an-form-control" placeholder="Enter Course Name" name="courseName"
+                      [(ngModel)]="course.name" />
                   </div>
                   <div class="col-sm-3">
                     <label>Start Date</label>
@@ -143,7 +145,8 @@
                       <input id="input-id" type="file">
                     </div>
                   </div> -->
-                  <input type="file" accept=".pdf, .xls, .xlsx, .doc, .csv" #uploadCourseInput style="display:none;" (change)="addCourseDocument($event)">
+                  <input type="file" accept=".pdf, .xls, .xlsx, .doc, .csv" #uploadCourseInput style="display:none;"
+                    (change)="addCourseDocument($event)">
                   <button tabindex="500" class="an-btn an-btn-primary" (click)="uploadCourseInput.click()">
                     <i class="glyphicon glyphicon-paperclip"></i>&nbsp;
                     <span class="hidden-xs">Upload Course</span>
@@ -194,8 +197,8 @@
                             </div>
                           </div>
                           <div class="col-sm-3 col-sm-offset-3">
-                            <button type="button" class="an-btn an-btn-default pull-right" data-toggle="modal" data-backdrop="static" data-keyboard="false"
-                              data-target="#send">
+                            <button type="button" class="an-btn an-btn-default pull-right" data-toggle="modal"
+                              data-backdrop="static" data-keyboard="false" data-target="#send">
                               <i class="glyphicon glyphicon-plus"></i> Invite New Teacher</button>
                             <div class="clearfix"></div>
 
@@ -299,7 +302,8 @@
                 <div class="tab-content">
                   <div class="col-sm-4">
                     <label>Exam Name</label>
-                    <input type="text" class="an-form-control" placeholder="Enter Exam Name" name="examName" [(ngModel)]="course.exam.name" />
+                    <input type="text" class="an-form-control" placeholder="Enter Exam Name" name="examName"
+                      [(ngModel)]="course.exam.name" />
                   </div>
                   <div class="col-sm-4">
                     <label>Start Date</label>
@@ -335,8 +339,8 @@
                 <div class="row">
                   <div class="col-sm-4">
                     <label>Real Life Project</label>
-                    <input type="text" class="an-form-control" placeholder="Enter Project Name" name="projectName" [(ngModel)]="course.project.name"
-                    />
+                    <input type="text" class="an-form-control" placeholder="Enter Project Name" name="projectName"
+                      [(ngModel)]="course.project.name" />
                   </div>
                   <div class="col-sm-3">
                     <label>Start Date</label>
@@ -381,9 +385,11 @@
                 <i class="glyphicon glyphicon glyphicon-remove"></i> Cancel</button>
               <button class="btn btn-default same-an-btn" (click)="resetCourseForm()">
                 <i class="glyphicon glyphicon glyphicon-repeat"></i> Reset</button>
-              <button class="an-btn an-btn-primary" (click)="addCourseToModule()" *ngIf="!course.added" [disabled]="!course.name" [attr.title]="!course.name ? 'Enter Course Name' : ''">
+              <button class="an-btn an-btn-primary" (click)="addCourseToModule()" *ngIf="!course.added" [disabled]="!course.name"
+                [attr.title]="!course.name ? 'Enter Course Name' : ''">
                 <i class="glyphicon glyphicon-floppy-saved"></i> Add</button>
-              <button class="an-btn an-btn-primary" (click)="updateCourse()" *ngIf="course.added" [disabled]="!course.name" [attr.title]="!course.name ? 'Enter Course Name' : ''">
+              <button class="an-btn an-btn-primary" (click)="updateCourse()" *ngIf="course.added" [disabled]="!course.name"
+                [attr.title]="!course.name ? 'Enter Course Name' : ''">
                 <i class="glyphicon glyphicon-floppy-saved"></i> Update</button>
             </span>
             <div class="clearfix"></div>
@@ -403,7 +409,8 @@
 
   <div class="clearfix"></div>
   <br>
-  <div class="col-sm-12">
+  <!-- UPDATED: Hidden for now -->
+  <div class="col-sm-12" style="display:none;">
     <div class="an-single-component with-shadow" id="div3">
       <div class="an-component-header">
         <h6>Overview</h6>

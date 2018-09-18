@@ -23,11 +23,9 @@ export class ProgrammeClassFormatComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    if (this.classId) {
-      this.getClassFormat();
-    }
-    this.event.on('selectedClassId', classId => {
+    this.event.on(['selectedClassId', 'showClassFormat'], classId => {
       this.classId = classId;
+      this.error = null;
       this.getClassFormat();
     });
   }

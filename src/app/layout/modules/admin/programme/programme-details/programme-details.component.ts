@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProgrammeService } from '../../services/programme/programme.service';
 import { EventService } from '../../../../../services/event/event.service';
 import { DragulaService } from 'ng2-dragula';
+import { UiService } from '../../../../../services/ui/ui.service';
+import { AdminService } from '../../services/admin/admin.service';
 
 @Component({
   selector: 'app-programme-details',
@@ -10,7 +12,7 @@ import { DragulaService } from 'ng2-dragula';
   styleUrls: ['./programme-details.component.css'],
   providers: [ProgrammeService]
 })
-export class ProgrammeDetailsComponent implements OnInit {
+export class ProgrammeDetailsComponent implements OnInit, OnDestroy {
 
   public programmeId;
 
@@ -23,7 +25,9 @@ export class ProgrammeDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private programmeService: ProgrammeService,
     public event: EventService,
-    private dragulaService: DragulaService
+    private dragulaService: DragulaService,
+    private adminService: AdminService,
+    private ui: UiService
   ) {
     this.dragulaService.createGroup('COURSES', {
       moves: (el, source, handle, sibling) => !el.classList.contains('ignore-item'),
@@ -33,6 +37,7 @@ export class ProgrammeDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.programmeId = this.route.snapshot.paramMap.get('id');
+    this.adminService.programmeId = this.programmeId;
     this.getClassList();
     this.getModulesList();
 
@@ -52,6 +57,10 @@ export class ProgrammeDetailsComponent implements OnInit {
         })
       }
     });
+  }
+
+  ngOnDestroy() {
+    this.dragulaService.destroy('COURSES');
   }
 
   private setClassId(class_id) {
@@ -80,21 +89,25 @@ export class ProgrammeDetailsComponent implements OnInit {
       programme_id: this.programmeId,
       class_id: classId
     };
+    this.ui.loader.show();
     this.programmeService.getModulesList(payload, (err, res) => {
+      this.ui.loader.hide();
       if (err) {
         // TODO: implement error handler
       } else {
         this.programme = res.data[0];
-        this.programme.module.forEach(module => {
-          let modifiedCourses = [];
-          for (let course of module.courses) {
-            modifiedCourses.push(course);
-            if (course.exam) {
-              modifiedCourses = [...modifiedCourses, ...course.exam];
+        if (this.programme && this.programme.module) {
+          this.programme.module.forEach(module => {
+            let modifiedCourses = [];
+            for (let course of module.courses) {
+              modifiedCourses.push(course);
+              if (course.exam) {
+                modifiedCourses = [...modifiedCourses, ...course.exam];
+              }
             }
-          }
-          module.courses = modifiedCourses;
-        })
+            module.courses = modifiedCourses;
+          });
+        }
       }
     });
   }

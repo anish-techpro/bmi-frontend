@@ -408,8 +408,8 @@
                           </tr>
                         </thead>
                         <tbody class="exam-list">
-                          <tr *ngFor="let exam of course.exam; let examIndex = index">
-                            <td>{{ exam.exam_name }}</td>
+                          <tr *ngFor="let currentExam of course.exam; let examIndex = index">
+                            <td>{{ currentExam.exam_name }}</td>
                             <!-- <td class="text-center">
                               <select class="an-form-control">
                                 <option>1 Time</option>
@@ -420,7 +420,7 @@
                               <a (click)="removeExam(examIndex)" class="an-btn an-btn-primary btn-xs">
                                 <i class="glyphicon glyphicon-remove"></i>
                               </a>
-                              <a class="an-btn btn-xs an-btn-primary" (click)="editExam(exam)">
+                              <a class="an-btn btn-xs an-btn-primary" (click)="editExam(currentExam)" *ngIf="currentExam !== exam">
                                 <i class="glyphicon glyphicon glyphicon-pencil"></i>
                               </a>
                             </td>

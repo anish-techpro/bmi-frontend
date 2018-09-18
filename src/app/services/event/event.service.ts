@@ -16,10 +16,12 @@ export class EventService {
     });
   }
 
-  on(name: string, fn) {
-    this.listeners.push({
-      name, fn
-    });
+  on(name: string | string[], fn) {
+    if (Array.isArray(name)) {
+      name.forEach(N => this.listeners.push({ name: N, fn }));
+    } else {
+      this.listeners.push({ name, fn });
+    }
   }
 
 }

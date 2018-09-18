@@ -64,7 +64,8 @@
                   <a href="#diskc" aria-controls="diskc" role="tab" data-toggle="tab">Teachers</a>
                 </li>
                 <li role="presentation">
-                  <a href="#diske" aria-controls="diske" role="tab" data-toggle="tab">Class Format</a>
+                  <a href="#diske" aria-controls="diske" role="tab" data-toggle="tab" (click)="event.emit('selectedClassId', classId)">Class
+                    Format</a>
                 </li>
                 <!--<li role="presentation"><a href="#diskd" aria-controls="diskd" role="tab" data-toggle="tab">All Modules</a>
                 </li>-->
@@ -153,8 +154,8 @@
                         <tbody dragula="COURSES" [(dragulaModel)]="module.courses">
                           <tr *ngFor="let course of module.courses" [ngClass]="{ 'ignore-item': !course.exam }">
 
-                            <td [ngStyle]="{ 'padding-left': course.exam ? '' : '30px'  }">
-                              <span class="mov-ico"></span>{{ course.name || course.exam_name }}</td>
+                            <td [ngStyle]="{ 'padding-left': course.exam ? '' : '60px'  }">
+                              <span class="mov-ico" *ngIf="course.exam"></span>{{ course.name || course.exam_name }}</td>
                             <td>{{ course.available_from || course.start_date | date: 'medium' }}</td>
                             <td>{{ course.available_till || course.end_date | date: 'medium' }}</td>
 
@@ -424,7 +425,7 @@
               </div>
               <!-- end .TAB-PANE -->
               <div role="tabpanel" class="tab-pane fade in" id="diske">
-                <app-programme-class-format [classId]="classId"></app-programme-class-format>
+                <app-programme-class-format></app-programme-class-format>
               </div>
               <!-- end .TAB-PANE -->
               <!-- end .TAB-PANE -->
@@ -439,7 +440,7 @@
   </div>
 
 </div>
-<app-add-class-format-modal></app-add-class-format-modal>
+<!-- <app-add-class-format-modal></app-add-class-format-modal> -->
 
 <!-- end row -->
 <app-create-year-modal [programmeId]="programmeId" (created)="onClassCreated($event)"></app-create-year-modal>

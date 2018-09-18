@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 export class ProgrammeService {
 
   public selectedClassId = null;
+  public programmeId = null;
 
   constructor(
     private http: HttpClient,

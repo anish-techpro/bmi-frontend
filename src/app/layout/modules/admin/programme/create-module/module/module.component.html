@@ -17,18 +17,18 @@
               <li role="presentation">
                 <a href="#diskbb" aria-controls="diskbb" role="tab" data-toggle="tab">Description</a>
               </li>
-              <li role="presentation">
+              <!-- <li role="presentation">
                 <a href="#diskbc" aria-controls="diskbc" role="tab" data-toggle="tab">Upload Module</a>
-              </li>
-              <li role="presentation">
+              </li> -->
+              <!-- <li role="presentation">
                 <a href="#diskd7" aria-controls="diskd" role="tab" data-toggle="tab">Assign Teacher</a>
-              </li>
-              <li role="presentation">
+              </li> -->
+              <!-- <li role="presentation">
                 <a href="#diskb8" aria-controls="diskb" role="tab" data-toggle="tab">Exam</a>
-              </li>
-              <li role="presentation">
+              </li> -->
+              <!-- <li role="presentation">
                 <a href="#diskc9" aria-controls="diskc" role="tab" data-toggle="tab">Real Life Project</a>
-              </li>
+              </li> -->
             </ul>
           </div>
 
@@ -38,7 +38,8 @@
               <div class="row">
                 <div class="col-sm-3">
                   <label>Module Name</label>
-                  <input type="text" class="an-form-control" placeholder="Enter Module Name" />
+                  <input type="text" class="an-form-control" placeholder="Enter Module Name" [(ngModel)]="module.name"
+                    required />
                 </div>
                 <div class="col-sm-3">
                   <label>Start Date</label>
@@ -49,7 +50,7 @@
                         <i class="ion-android-calendar"></i>
                       </div>
                       <!-- <input type="text" class="an-form-control an-date-time" placeholder="Select Date" id="datetimepicker11"> -->
-                      <app-datetimepicker></app-datetimepicker>
+                      <app-datetimepicker [(date)]="module.start_date"></app-datetimepicker>
                     </div>
                   </div>
                 </div>
@@ -62,7 +63,7 @@
                         <i class="ion-android-calendar"></i>
                       </div>
                       <!-- <input type="text" class="an-form-control an-date-time" placeholder="Select Date" id="datetimepicker12"> -->
-                      <app-datetimepicker></app-datetimepicker>
+                      <app-datetimepicker [(date)]="module.end_date"></app-datetimepicker>
                     </div>
                   </div>
                 </div>
@@ -75,7 +76,7 @@
               <div class="row">
                 <div class="col-sm-12">
                   <!-- <textarea id="txtEditor1"></textarea> -->
-                  <app-ckeditor></app-ckeditor>
+                  <app-ckeditor [(textInput)]="module.description"></app-ckeditor>
                 </div>
               </div>
             </div>
@@ -131,8 +132,8 @@
                           </div>
                         </div>
                         <div class="col-sm-3 col-sm-offset-3">
-                          <button type="button" class="an-btn an-btn-default pull-right" data-toggle="modal" data-backdrop="static" data-keyboard="false"
-                            data-target="#send1">
+                          <button type="button" class="an-btn an-btn-default pull-right" data-toggle="modal"
+                            data-backdrop="static" data-keyboard="false" data-target="#send1">
                             <i class="glyphicon glyphicon-plus"></i> Invite new Teacher</button>
                           <div class="clearfix"></div>
                         </div>
@@ -307,9 +308,9 @@
         <div class="col-sm-12">
           <span class="pull-right">
             <!--<button class="btn btn-default same-an-btn"><i class="glyphicon glyphicon glyphicon-remove"></i> Cancel</button>-->
-            <button class="btn btn-default same-an-btn">
+            <button class="btn btn-default same-an-btn" (click)="resetAll()">
               <i class="glyphicon glyphicon glyphicon-repeat"></i> Reset All</button>
-            <button class="an-btn an-btn-primary">
+            <button class="an-btn an-btn-primary" (click)="saveModule()">
               <i class="glyphicon glyphicon-floppy-saved"></i> Save</button>
           </span>
           <div class="clearfix"></div>
@@ -321,7 +322,8 @@
   </div>
   <div class="clearfix"></div>
   <br>
-  <div class="col-sm-12">
+  <!-- UPDATED: Hidden for now -->
+  <div class="col-sm-12" style="display:none;">
     <div class="an-single-component with-shadow" id="div3">
       <div class="an-component-header">
         <h6>Overview</h6>

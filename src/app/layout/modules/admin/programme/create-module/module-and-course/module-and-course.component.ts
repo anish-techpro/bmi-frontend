@@ -22,6 +22,8 @@ interface Course {
   exam: Exam;
   project: Project;
   file: any;
+
+  added?: boolean;
 }
 
 class Module {
