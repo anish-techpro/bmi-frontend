@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HelperService } from '../../../../../../services/helper/helper.service';
+import { UiService } from '../../../../../../services/ui/ui.service';
+import swal from 'sweetalert2';
+import { AdminService } from '../../../services/admin/admin.service';
 
 interface Exam {
   name: string;
@@ -50,7 +53,17 @@ export class ModuleAndCourseComponent implements OnInit {
   public module: Module;
   public course: Course;
 
-  constructor() {
+  public uploadedFiles = [];
+
+  public teacherList = [];
+  public page = 1;
+  public currentPage = 0;
+  public totalPages = 0;
+
+  constructor(
+    private uiService: UiService,
+    private adminService: AdminService
+  ) {
     this.module = this.generateModule();
   }
 
@@ -128,14 +141,69 @@ export class ModuleAndCourseComponent implements OnInit {
     }
   }
 
-  addCourseDocument(event) {
-    if (event.target.files && event.target.files[0]) {
-      this.course.file = event.target.files[0];
-    }
-  }
-
   removeCourseDocument() {
     this.course.file = null;
   }
+
+  addCourseDocument(event) {
+    if (event.target.files && event.target.files[0]) {
+      const file = event.target.files[0];
+      event.target.value = '';
+      this.uiService.loader.show();
+      this.adminService.addCourseDocument(file, (err, res) => {
+        this.uiService.loader.hide();
+        if (err) {
+          swal('Error!', err.file, 'warning');
+        } else {
+          this.uploadedFiles.push(res.file);
+        }
+      });
+    }
+  }
+
+
+  getTeacherList() {
+    this.adminService.getTeacherListForCourse(0, (err, res) => {
+      if (err) {
+        swal('Error!', err[Object.keys(err)[0]], 'error');
+      } else {
+        this.teacherList = res.data;
+        this.totalPages = res.data.last_page;
+        this.currentPage = res.data.current_page;
+        this.page = 2;
+      }
+    });
+  }
+
+  selectAllTeachers() {
+    this.teacherList.forEach(teacher => teacher.selected = true);
+
+  }
+
+  deselectAllTeachers() {
+    this.teacherList.forEach(teacher => teacher.selected = false);
+  }
+
+  public selectedTeachers = [];
+  assignTeacher() {
+    this.selectedTeachers = this.teacherList.reduce((result, teacher) => {
+      if (teacher.selected) {
+        result.push(teacher.id);
+      }
+      return result;
+    }, []);
+  }
+
+  // removeCourseDocument(index) {
+  //     this.ui.loader.show();
+  //     this.adminService.removeCourseDocument(this.uploadedFiles[index], (err, res) => {
+  //         this.ui.loader.hide();
+  //         if (err) {
+  //             // TODO: implement error handler
+  //         } else {
+  //             this.uploadedFiles.splice(index, 1);
+  //         }
+  //     });
+  // }
 
 }

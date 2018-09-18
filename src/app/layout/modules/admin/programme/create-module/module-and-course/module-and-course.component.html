@@ -172,7 +172,8 @@
                 </div>-->
                 <div class="col-sm-5">
                   <label></label>
-                  <a href="#" class="an-btn an-btn-primary" data-toggle="modal" data-target="#myModal">Assign Teacher</a>
+                  <a href="#" class="an-btn an-btn-primary" data-toggle="modal" data-target="#myModal" (click)="getTeacherList()">Assign
+                    Teacher</a>
                   <div class="clearfix"></div>
                   <br>
                   <!-- Modal -->
@@ -207,39 +208,11 @@
                           <hr>
                           <div class="col-sm-12">
                             <ul class="invite">
-                              <li>
-                                <input type="checkbox" id="cb1" />
-                                <label for="cb1">
+                              <li *ngFor="let teacher of teacherList; let i = index">
+                                <input type="checkbox" id="cb-course-creation-teacher-{{i}}" [(ngModel)]="teacher.selected" />
+                                <label for="cb-course-creation-teacher-{{i}}">
                                   <img src="../assets/img/profile-image.jpg" />
-                                  <span>Teacher 1</span>
-                                </label>
-                              </li>
-                              <li>
-                                <input type="checkbox" id="cb2" />
-                                <label for="cb2">
-                                  <img src="../assets/img/profile-image.jpg" />
-                                  <span>Teacher 2</span>
-                                </label>
-                              </li>
-                              <li>
-                                <input type="checkbox" id="cb3" />
-                                <label for="cb3">
-                                  <img src="../assets/img/profile-image.jpg" />
-                                  <span>Teacher 3</span>
-                                </label>
-                              </li>
-                              <li>
-                                <input type="checkbox" id="cb4" />
-                                <label for="cb4">
-                                  <img src="../assets/img/profile-image.jpg" />
-                                  <span>Teacher 4</span>
-                                </label>
-                              </li>
-                              <li>
-                                <input type="checkbox" id="cb5" />
-                                <label for="cb5">
-                                  <img src="../assets/img/profile-image.jpg" />
-                                  <span>Teacher 4</span>
+                                  <span>{{ teacher.name }}</span>
                                 </label>
                               </li>
                             </ul>
@@ -252,9 +225,11 @@
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-default same-an-btn pull-left" data-dismiss="modal">Close</button>
-                          <button type="button" class="btn btn-default same-an-btn" data-dismiss="modal">Select All</button>
-                          <button type="button" class="btn btn-default same-an-btn" data-dismiss="modal">Select None</button>
-                          <button type="button" class="an-btn an-btn-default">
+                          <button type="button" class="btn btn-default same-an-btn" (click)="selectAllTeachers()">Select
+                            All</button>
+                          <button type="button" class="btn btn-default same-an-btn" (click)="deselectAllTeachers()">Select
+                            None</button>
+                          <button type="button" class="an-btn an-btn-default" (click)="assignTeachers()">
                             <i class="glyphicon glyphicon-ok"></i> Assign Teacher</button>
                         </div>
                       </div>
